@@ -120,6 +120,9 @@
             <a class="navbar-brand" href="{{route('home')}}">
                 <img src="{{url('front-end/assets/arena-removebg-preview (1).png')}}" alt="Logo" height="50">
             </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Accueil</a></li>
