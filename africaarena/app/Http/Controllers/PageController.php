@@ -40,4 +40,19 @@ class PageController extends Controller
     {
         return view('contact'); // page "contact"
     }
+
+    public function financier()
+    {
+        return view('financier'); // page "financier"
+    }
+
+    public function techniques()
+    {
+        return view('techniques'); // page "techniques"
+    }
+
+    public function sponsors()
+    {
+        return view('sponsors'); // page "sponsors"
+    }
 }

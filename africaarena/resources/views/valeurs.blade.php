@@ -52,6 +52,14 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
+        /* --- #modification: ajout du bouton contact --- */
+         .btn-gold {
+            background: var(--accent-gradient); color: #fff !important; font-weight: 800;
+            padding: 15px 35px; border-radius: 15px; border: none; transition: 0.3s;
+        }
+        .btn-gold:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(243, 156, 18, 0.2); }
+
+
         .navbar-logo { height: 60px; transition: 0.4s; }
         .navbar.scrolled .navbar-logo { height: 45px; }
 
