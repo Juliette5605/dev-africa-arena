@@ -230,7 +230,7 @@
     <div class="container" data-aos="fade-up">
         <span class="partner-label">Notre Partenaire Officiel</span>
         <div class="d-flex justify-content-center align-items-center">
-            <img src="{{ asset('assets/logo_saei.png') }}" alt="SAEI CUBE" class="partner-logo-single">
+            <img src="{{ asset('assets/logo_saei-removebg-preview.png') }}" alt="SAEI CUBE" class="partner-logo-single">
         </div>
     </div>
 </section>

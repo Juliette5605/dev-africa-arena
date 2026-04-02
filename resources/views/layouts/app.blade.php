@@ -252,7 +252,7 @@
     <div class="container">
         <div class="nav-glass d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
             <a class="navbar-brand p-0" href="{{ route('home') }}">
-                <img src="{{ asset('assets/logoprincipal.jpeg') }}" alt="DevAfricaArena" class="navbar-logo">
+                <img src="{{ asset('assets/logoprincipal-removebg-preview.png') }}" alt="DevAfricaArena" class="navbar-logo">
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
@@ -305,7 +305,7 @@
     <div class="container">
         <div class="row align-items-center g-3">
             <div class="col-md-4 text-center text-md-start">
-                <img src="{{ asset('assets/logoprincipal.jpeg') }}" alt="DevAfricaArena" height="45">
+                <img src="{{ asset('assets/logoprincipal-removebg-preview.png') }}" alt="DevAfricaArena" height="45">
             </div>
             <div class="col-md-4 text-center">
                 <p class="mb-1 small fw-bold text-muted">© {{ date('Y') }} DevAfricaArena — Lomé, Togo</p>
@@ -327,7 +327,6 @@
 </footer>
 
 {{-- FLOATING BUTTONS --}}
-<button class="fab-btn" id="btn-dark" title="Mode sombre/clair" aria-label="Basculer le mode sombre">🌙</button>
 <button class="fab-btn" id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Haut de page" aria-label="Retour en haut">
     <i class="bi bi-arrow-up"></i>
 </button>
@@ -350,18 +349,7 @@ window.addEventListener('scroll', () => {
     document.getElementById('btn-top').classList.toggle('show', window.scrollY > 400);
 });
 
-// DARK MODE
-const darkBtn = document.getElementById('btn-dark');
-if (localStorage.getItem('tsync-dark') === '1') {
-    document.body.classList.add('dark');
-    if (darkBtn) darkBtn.textContent = '☀️';
-}
-if (darkBtn) darkBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const on = document.body.classList.contains('dark');
-    darkBtn.textContent = on ? '☀️' : '🌙';
-    localStorage.setItem('tsync-dark', on ? '1' : '0');
-});
+
 
 // AUTO-DISMISS FLASH
 setTimeout(() => {
