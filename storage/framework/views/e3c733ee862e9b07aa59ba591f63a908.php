@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'À Propos | TalentSync AI - L\'Intelligence des Talents'); ?>
 
 <?php $__env->startPush('styles'); ?>

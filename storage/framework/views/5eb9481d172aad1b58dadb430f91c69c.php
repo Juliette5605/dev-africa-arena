@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta name="description" content="TalentSync AI — Plateforme intelligente de matching de talents numériques à Lomé, Togo. Transformez votre talent en opportunité.">
     <meta name="author" content="TalentSync AI">
-    <title><?php echo $__env->yieldContent('title', 'TalentSync AI | L\'Arène des Talents Numériques'); ?></title>
+    <title><?php echo $__env->yieldContent('title', 'DevAfricaArena | L\'Arène des Talents Numériques'); ?></title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -254,7 +254,7 @@
     <div class="container">
         <div class="nav-glass d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
             <a class="navbar-brand p-0" href="<?php echo e(route('home')); ?>">
-                <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="TalentSync AI" class="navbar-logo">
+                <img src="<?php echo e(asset('assets/logoprincipal.jpeg')); ?>" alt="DevAfricaArena" class="navbar-logo">
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
@@ -307,10 +307,10 @@
     <div class="container">
         <div class="row align-items-center g-3">
             <div class="col-md-4 text-center text-md-start">
-                <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="TalentSync AI" height="45">
+                <img src="<?php echo e(asset('assets/logoprincipal.jpeg')); ?>" alt="DevAfricaArena" height="45">
             </div>
             <div class="col-md-4 text-center">
-                <p class="mb-1 small fw-bold text-muted">© <?php echo e(date('Y')); ?> TalentSync AI — Lomé, Togo</p>
+                <p class="mb-1 small fw-bold text-muted">© <?php echo e(date('Y')); ?> DevAfricaArena — Lomé, Togo</p>
                 <p class="mb-0" style="font-size:0.75rem;color:#aaa;">
                     Propulsé par <span class="text-gradient fw-bold">l'intelligence collective</span>
                 </p>
