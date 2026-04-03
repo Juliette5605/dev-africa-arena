@@ -42,12 +42,12 @@
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6" data-aos="fade-right">
-                <h2 class="fw-bold mb-4">Pourquoi TalentSync AI ?</h2>
+                <h2 class="fw-bold mb-4">Pourquoi DevAfricaArena ?</h2>
                 <p class="text-muted fs-5">
                     Au Togo, le potentiel technologique est immense, mais la mise en relation reste un défi. Les entreprises cherchent des compétences certifiées et les développeurs un moyen de prouver leur valeur réelle.
                 </p>
                 <p class="text-muted fs-5">
-                    <strong>TalentSync AI</strong> répond à ce besoin en automatisant le matching et en certifiant les compétences techniques par des tests rigoureux et une analyse de données poussée.
+                    <strong>DevAfricaArena</strong> répond à ce besoin en automatisant le matching et en certifiant les compétences techniques par des tests rigoureux et une analyse de données poussée.
                 </p>
                 <div class="row mt-4">
                     <div class="col-6">
@@ -78,7 +78,7 @@
 <section class="py-5 section-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold">Le Processus <span class="text-gradient">TalentSync</span></h2>
+            <h2 class="fw-bold">Le Processus <span class="text-gradient">DevAfricaArena</span></h2>
             <p class="text-muted">Un parcours fluide vers l'opportunité idéale.</p>
         </div>
         <div class="row g-4">

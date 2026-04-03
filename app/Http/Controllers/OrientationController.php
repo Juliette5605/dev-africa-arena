@@ -12,6 +12,6 @@ class OrientationController extends Controller
     public function index()
     {
         // On retourne la vue qui se trouve dans resources/views/orientation/index.blade.php
-        return view('orientation.index');
+        return view('pages.orientation');
     }
 }

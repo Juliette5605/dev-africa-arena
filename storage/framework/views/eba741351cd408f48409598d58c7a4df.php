@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Contact | DevAfrica Arena')
 
-@push('styles')
+<?php $__env->startSection('title', 'Contact | DevAfrica Arena'); ?>
+
+<?php $__env->startPush('styles'); ?>
 <style>
     #snow-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
     .content-wrapper{position:relative;z-index:2;}
@@ -19,9 +19,9 @@
     .btn-send{background:linear-gradient(135deg,#f39c12,#e67e22);color:white;border:none;padding:15px 30px;border-radius:50px;font-weight:700;width:100%;font-size:1rem;cursor:pointer;transition:0.3s;}
     .btn-send:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(243,156,18,0.2);}
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <canvas id="snow-canvas"></canvas>
 <div class="content-wrapper">
     <div class="container py-5" style="padding-top:120px!important;">
@@ -30,11 +30,12 @@
             <p class="text-muted lead">Une question ? Un projet ? Contactez-nous directement.</p>
         </div>
 
-        @if(session('success'))
+        <?php if(session('success')): ?>
             <div class="alert alert-success rounded-4 py-3 fw-bold text-center mb-4">
-                <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+                <i class="bi bi-check-circle-fill me-2"></i> <?php echo e(session('success')); ?>
+
             </div>
-        @endif
+        <?php endif; ?>
 
         <div class="row g-5">
             <div class="col-lg-5" data-aos="fade-right">
@@ -79,24 +80,24 @@
             <div class="col-lg-7" data-aos="fade-left">
                 <div class="p-4 p-md-5">
                     <h3 class="fw-bold mb-4">Envoyez un message</h3>
-                    <form action="{{ route('contact.store') }}" method="POST">
-                        @csrf
+                    <form action="<?php echo e(route('contact.store')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label">Nom Complet</label>
-                                <input type="text" name="nom" class="form-control-contact" value="{{ old('nom') }}" required>
+                                <input type="text" name="nom" class="form-control-contact" value="<?php echo e(old('nom')); ?>" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control-contact" value="{{ old('email') }}" required>
+                                <input type="email" name="email" class="form-control-contact" value="<?php echo e(old('email')); ?>" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Sujet</label>
-                                <input type="text" name="sujet" class="form-control-contact" value="{{ old('sujet') }}" required>
+                                <input type="text" name="sujet" class="form-control-contact" value="<?php echo e(old('sujet')); ?>" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Message</label>
-                                <textarea name="message" rows="5" class="form-control-contact" required>{{ old('message') }}</textarea>
+                                <textarea name="message" rows="5" class="form-control-contact" required><?php echo e(old('message')); ?></textarea>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn-send">Envoyer le message</button>
@@ -108,13 +109,15 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 const canvas=document.getElementById('snow-canvas'),ctx=canvas.getContext('2d');let p=[];
 function i(){canvas.width=innerWidth;canvas.height=innerHeight;p=[];for(let j=0;j<40;j++)p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,s:Math.random()*2+1,v:Math.random()*0.4+0.1,o:Math.random()*0.2});}
 function a(){ctx.clearRect(0,0,canvas.width,canvas.height);p.forEach(q=>{ctx.fillStyle=`rgba(180,180,180,${q.o})`;ctx.beginPath();ctx.arc(q.x,q.y,q.s,0,Math.PI*2);ctx.fill();q.y+=q.v;if(q.y>canvas.height)q.y=-5;});requestAnimationFrame(a);}
 i();a();onresize=i;
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\dev-africa-arena-master\resources\views/pages/contact.blade.php ENDPATH**/ ?>

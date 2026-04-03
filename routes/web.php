@@ -17,6 +17,8 @@ Route::middleware('maintenance')->group(function () {
     Route::get('/a-propos',    [PageController::class, 'aPropos'])->name('a-propos');
     Route::get('/valeurs',     [PageController::class, 'valeurs'])->name('valeurs');
     Route::get('/argument',    [PageController::class, 'argument'])->name('argument');
+   Route::get('/orientation', [OrientationController::class, 'index'])
+    ->name('orientation');
     Route::get('/contact',     [PageController::class, 'contact'])->name('contact');
     Route::get('/criteres',    [PageController::class, 'criteres'])->name('criteres');
     Route::get('/editions',    [PageController::class, 'editions'])->name('editions.public');

@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Nos Valeurs | TalentSync AI'); ?>
 
 <?php $__env->startPush('styles'); ?>
@@ -28,7 +30,7 @@
             <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold">POURQUOI NOUS CHOISIR ?</span>
             <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">Notre <span class="text-gradient">Valeur Ajoutée</span></h1>
             <p class="lead text-muted mx-auto" style="max-width:800px;" data-aos="fade-up" data-aos-delay="100">
-                TalentSync AI n'est pas qu'une plateforme de plus. C'est une révolution dans la manière d'évaluer, de connecter et de propulser les talents technologiques en Afrique grâce à l'intelligence de données.
+                DevAfricaArena n'est pas qu'une plateforme de plus. C'est une révolution dans la manière d'évaluer, de connecter et de propulser les talents technologiques en Afrique grâce à l'intelligence de données.
             </p>
         </div>
     </header>
@@ -76,7 +78,7 @@
                             <tr>
                                 <th>Critère</th>
                                 <th>Approche Classique</th>
-                                <th class="text-warning text-uppercase">TalentSync AI</th>
+                                <th class="text-warning text-uppercase">DevAfricaArena</th>
                             </tr>
                         </thead>
                         <tbody>
