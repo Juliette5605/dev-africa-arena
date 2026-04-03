@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-    <meta name="description" content="TalentSync AI — Plateforme intelligente de matching de talents numériques à Lomé, Togo. Transformez votre talent en opportunité.">
-    <meta name="author" content="TalentSync AI">
-    <title><?php echo $__env->yieldContent('title', 'TalentSync AI | L\'Arène des Talents Numériques'); ?></title>
+    <meta name="description" content="DevAfrica Arena — Championnat technologique bimestriel à Lomé, Togo. Transformez votre talent numérique en opportunité.">
+    <meta name="author" content="Adjété Alex WILSON">
+    <title><?php echo $__env->yieldContent('title', 'DevAfrica Arena | L\'Arène des Talents Numériques'); ?></title>
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         /* ═══════════════════════════════════════════════════════════
-            VARIABLES & BASE
+           VARIABLES & BASE
         ═══════════════════════════════════════════════════════════ */
         :root {
             --gold: #f39c12;
@@ -43,7 +47,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════
-            DARK MODE
+           DARK MODE
         ═══════════════════════════════════════════════════════════ */
         body.dark {
             background: #0d0d0d;
@@ -70,7 +74,7 @@
         body.dark .table td, body.dark .table th { border-color: #2a2a2a; }
 
         /* ═══════════════════════════════════════════════════════════
-            SCROLL PROGRESS BAR
+           SCROLL PROGRESS BAR
         ═══════════════════════════════════════════════════════════ */
         #scroll-bar {
             position: fixed; top: 0; left: 0; height: 3px; width: 0;
@@ -79,7 +83,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════
-            FLOATING BUTTONS
+           FLOATING BUTTONS
         ═══════════════════════════════════════════════════════════ */
         .fab-btn {
             position: fixed; right: 22px; width: 46px; height: 46px;
@@ -95,7 +99,7 @@
         body.dark #btn-top { background: #1a1a1a; }
 
         /* ═══════════════════════════════════════════════════════════
-            NAVBAR
+           NAVBAR
         ═══════════════════════════════════════════════════════════ */
         .navbar { padding: 18px 0; z-index: 1050; }
         .navbar.scrolled { padding: 10px 0; }
@@ -134,7 +138,7 @@
         .btn-nav-cta::after { display: none !important; }
 
         /* ═══════════════════════════════════════════════════════════
-            GLOBAL UTILITIES
+           GLOBAL UTILITIES
         ═══════════════════════════════════════════════════════════ */
         .text-gold { color: var(--gold) !important; }
         .bg-gold { background: var(--gradient) !important; }
@@ -166,7 +170,7 @@
         .section-title { font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; }
 
         /* ═══════════════════════════════════════════════════════════
-            FORMULAIRES
+           FORMULAIRES
         ═══════════════════════════════════════════════════════════ */
         .form-control, .form-select {
             border: 2px solid #f0f0f0; border-radius: 14px;
@@ -188,7 +192,7 @@
         .invalid-feedback { font-weight: 600; font-size: 0.8rem; }
 
         /* ═══════════════════════════════════════════════════════════
-            FLASH MESSAGES
+           FLASH MESSAGES
         ═══════════════════════════════════════════════════════════ */
         .flash-toast {
             position: fixed; top: 100px; right: 28px; z-index: 5000;
@@ -217,7 +221,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════
-            FOOTER
+           FOOTER
         ═══════════════════════════════════════════════════════════ */
         footer {
             background: #fafafa;
@@ -254,7 +258,7 @@
     <div class="container">
         <div class="nav-glass d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
             <a class="navbar-brand p-0" href="<?php echo e(route('home')); ?>">
-                <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="TalentSync AI" class="navbar-logo">
+                <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="DevAfrica Arena" class="navbar-logo">
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
@@ -307,12 +311,12 @@
     <div class="container">
         <div class="row align-items-center g-3">
             <div class="col-md-4 text-center text-md-start">
-                <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="TalentSync AI" height="45">
+                <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="DevAfrica Arena" height="45">
             </div>
             <div class="col-md-4 text-center">
-                <p class="mb-1 small fw-bold text-muted">© <?php echo e(date('Y')); ?> TalentSync AI — Lomé, Togo</p>
+                <p class="mb-1 small fw-bold text-muted">© <?php echo e(date('Y')); ?> DevAfrica Arena — Lomé, Togo</p>
                 <p class="mb-0" style="font-size:0.75rem;color:#aaa;">
-                    Propulsé par <span class="text-gradient fw-bold">l'intelligence collective</span>
+                    Propulsé par <span class="text-gradient fw-bold">l'innovation africaine</span>
                 </p>
             </div>
             <div class="col-md-4 text-center text-md-end">
@@ -354,7 +358,7 @@ window.addEventListener('scroll', () => {
 
 // DARK MODE
 const darkBtn = document.getElementById('btn-dark');
-if (localStorage.getItem('tsync-dark') === '1') {
+if (localStorage.getItem('arena-dark') === '1') {
     document.body.classList.add('dark');
     if (darkBtn) darkBtn.textContent = '☀️';
 }
@@ -362,7 +366,7 @@ if (darkBtn) darkBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     const on = document.body.classList.contains('dark');
     darkBtn.textContent = on ? '☀️' : '🌙';
-    localStorage.setItem('tsync-dark', on ? '1' : '0');
+    localStorage.setItem('arena-dark', on ? '1' : '0');
 });
 
 // AUTO-DISMISS FLASH
@@ -373,5 +377,7 @@ setTimeout(() => {
 </script>
 
 <?php echo $__env->yieldPushContent('scripts'); ?>
+<?php echo $__env->make('partials.chatbot', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 </body>
-</html><?php /**PATH C:\devafrica-arena-laravel-FULL\arena-laravel\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH C:\devafrica-arena-laravel-FULL\arena-laravel\resources\views/layouts/app.blade.php ENDPATH**/ ?>

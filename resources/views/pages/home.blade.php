@@ -85,7 +85,7 @@
                     Propulser l'<span class="text-gradient">Afrique</span> par le numérique
                 </h1>
                 <p class="lead text-muted mb-5">
-                   DevAfricaArena est le catalyseur de talents qui façonne les architectes technologiques de demain.
+                   TalentSync AI est le catalyseur de talents qui façonne les architectes technologiques de demain.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="{{ route('criteres') }}" class="btn btn-gold" style="background: linear-gradient(135deg,#f39c12,#e67e22); color:#fff; font-weight:800; padding:15px 35px; border-radius:15px; border:none; transition:0.3s; text-decoration:none;">
@@ -190,7 +190,19 @@
     </div>
 </section>
 
-
+{{-- ═══ OFFRES D'EMPLOI ═══ --}}
+<section class="jobs-section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4" data-aos="fade-up">
+            <div>
+                <span class="badge bg-warning text-dark mb-2 px-3 rounded-pill">OPPORTUNITÉS</span>
+                <h2 class="fw-bold mb-0">Offres d'emploi</h2>
+            </div>
+            <p class="text-muted small mb-0 d-none d-md-block">Mis à jour automatiques</p>
+        </div>
+        <div id="jobs-container"></div>
+    </div>
+</section>
 
 {{-- ═══ NEWSLETTER (ajout Laravel) ═══ --}}
 <section class="newsletter-section">
@@ -230,7 +242,7 @@
     <div class="container" data-aos="fade-up">
         <span class="partner-label">Notre Partenaire Officiel</span>
         <div class="d-flex justify-content-center align-items-center">
-            <img src="{{ asset('assets/logo_saei-removebg-preview.png') }}" alt="SAEI CUBE" class="partner-logo-single">
+            <img src="{{ asset('assets/logo_saei.png') }}" alt="SAEI CUBE" class="partner-logo-single">
         </div>
     </div>
 </section>

@@ -217,7 +217,10 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script>
+        /* global Chart */
+        /* eslint-disable */
         // ── Graphique LISSÉ (Area Chart) ──
+        // @ts-ignore
         const weeklyData = @json($stats['weekly_candidatures'] ?? []);
         const labels = weeklyData.map(w => 'Sem ' + w.week);
         const values = weeklyData.map(w => w.total);
@@ -253,11 +256,13 @@
         });
 
         // ── Donut LEVELS ──
+        // @ts-ignore
         new Chart(document.getElementById('chartNiveaux'), {
             type: 'doughnut',
             data: {
                 labels: ['Junior', 'Intermédiaire', 'Senior'],
                 datasets: [{
+                    // @ts-ignore
                     data: [{{ $stats['juniors'] }}, {{ $stats['intermediaires'] }}, {{ $stats['seniors'] }}],
                     backgroundColor: ['#f39c12', '#0284c7', '#16a34a'],
                     borderWidth: 5,
@@ -271,5 +276,6 @@
                 plugins: { legend: { display: false } }
             }
         });
+        /* eslint-enable */
     </script>
 @endpush

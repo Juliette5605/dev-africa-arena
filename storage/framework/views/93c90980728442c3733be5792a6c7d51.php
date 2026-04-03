@@ -217,7 +217,10 @@
 <?php $__env->startPush('scripts'); ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script>
+        /* global Chart */
+        /* eslint-disable */
         // ── Graphique LISSÉ (Area Chart) ──
+        // @ts-ignore
         const weeklyData = <?php echo json_encode($stats['weekly_candidatures'] ?? [], 15, 512) ?>;
         const labels = weeklyData.map(w => 'Sem ' + w.week);
         const values = weeklyData.map(w => w.total);
@@ -253,11 +256,13 @@
         });
 
         // ── Donut LEVELS ──
+        // @ts-ignore
         new Chart(document.getElementById('chartNiveaux'), {
             type: 'doughnut',
             data: {
                 labels: ['Junior', 'Intermédiaire', 'Senior'],
                 datasets: [{
+                    // @ts-ignore
                     data: [<?php echo e($stats['juniors']); ?>, <?php echo e($stats['intermediaires']); ?>, <?php echo e($stats['seniors']); ?>],
                     backgroundColor: ['#f39c12', '#0284c7', '#16a34a'],
                     borderWidth: 5,
@@ -271,6 +276,7 @@
                 plugins: { legend: { display: false } }
             }
         });
+        /* eslint-enable */
     </script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('admin.layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\devafrica-arena-laravel-FULL\arena-laravel\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>

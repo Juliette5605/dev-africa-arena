@@ -10,7 +10,7 @@
     }
     #snow-canvas { position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none; }
     .section-glass {
-        background:(255,255,255,0.9);border:1px solid rgba(0,0,0,0.1);border-radius:30px;
+        background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.1);border-radius:30px;
         padding:60px;margin-top:-80px;position:relative;z-index:10;
         box-shadow:0 20px 40px rgba(0,0,0,0.05);
     }
@@ -18,9 +18,9 @@
         border:2px solid var(--brand-gold);color:var(--brand-gold)!important;font-weight:700;
         padding:15px 35px;border-radius:15px;text-decoration:none;transition:0.3s;display:inline-block;
     }
-    .btn-outline-custom:hover { background:var(--brand-gold);color:#e67e22!important; }
+    .btn-outline-custom:hover { background:var(--brand-gold);color:#fff!important; }
     .btn-gold-lg {
-        background:var(--accent-gradient);color:!important;font-weight:800;
+        background:var(--accent-gradient);color:#fff!important;font-weight:800;
         padding:15px 35px;border-radius:15px;border:none;transition:0.3s;text-decoration:none;display:inline-block;
     }
     .btn-gold-lg:hover { transform:translateY(-3px);box-shadow:0 10px 20px rgba(243,156,18,0.2); }
