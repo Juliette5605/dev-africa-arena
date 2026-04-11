@@ -4224,3 +4224,508 @@ luminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
 #52 D:/dev-africa-arena-master/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('D://dev-africa-a...')
 #53 {main}
 "} 
+[2026-04-07 21:30:18] local.ERROR: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sessions` where `id` = LJsEw1i8TQRGpF8riSDJh2mCWGmBhP4LSrrhon6D limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sessions` where `id` = LJsEw1i8TQRGpF8riSDJh2mCWGmBhP4LSrrhon6D limit 1) at C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate/Database/Connection->run('select * from `...', Array, Object(Closure))
+#2 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3106): Illuminate/Database/Connection->select('select * from `...', Array, false)
+#3 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3091): Illuminate/Database/Query/Builder->runSelect()
+#4 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3676): Illuminate/Database/Query/Builder->Illuminate/Database/Query/{closure}()
+#5 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3090): Illuminate/Database/Query/Builder->onceWithColumns(Array, Object(Closure))
+#6 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(343): Illuminate/Database/Query/Builder->get(Array)
+#7 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3013): Illuminate/Database/Query/Builder->first(Array)
+#8 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php(97): Illuminate/Database/Query/Builder->find('LJsEw1i8TQRGpF8...')
+#9 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(117): Illuminate/Session/DatabaseSessionHandler->read('LJsEw1i8TQRGpF8...')
+#10 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(105): Illuminate/Session/Store->readFromHandler()
+#11 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(89): Illuminate/Session/Store->loadSession()
+#12 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(147): Illuminate/Session/Store->start()
+#13 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Support/helpers.php(399): Illuminate/Session/Middleware/StartSession->Illuminate/Session/Middleware/{closure}(Object(Illuminate/Session/Store))
+#14 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(144): tap(Object(Illuminate/Session/Store), Object(Closure))
+#15 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(116): Illuminate/Session/Middleware/StartSession->startSession(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store))
+#16 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#17 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#18 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#19 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#20 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#21 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#24 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#25 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#26 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#27 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#28 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#30 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#35 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#36 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#37 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#38 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#39 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#40 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#41 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#42 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#43 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#44 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#45 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#46 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#47 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#48 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#49 C:/Users/Lenovo/Desktop/dev-africa-arena/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#50 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Lenovo...')
+#51 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée at C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:66)
+[stacktrace]
+#0 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(66): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate/Database/Connectors/Connector->createPdoConnection('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#2 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate/Database/Connectors/Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(185): Illuminate/Database/Connectors/MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate/Database/Connectors/ConnectionFactory->Illuminate/Database/Connectors/{closure}()
+#5 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(1231): call_user_func(Object(Closure))
+#6 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(512): Illuminate/Database/Connection->getPdo()
+#7 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(407): Illuminate/Database/Connection->getPdoForSelect(false)
+#8 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('select * from `...', Array)
+#9 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#10 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate/Database/Connection->run('select * from `...', Array, Object(Closure))
+#11 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3106): Illuminate/Database/Connection->select('select * from `...', Array, false)
+#12 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3091): Illuminate/Database/Query/Builder->runSelect()
+#13 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3676): Illuminate/Database/Query/Builder->Illuminate/Database/Query/{closure}()
+#14 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3090): Illuminate/Database/Query/Builder->onceWithColumns(Array, Object(Closure))
+#15 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(343): Illuminate/Database/Query/Builder->get(Array)
+#16 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3013): Illuminate/Database/Query/Builder->first(Array)
+#17 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php(97): Illuminate/Database/Query/Builder->find('LJsEw1i8TQRGpF8...')
+#18 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(117): Illuminate/Session/DatabaseSessionHandler->read('LJsEw1i8TQRGpF8...')
+#19 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(105): Illuminate/Session/Store->readFromHandler()
+#20 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(89): Illuminate/Session/Store->loadSession()
+#21 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(147): Illuminate/Session/Store->start()
+#22 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Support/helpers.php(399): Illuminate/Session/Middleware/StartSession->Illuminate/Session/Middleware/{closure}(Object(Illuminate/Session/Store))
+#23 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(144): tap(Object(Illuminate/Session/Store), Object(Closure))
+#24 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(116): Illuminate/Session/Middleware/StartSession->startSession(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store))
+#25 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#26 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#27 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#28 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#29 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#30 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#32 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#33 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#34 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#35 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#36 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#37 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#38 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#40 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#41 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#42 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#43 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#44 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#45 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#46 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#47 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#48 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#49 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#50 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#51 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#52 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#53 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#54 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#55 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#56 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#57 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#58 C:/Users/Lenovo/Desktop/dev-africa-arena/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#59 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Lenovo...')
+#60 {main}
+"} 
+[2026-04-07 21:30:35] local.ERROR: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sessions` where `id` = LJsEw1i8TQRGpF8riSDJh2mCWGmBhP4LSrrhon6D limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sessions` where `id` = LJsEw1i8TQRGpF8riSDJh2mCWGmBhP4LSrrhon6D limit 1) at C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate/Database/Connection->run('select * from `...', Array, Object(Closure))
+#2 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3106): Illuminate/Database/Connection->select('select * from `...', Array, false)
+#3 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3091): Illuminate/Database/Query/Builder->runSelect()
+#4 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3676): Illuminate/Database/Query/Builder->Illuminate/Database/Query/{closure}()
+#5 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3090): Illuminate/Database/Query/Builder->onceWithColumns(Array, Object(Closure))
+#6 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(343): Illuminate/Database/Query/Builder->get(Array)
+#7 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3013): Illuminate/Database/Query/Builder->first(Array)
+#8 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php(97): Illuminate/Database/Query/Builder->find('LJsEw1i8TQRGpF8...')
+#9 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(117): Illuminate/Session/DatabaseSessionHandler->read('LJsEw1i8TQRGpF8...')
+#10 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(105): Illuminate/Session/Store->readFromHandler()
+#11 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(89): Illuminate/Session/Store->loadSession()
+#12 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(147): Illuminate/Session/Store->start()
+#13 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Support/helpers.php(399): Illuminate/Session/Middleware/StartSession->Illuminate/Session/Middleware/{closure}(Object(Illuminate/Session/Store))
+#14 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(144): tap(Object(Illuminate/Session/Store), Object(Closure))
+#15 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(116): Illuminate/Session/Middleware/StartSession->startSession(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store))
+#16 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#17 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#18 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#19 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#20 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#21 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#24 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#25 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#26 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#27 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#28 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#30 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#35 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#36 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#37 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#38 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#39 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#40 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#41 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#42 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#43 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#44 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#45 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#46 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#47 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#48 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#49 C:/Users/Lenovo/Desktop/dev-africa-arena/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#50 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Lenovo...')
+#51 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée at C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:66)
+[stacktrace]
+#0 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(66): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate/Database/Connectors/Connector->createPdoConnection('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#2 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate/Database/Connectors/Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(185): Illuminate/Database/Connectors/MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate/Database/Connectors/ConnectionFactory->Illuminate/Database/Connectors/{closure}()
+#5 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(1231): call_user_func(Object(Closure))
+#6 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(512): Illuminate/Database/Connection->getPdo()
+#7 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(407): Illuminate/Database/Connection->getPdoForSelect(false)
+#8 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('select * from `...', Array)
+#9 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#10 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate/Database/Connection->run('select * from `...', Array, Object(Closure))
+#11 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3106): Illuminate/Database/Connection->select('select * from `...', Array, false)
+#12 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3091): Illuminate/Database/Query/Builder->runSelect()
+#13 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3676): Illuminate/Database/Query/Builder->Illuminate/Database/Query/{closure}()
+#14 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3090): Illuminate/Database/Query/Builder->onceWithColumns(Array, Object(Closure))
+#15 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(343): Illuminate/Database/Query/Builder->get(Array)
+#16 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3013): Illuminate/Database/Query/Builder->first(Array)
+#17 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php(97): Illuminate/Database/Query/Builder->find('LJsEw1i8TQRGpF8...')
+#18 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(117): Illuminate/Session/DatabaseSessionHandler->read('LJsEw1i8TQRGpF8...')
+#19 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(105): Illuminate/Session/Store->readFromHandler()
+#20 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(89): Illuminate/Session/Store->loadSession()
+#21 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(147): Illuminate/Session/Store->start()
+#22 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Support/helpers.php(399): Illuminate/Session/Middleware/StartSession->Illuminate/Session/Middleware/{closure}(Object(Illuminate/Session/Store))
+#23 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(144): tap(Object(Illuminate/Session/Store), Object(Closure))
+#24 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(116): Illuminate/Session/Middleware/StartSession->startSession(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store))
+#25 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#26 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#27 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#28 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#29 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#30 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#32 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#33 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#34 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#35 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#36 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#37 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#38 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#40 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#41 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#42 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#43 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#44 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#45 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#46 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#47 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#48 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#49 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#50 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#51 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#52 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#53 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#54 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#55 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#56 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#57 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#58 C:/Users/Lenovo/Desktop/dev-africa-arena/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#59 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Lenovo...')
+#60 {main}
+"} 
+[2026-04-07 21:30:39] local.ERROR: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sessions` where `id` = LJsEw1i8TQRGpF8riSDJh2mCWGmBhP4LSrrhon6D limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sessions` where `id` = LJsEw1i8TQRGpF8riSDJh2mCWGmBhP4LSrrhon6D limit 1) at C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate/Database/Connection->run('select * from `...', Array, Object(Closure))
+#2 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3106): Illuminate/Database/Connection->select('select * from `...', Array, false)
+#3 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3091): Illuminate/Database/Query/Builder->runSelect()
+#4 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3676): Illuminate/Database/Query/Builder->Illuminate/Database/Query/{closure}()
+#5 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3090): Illuminate/Database/Query/Builder->onceWithColumns(Array, Object(Closure))
+#6 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(343): Illuminate/Database/Query/Builder->get(Array)
+#7 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3013): Illuminate/Database/Query/Builder->first(Array)
+#8 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php(97): Illuminate/Database/Query/Builder->find('LJsEw1i8TQRGpF8...')
+#9 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(117): Illuminate/Session/DatabaseSessionHandler->read('LJsEw1i8TQRGpF8...')
+#10 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(105): Illuminate/Session/Store->readFromHandler()
+#11 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(89): Illuminate/Session/Store->loadSession()
+#12 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(147): Illuminate/Session/Store->start()
+#13 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Support/helpers.php(399): Illuminate/Session/Middleware/StartSession->Illuminate/Session/Middleware/{closure}(Object(Illuminate/Session/Store))
+#14 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(144): tap(Object(Illuminate/Session/Store), Object(Closure))
+#15 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(116): Illuminate/Session/Middleware/StartSession->startSession(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store))
+#16 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#17 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#18 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#19 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#20 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#21 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#24 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#25 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#26 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#27 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#28 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#30 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#35 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#36 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#37 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#38 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#39 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#40 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#41 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#42 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#43 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#44 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#45 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#46 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#47 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#48 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#49 C:/Users/Lenovo/Desktop/dev-africa-arena/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#50 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Lenovo...')
+#51 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée at C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:66)
+[stacktrace]
+#0 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(66): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate/Database/Connectors/Connector->createPdoConnection('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#2 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate/Database/Connectors/Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(185): Illuminate/Database/Connectors/MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate/Database/Connectors/ConnectionFactory->Illuminate/Database/Connectors/{closure}()
+#5 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(1231): call_user_func(Object(Closure))
+#6 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(512): Illuminate/Database/Connection->getPdo()
+#7 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(407): Illuminate/Database/Connection->getPdoForSelect(false)
+#8 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate/Database/Connection->Illuminate/Database/{closure}('select * from `...', Array)
+#9 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate/Database/Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#10 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Connection.php(398): Illuminate/Database/Connection->run('select * from `...', Array, Object(Closure))
+#11 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3106): Illuminate/Database/Connection->select('select * from `...', Array, false)
+#12 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3091): Illuminate/Database/Query/Builder->runSelect()
+#13 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3676): Illuminate/Database/Query/Builder->Illuminate/Database/Query/{closure}()
+#14 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3090): Illuminate/Database/Query/Builder->onceWithColumns(Array, Object(Closure))
+#15 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(343): Illuminate/Database/Query/Builder->get(Array)
+#16 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3013): Illuminate/Database/Query/Builder->first(Array)
+#17 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php(97): Illuminate/Database/Query/Builder->find('LJsEw1i8TQRGpF8...')
+#18 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(117): Illuminate/Session/DatabaseSessionHandler->read('LJsEw1i8TQRGpF8...')
+#19 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(105): Illuminate/Session/Store->readFromHandler()
+#20 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Store.php(89): Illuminate/Session/Store->loadSession()
+#21 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(147): Illuminate/Session/Store->start()
+#22 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Support/helpers.php(399): Illuminate/Session/Middleware/StartSession->Illuminate/Session/Middleware/{closure}(Object(Illuminate/Session/Store))
+#23 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(144): tap(Object(Illuminate/Session/Store), Object(Closure))
+#24 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(116): Illuminate/Session/Middleware/StartSession->startSession(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store))
+#25 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#26 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#27 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#28 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#29 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#30 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#32 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#33 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#34 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#35 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#36 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#37 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#38 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#40 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#41 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#42 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#43 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#44 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#45 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#46 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#47 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#48 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#49 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#50 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#51 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#52 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#53 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#54 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#55 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#56 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#57 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#58 C:/Users/Lenovo/Desktop/dev-africa-arena/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#59 C:/Users/Lenovo/Desktop/dev-africa-arena/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Lenovo...')
+#60 {main}
+"} 
+[2026-04-11 19:15:20] local.DEBUG: From: DevAfrica Arena <arena@devafrica.tg>
+To: hmemmanuelameganaho@gmail.com
+Subject:  Candidature =?utf-8?Q?re=C3=A7ue_=E2=80=94?= DevAfrica Arena 2026
+MIME-Version: 1.0
+Date: Sat, 11 Apr 2026 19:15:19 +0000
+Message-ID: <f300978e790c17178785b818b8d866e5@devafrica.tg>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidature reçue — DevAfrica Arena</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:'Segoe UI',Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0;">
+  <tr>
+    <td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.08);">
+
+        
+        <tr>
+          <td style="background:linear-gradient(135deg,#f39c12 0%,#e67e22 100%);padding:40px 50px;text-align:center;">
+            <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:800;letter-spacing:-1px;">
+               DevAfrica Arena
+            </h1>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px;text-transform:uppercase;letter-spacing:2px;">
+              L'Arène des Talents Numériques
+            </p>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="padding:50px;">
+            <h2 style="color:#222;font-size:22px;font-weight:800;margin:0 0 10px;">
+               Candidature bien reçue, Emmanuel !
+            </h2>
+            <p style="color:#666;font-size:15px;line-height:1.7;margin:0 0 30px;">
+              Nous avons bien enregistré votre dossier de candidature pour la prochaine édition de <strong>DevAfrica Arena 2026</strong> à Lomé.
+            </p>
+
+            
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f9fa;border-radius:15px;overflow:hidden;margin-bottom:30px;">
+              <tr>
+                <td style="padding:25px 30px;">
+                  <p style="margin:0 0 5px;color:#f39c12;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">RÉCAPITULATIF</p>
+                  <h3 style="margin:0 0 20px;color:#222;font-size:16px;">Votre dossier</h3>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="padding:8px 0;color:#888;font-size:13px;width:40%;">Nom complet</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Emmanuel HOLONOU</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Niveau</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Junior</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Expertise</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Font-end</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Pays</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Togo</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            
+            <h3 style="color:#222;font-size:16px;font-weight:800;margin:0 0 15px;"> Prochaines étapes</h3>
+            <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">01</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Confirmation de dossier</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Votre candidature est en cours d&#039;examen par notre équipe.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">02</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Convocation</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Les candidats retenus recevront une convocation par email.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">03</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Sélection Day</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Jour J : Le Grand Quiz + Code Challenge à Lomé.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                          </table>
+
+            
+            <div style="text-align:center;margin:35px 0 0;">
+              <a href="http://localhost:8000" style="display:inline-block;background:linear-gradient(135deg,#f39c12,#e67e22);color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:50px;font-weight:800;font-size:15px;">
+                 Retour à l'Arena
+              </a>
+            </div>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="background:#222;padding:30px 50px;text-align:center;">
+            <p style="margin:0 0 5px;color:rgba(255,255,255,0.5);font-size:12px;">© 2026 DevAfrica Arena — Lomé, Togo</p>
+            <p style="margin:0;color:rgba(255,255,255,0.3);font-size:11px;">Adjété Alex WILSON · wilsoncodemosaic@gmail.com · +228 71 15 50 55</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+  

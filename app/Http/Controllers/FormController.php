@@ -77,7 +77,7 @@ class FormController extends Controller
         Partenaire::create(array_merge($validated, ['type' => 'financier']));
 
         return redirect()->route('partenaires.financier')
-            ->with('success', '✅ Dossier de partenariat financier bien reçu ! Notre équipe vous contactera sous 48h.');
+            ->with('success', 'Dossier de partenariat financier bien reçu ! Notre équipe vous contactera sous 48h.');
     }
 
     /**
@@ -104,7 +104,7 @@ class FormController extends Controller
         Partenaire::create(array_merge($validated, ['type' => 'technique']));
 
         return redirect()->route('partenaires.techniques')
-            ->with('success', '✅ Proposition de partenariat technique bien transmise. Merci !');
+            ->with('success', 'Proposition de partenariat technique bien transmise. Merci !');
     }
 
     /**
@@ -131,7 +131,7 @@ class FormController extends Controller
         Partenaire::create(array_merge($validated, ['type' => 'sponsor']));
 
         return redirect()->route('partenaires.sponsors')
-            ->with('success', '✅ Demande de sponsoring reçue ! Nous vous enverrons notre dossier complet.');
+            ->with('success', 'Demande de sponsoring reçue ! Nous vous enverrons notre dossier complet.');
     }
 
     /**
@@ -151,6 +151,6 @@ class FormController extends Controller
         ContactMessage::create($validated);
 
         return redirect()->route('contact')
-            ->with('success', '✅ Message envoyé ! Nous vous répondrons dans les plus brefs délais.');
+            ->with('success', 'Message envoyé ! Nous vous répondrons dans les plus brefs délais.');
     }
 }

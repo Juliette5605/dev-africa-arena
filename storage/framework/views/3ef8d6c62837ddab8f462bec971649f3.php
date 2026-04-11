@@ -1,7 +1,7 @@
-@extends('layouts.app')
-@section('title', 'DevAfrica Arena | Home')
 
-@push('styles')
+<?php $__env->startSection('title', 'DevAfrica Arena | Home'); ?>
+
+<?php $__env->startPush('styles'); ?>
 <style>
 /* ─── HERO ─────────────────────────────────────────────── */
 .hero {
@@ -72,11 +72,11 @@
 .nl-btn { background: linear-gradient(135deg,#f39c12,#e67e22); color: #fff; border: none; padding: 14px 28px; border-radius: 14px; font-weight: 800; cursor: pointer; font-family: inherit; white-space: nowrap; transition: 0.3s; }
 .nl-btn:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(243,156,18,0.25); }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-{{-- ═══ HERO (identique site original) ═══ --}}
+
 <header class="hero">
     <canvas id="snow-canvas"></canvas>
     <div class="container" style="position: relative; z-index: 2;">
@@ -89,10 +89,10 @@
                    DevAfrica Arena est le catalyseur de talents qui façonne les architectes technologiques de demain.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="{{ route('criteres') }}" class="btn btn-gold" style="background: linear-gradient(135deg,#f39c12,#e67e22); color:#fff; font-weight:800; padding:15px 35px; border-radius:15px; border:none; transition:0.3s; text-decoration:none;">
+                    <a href="<?php echo e(route('criteres')); ?>" class="btn btn-gold" style="background: linear-gradient(135deg,#f39c12,#e67e22); color:#fff; font-weight:800; padding:15px 35px; border-radius:15px; border:none; transition:0.3s; text-decoration:none;">
                         Critères de Participation
                     </a>
-                    <a href="{{ route('a-propos') }}" class="btn btn-outline-dark" style="border-radius:15px; padding:15px 35px; font-weight:700;background-color:white">
+                    <a href="<?php echo e(route('a-propos')); ?>" class="btn btn-outline-dark" style="border-radius:15px; padding:15px 35px; font-weight:700;background-color:white">
                         Découvrir
                     </a>
                 </div>
@@ -109,7 +109,7 @@
 </header>
 
 
-{{-- ═══ ORIENTATION HUB + QUIZ (identique site original) ═══ --}}
+
 <section class="orientation-hub" id="orientation">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -118,7 +118,7 @@
             <p class="text-muted">Réponds vite ! Le système analyse tes réflexes numériques.</p>
         </div>
 
-        {{-- 6 cartes métiers — s'allument selon les réponses --}}
+        
         <div class="row g-4 mb-5" id="fields-grid">
             <div class="col-6 col-md-4 col-lg-2 field-wrapper transition-all" id="field-dev">
                 <div class="field-card-mini text-center p-3 rounded-4 border bg-white transition-all">
@@ -176,7 +176,7 @@
                             <h2 id="res-profile" class="fw-800 text-gradient mb-3" style="font-weight:800;"></h2>
                             <p id="res-desc" class="text-muted mb-4"></p>
                             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                                <a href="{{ route('criteres') }}" style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:12px 28px;border-radius:50px;font-weight:800;text-decoration:none;">
+                                <a href="<?php echo e(route('criteres')); ?>" style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:12px 28px;border-radius:50px;font-weight:800;text-decoration:none;">
                                     Rejoindre l'Arena →
                                 </a>
                                 <button onclick="resetQuiz()" class="btn btn-dark rounded-pill px-5 py-3 fw-bold">
@@ -191,7 +191,7 @@
     </div>
 </section>
 
-{{-- ═══ OFFRES D'EMPLOI ═══ --}}
+
 <section class="jobs-section">
     <div class="container">
         <div class="d-flex justify-content-between align-items-end mb-4" data-aos="fade-up">
@@ -205,7 +205,7 @@
     </div>
 </section>
 
-{{-- ═══ NEWSLETTER (ajout Laravel) ═══ --}}
+
 <section class="newsletter-section">
     <div class="container">
         <div class="row justify-content-center">
@@ -215,42 +215,44 @@
                     <h3 class="fw-800 mb-2" style="font-weight:800;">Restez dans la course Arena</h3>
                     <p class="text-muted">Dates des éditions, ouvertures d'inscriptions et résultats en avant-première.</p>
                 </div>
-                @if(session('newsletter_success'))
+                <?php if(session('newsletter_success')): ?>
                     <div class="alert rounded-4 fw-bold border-0 p-4 text-center" style="background:rgba(22,163,74,0.08);color:#16a34a;">
-                        <i class="bi bi-check-circle-fill me-2"></i>{{ session('newsletter_success') }}
+                        <i class="bi bi-check-circle-fill me-2"></i><?php echo e(session('newsletter_success')); ?>
+
                     </div>
-                @elseif(session('newsletter_info'))
+                <?php elseif(session('newsletter_info')): ?>
                     <div class="alert rounded-4 fw-bold border-0 p-4 text-center" style="background:rgba(243,156,18,0.08);color:#f39c12;">
-                        <i class="bi bi-info-circle-fill me-2"></i>{{ session('newsletter_info') }}
+                        <i class="bi bi-info-circle-fill me-2"></i><?php echo e(session('newsletter_info')); ?>
+
                     </div>
-                @else
-                <form action="{{ route('newsletter.store') }}" method="POST" data-aos="fade-up">
-                    @csrf
+                <?php else: ?>
+                <form action="<?php echo e(route('newsletter.store')); ?>" method="POST" data-aos="fade-up">
+                    <?php echo csrf_field(); ?>
                     <div class="d-flex gap-2 flex-wrap flex-sm-nowrap">
-                        <input type="email" name="email" class="nl-input" placeholder="Votre adresse email *" required value="{{ old('email') }}">
+                        <input type="email" name="email" class="nl-input" placeholder="Votre adresse email *" required value="<?php echo e(old('email')); ?>">
                         <button type="submit" class="nl-btn">S'abonner </button>
                     </div>
                     <p class="text-muted small mt-2 text-center"><i class="bi bi-shield-check me-1"></i>Zéro spam. Désinscription en 1 clic.</p>
                 </form>
-                @endif
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </section>
 
-{{-- ═══ PARTENAIRE OFFICIEL ═══ --}}
+
 <section class="partners-bar text-center">
     <div class="container" data-aos="fade-up">
         <span class="partner-label">Notre Partenaire Officiel</span>
         <div class="d-flex justify-content-center align-items-center">
-            <img src="{{ asset('assets/logo_saei.png') }}" alt="SAEI CUBE" class="partner-logo-single">
+            <img src="<?php echo e(asset('assets/logo_saei.png')); ?>" alt="SAEI CUBE" class="partner-logo-single">
         </div>
     </div>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 // ─── SNOW CANVAS (identique original) ──────────────────────────
 const canvas = document.getElementById('snow-canvas');
@@ -405,4 +407,6 @@ fetch("https://sheetdb.io/api/v1/qg4gis5u4esa6")
 })
 .catch(() => { document.getElementById("jobs-container").innerHTML = '<p class="text-muted">Impossible de charger les offres.</p>'; });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/home.blade.php ENDPATH**/ ?>

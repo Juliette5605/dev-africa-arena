@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Partenariat Financier | DevAfrica Arena')
 
-@push('styles')
+<?php $__env->startSection('title', 'Partenariat Financier | DevAfrica Arena'); ?>
+
+<?php $__env->startPush('styles'); ?>
 <style>
     .page-header{padding:200px 0 80px;position:relative;background:radial-gradient(circle at center,rgba(243,156,18,0.05) 0%,#ffffff 100%);}
     #snow-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;}
@@ -23,9 +23,9 @@
     background-color: #ededed !important;   /* fond blanc pour contraste */
 }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <header class="page-header text-center">
     <canvas id="snow-canvas"></canvas>
     <div class="container" style="position:relative;z-index:2;">
@@ -91,7 +91,7 @@
     </div>
 </section>
 
-{{-- MODAL Formulaire --}}
+
 <div class="modal fade" id="financeModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 rounded-4 shadow-lg">
@@ -100,8 +100,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body p-4 pt-0">
-                <form action="{{ route('partenaires.financier.store') }}" method="POST" id="finance-form">
-                    @csrf
+                <form action="<?php echo e(route('partenaires.financier.store')); ?>" method="POST" id="finance-form">
+                    <?php echo csrf_field(); ?>
                     <div class="mb-3">
                         <label class="form-label fw-bold small">Responsable</label>
                         <input type="text" name="responsable" class="form-control py-3 bg-light border-0" placeholder="Nom & Prénom" required>
@@ -136,13 +136,15 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 const canvas=document.getElementById('snow-canvas'),ctx=canvas.getContext('2d');let p=[];
 function i(){canvas.width=innerWidth;canvas.height=innerHeight;p=[];for(let j=0;j<60;j++)p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,s:Math.random()*3,v:Math.random()*0.5+0.1});}
 function a(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='rgba(243,156,18,0.1)';p.forEach(q=>{ctx.beginPath();ctx.arc(q.x,q.y,q.s,0,Math.PI*2);ctx.fill();q.y+=q.v;if(q.y>canvas.height)q.y=-5;});requestAnimationFrame(a);}
 i();a();onresize=i;
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/partenaires-financier.blade.php ENDPATH**/ ?>

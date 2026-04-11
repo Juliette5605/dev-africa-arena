@@ -1,4 +1,4 @@
-{{-- ═══ CHATBOT IA FLOTTANT TALENTSYNC ═══ --}}
+
 <style>
 .chat-bubble {
     position: fixed; bottom: 28px; right: 28px; z-index: 9999;
@@ -90,12 +90,12 @@
 .chat-send svg { width: 16px; height: 16px; fill: #fff; }
 </style>
 
-{{-- Bouton flottant --}}
+
 <button class="chat-bubble" onclick="toggleChat()" id="chat-btn" title="Assistant IA DevAfrica Arena">
     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
 </button>
 
-{{-- Fenêtre chat --}}
+
 <div class="chat-window hidden" id="chat-window">
     <div class="chat-header">
         <div class="chat-header-avatar">🤖</div>
@@ -169,9 +169,9 @@ async function sendMessage() {
     showTyping();
 
     try {
-        const r = await fetch('{{ route("chat.public") }}', {
+        const r = await fetch('<?php echo e(route("chat.public")); ?>', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' },
             body: JSON.stringify({ message: msg })
         });
         const d = await r.json();
@@ -188,3 +188,4 @@ function sendChip(el) {
     sendMessage();
 }
 </script>
+<?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/partials/chatbot.blade.php ENDPATH**/ ?>

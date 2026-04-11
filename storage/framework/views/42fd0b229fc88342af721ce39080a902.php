@@ -1,7 +1,7 @@
-@extends('layouts.app')
-@section('title', 'Éditions | DevAfrica Arena')
 
-@push('styles')
+<?php $__env->startSection('title', 'Éditions | DevAfrica Arena'); ?>
+
+<?php $__env->startPush('styles'); ?>
 <style>
     .page-header { padding:180px 0 80px; position:relative; background:radial-gradient(circle at top right,rgba(243,156,18,0.08),transparent); }
     #snow-canvas { position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none; }
@@ -12,9 +12,9 @@
     .timeline-dot { width:14px;height:14px;border-radius:50%;background:#f39c12;flex-shrink:0;margin-top:6px; }
     .timeline-line { width:2px;background:#eee;flex-grow:1;margin:4px auto; }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <header class="page-header text-center">
     <canvas id="snow-canvas"></canvas>
     <div class="container" style="position:relative;z-index:2;">
@@ -30,65 +30,67 @@
 
 <section class="py-5">
     <div class="container">
-        @if($editions->isEmpty())
+        <?php if($editions->isEmpty()): ?>
         <div class="text-center py-5">
             <div style="font-size:4rem;"></div>
             <h4 class="fw-bold mt-3">La première édition arrive bientôt</h4>
             <p class="text-muted">Soyez parmi les premiers à postuler.</p>
-            <a href="{{ route('criteres') }}" class="btn btn-gold mt-3"
+            <a href="<?php echo e(route('criteres')); ?>" class="btn btn-gold mt-3"
                style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:14px 36px;border-radius:15px;font-weight:800;text-decoration:none;">
                 Postuler maintenant
             </a>
         </div>
-        @else
+        <?php else: ?>
         <div class="row g-4">
-            @foreach($editions as $edition)
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                <div class="edition-card {{ $edition->active ? 'edition-active' : '' }}">
-                    @if($edition->active)
+            <?php $__currentLoopData = $editions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $edition): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?php echo e($loop->index * 100); ?>">
+                <div class="edition-card <?php echo e($edition->active ? 'edition-active' : ''); ?>">
+                    <?php if($edition->active): ?>
                     <span class="badge mb-3 px-3 py-2 rounded-pill fw-bold"
                           style="background:rgba(243,156,18,0.1);color:#f39c12;font-size:0.72rem;">
                          ÉDITION EN COURS
                     </span>
-                    @endif
-                    <h4 class="fw-bold mb-2" style="color: black !important">{{ $edition->nom }}</h4>
+                    <?php endif; ?>
+                    <h4 class="fw-bold mb-2" style="color: black !important"><?php echo e($edition->nom); ?></h4>
                     <div class="d-flex gap-4 mb-3 flex-wrap">
                         <div>
                             <p class="text-muted small mb-0"> Lieu</p>
-                            <p class="fw-bold mb-0 small" style="color: black !important">{{ $edition->lieu }}</p>
+                            <p class="fw-bold mb-0 small" style="color: black !important"><?php echo e($edition->lieu); ?></p>
                         </div>
                         <div>
                             <p class="text-muted small mb-0"> Sélection</p>
-                            <p class="fw-bold mb-0 small" style="color: black !important">{{ $edition->date_selection?->format('d M Y') }}</p>
+                            <p class="fw-bold mb-0 small" style="color: black !important"><?php echo e($edition->date_selection?->format('d M Y')); ?></p>
                         </div>
                         <div>
                             <p class="text-muted small mb-0"> Finale</p>
-                            <p class="fw-bold mb-0 small" style="color: black !important">{{ $edition->date_finale?->format('d M Y') }}</p>
+                            <p class="fw-bold mb-0 small" style="color: black !important"><?php echo e($edition->date_finale?->format('d M Y')); ?></p>
                         </div>
                     </div>
-                    @if($edition->active)
-                    <a href="{{ route('criteres') }}"
+                    <?php if($edition->active): ?>
+                    <a href="<?php echo e(route('criteres')); ?>"
                        style="display:inline-block;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:10px 24px;border-radius:50px;font-weight:800;text-decoration:none;font-size:0.88rem;">
                         Postuler →
                     </a>
-                    @else
+                    <?php else: ?>
                     <span class="badge px-3 py-2 rounded-pill fw-bold"
                           style="background:#f8f9fa;color:#888;font-size:0.72rem;">Édition terminée</span>
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        @endif
+        <?php endif; ?>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 const canvas=document.getElementById('snow-canvas'),ctx=canvas.getContext('2d');let p=[];
 function init(){canvas.width=innerWidth;canvas.height=innerHeight;p=[];for(let i=0;i<60;i++)p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,s:Math.random()*2+1,v:Math.random()*0.5+0.2,o:Math.random()*0.2+0.05});}
 function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);p.forEach(q=>{ctx.fillStyle=`rgba(243,156,18,${q.o})`;ctx.beginPath();ctx.arc(q.x,q.y,q.s,0,Math.PI*2);ctx.fill();q.y+=q.v;if(q.y>canvas.height)q.y=-5;});requestAnimationFrame(draw);}
 init();draw();onresize=init;
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/editions.blade.php ENDPATH**/ ?>

@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Critères & Inscription | DevAfrica Arena')
 
-@push('styles')
+<?php $__env->startSection('title', 'Critères & Inscription | DevAfrica Arena'); ?>
+
+<?php $__env->startPush('styles'); ?>
     <style>
         :root {
             --brand-gold: #c9933b;
@@ -123,9 +123,9 @@
             }
         }
     </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <canvas id="snow-canvas"></canvas>
     <div class="content-wrapper">
         <header class="py-5 mt-5 text-center">
@@ -136,23 +136,24 @@
             </div>
         </header>
 
-        {{-- ALERTES DE SESSION --}}
+        
         <div class="container">
-            @if(session('success'))
+            <?php if(session('success')): ?>
                 <div class="alert alert-success rounded-4 py-3 fw-bold border-0 shadow-sm mb-4">
-                    <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
-                </div>
-            @endif
+                    <i class="bi bi-check-circle-fill me-2"></i> <?php echo e(session('success')); ?>
 
-            @if($errors->any())
+                </div>
+            <?php endif; ?>
+
+            <?php if($errors->any()): ?>
                 <div class="alert alert-danger rounded-4 border-0 shadow-sm mb-4">
                     <ul class="mb-0">
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><?php echo e($error); ?></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
-            @endif
+            <?php endif; ?>
         </div>
 
         <section class="py-5">
@@ -190,63 +191,63 @@
             <div class="registration-box" data-aos="zoom-in">
                 <h2 class="fw-bold mb-5 text-center text-white">Soumettre ma candidature</h2>
 
-                {{-- Remplacer candidature.store par criteres.store --}}
-                <form action="{{ route('criteres.store') }}" method="POST">
-                @csrf
+                
+                <form action="<?php echo e(route('criteres.store')); ?>" method="POST">
+                <?php echo csrf_field(); ?>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <label class="form-label">Nom</label>
-                        <input type="text" name="nom" class="form-control" value="{{ old('nom') }}" placeholder="Votre nom"
+                        <input type="text" name="nom" class="form-control" value="<?php echo e(old('nom')); ?>" placeholder="Votre nom"
                             required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Prénom</label>
-                        <input type="text" name="prenom" class="form-control" value="{{ old('prenom') }}"
+                        <input type="text" name="prenom" class="form-control" value="<?php echo e(old('prenom')); ?>"
                             placeholder="Votre prénom" required>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" value="{{ old('email') }}"
+                        <input type="email" name="email" class="form-control" value="<?php echo e(old('email')); ?>"
                             placeholder="votre@email.com" required>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Âge</label>
-                        <input type="number" name="age" class="form-control" value="{{ old('age') }}" min="16" max="60"
+                        <input type="number" name="age" class="form-control" value="<?php echo e(old('age')); ?>" min="16" max="60"
                             required>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Niveau</label>
                         <select name="niveau" class="form-select">
-                            <option value="Junior" {{ old('niveau') == 'Junior' ? 'selected' : '' }}>Junior</option>
-                            <option value="Intermédiaire" {{ old('niveau') == 'Intermédiaire' ? 'selected' : '' }}>Intermédiaire
+                            <option value="Junior" <?php echo e(old('niveau') == 'Junior' ? 'selected' : ''); ?>>Junior</option>
+                            <option value="Intermédiaire" <?php echo e(old('niveau') == 'Intermédiaire' ? 'selected' : ''); ?>>Intermédiaire
                             </option>
-                            <option value="Senior" {{ old('niveau') == 'Senior' ? 'selected' : '' }}>Senior</option>
+                            <option value="Senior" <?php echo e(old('niveau') == 'Senior' ? 'selected' : ''); ?>>Senior</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Pays</label>
-                        <input type="text" name="pays" class="form-control" value="{{ old('pays') }}" placeholder="Ex: Togo"
+                        <input type="text" name="pays" class="form-control" value="<?php echo e(old('pays')); ?>" placeholder="Ex: Togo"
                             required>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Expertise Principale</label>
                         <input type="text" name="expertise" class="form-control" placeholder="Ex: Flutter / Web"
-                            value="{{ old('expertise') }}" required>
+                            value="<?php echo e(old('expertise')); ?>" required>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Diplôme</label>
-                        <input type="text" name="diplome" class="form-control" value="{{ old('diplome') }}"
+                        <input type="text" name="diplome" class="form-control" value="<?php echo e(old('diplome')); ?>"
                             placeholder="Dernier diplôme obtenu" required>
                     </div>
                     <div class="col-12">
                         <label class="form-label">Motivation</label>
                         <textarea name="motivation" class="form-control" rows="3"
-                            placeholder="Pourquoi souhaitez-vous participer ?" required>{{ old('motivation') }}</textarea>
+                            placeholder="Pourquoi souhaitez-vous participer ?" required><?php echo e(old('motivation')); ?></textarea>
                     </div>
                     <div class="col-12">
                         <label class="form-label">Vision Tech (Projets futurs)</label>
                         <textarea name="vision" class="form-control" rows="3" placeholder="Où vous voyez-vous dans 5 ans ?"
-                            required>{{ old('vision') }}</textarea>
+                            required><?php echo e(old('vision')); ?></textarea>
                     </div>
                     <div class="col-12 text-center mt-5">
                         <button type="submit" class="btn-register">Envoyer ma candidature</button>
@@ -256,9 +257,9 @@
             </div>
         </section>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
     <script>
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
@@ -296,4 +297,5 @@
         a();
         window.onresize = i;
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/criteres.blade.php ENDPATH**/ ?>

@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Nos Valeurs | DevAfrica Arena')
 
-@push('styles')
+<?php $__env->startSection('title', 'Nos Valeurs | DevAfrica Arena'); ?>
+
+<?php $__env->startPush('styles'); ?>
 <style>
     #snow-canvas { position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none; }
     .content-wrapper { position:relative;z-index:2; }
@@ -20,9 +20,9 @@
     .table-custom th { background:#1a1a1a; color:var(--gold); border:none; padding:20px; }
     .table-custom td { padding:20px; border-top:1px solid #333; }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <canvas id="snow-canvas"></canvas>
 <div class="content-wrapper">
     <header class="text-center" style="padding:160px 0 60px;">
@@ -114,13 +114,14 @@
         </div>
     </section>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 const canvas=document.getElementById('snow-canvas'),ctx=canvas.getContext('2d');let particles=[];
 function init(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;particles=[];for(let i=0;i<60;i++)particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*2.5+1,speed:Math.random()*0.6+0.2,opacity:Math.random()*0.4});}
 function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{ctx.fillStyle=`rgba(200,200,200,${p.opacity})`;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();p.y+=p.speed;if(p.y>canvas.height)p.y=-10;});requestAnimationFrame(animate);}
 window.addEventListener('resize',init);init();animate();
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/valeurs.blade.php ENDPATH**/ ?>

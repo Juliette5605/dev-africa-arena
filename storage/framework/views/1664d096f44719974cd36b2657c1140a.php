@@ -1,12 +1,21 @@
-@extends('layouts.app')
 
-@section('content')
-<div style="min-height: 100vh; background-color: #f9fafb; padding: 50px 20px; font-family: sans-serif;">
+
+<?php $__env->startPush('styles'); ?>
+<style>
+    
+    
+</style>
+<?php $__env->stopPush(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="back" style="min-height: 100vh;padding: 50px 20px; font-family: sans-serif;
+display: flex; align-items: center; position: relative;
+    background: none">
     <div style="max-width: 1200px; margin: 0 auto;">
         
         <div style="text-align: center; margin-bottom: 60px;">
             <h1 style="font-size: 3rem; font-weight: 800; color: #1e1b4b; margin-bottom: 10px;">
-                Centre d'Orientation <span style="color: #b45309;">TalentSync AI</span>
+                Centre d'Orientation <span style="color: #b45309;">DevAfrica Arena</span>
             </h1>
             <p style="font-size: 1.25rem; color: #4b5563;">
                 Propulsez votre carrière à 25 ans grâce à la puissance de l'intelligence artificielle.
@@ -62,4 +71,5 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/orientation.blade.php ENDPATH**/ ?>

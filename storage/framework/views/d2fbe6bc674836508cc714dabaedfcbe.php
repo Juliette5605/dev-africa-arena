@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Partenaires | DevAfrica Arena')
 
-@push('styles')
+<?php $__env->startSection('title', 'Partenaires | DevAfrica Arena'); ?>
+
+<?php $__env->startPush('styles'); ?>
 <style>
     .hero-partners {
         padding: 180px 0 100px;
@@ -26,9 +26,9 @@
     }
     .btn-gold-lg:hover { transform:translateY(-3px);box-shadow:0 10px 20px rgba(243,156,18,0.2); }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <header class="hero-partners">
     <canvas id="snow-canvas"></canvas>
     <div class="container" style="position:relative;z-index:2;">
@@ -45,25 +45,27 @@
     <div class="section-glass text-center" data-aos="fade-up">
         <h2 class="mb-5 fw-bold" style="color:#222;">Explorez notre réseau</h2>
         <div class="d-flex flex-wrap justify-content-center gap-4">
-            <a href="{{ route('partenaires.financier') }}" class="btn-outline-custom">
+            <a href="<?php echo e(route('partenaires.financier')); ?>" class="btn-outline-custom">
                 <i class="bi bi-cash-stack me-2"></i> Partenaires Financiers
             </a>
-            <a href="{{ route('partenaires.techniques') }}" class="btn-outline-custom">
+            <a href="<?php echo e(route('partenaires.techniques')); ?>" class="btn-outline-custom">
                 <i class="bi bi-cpu me-2"></i> Partenaires Techniques
             </a>
-            <a href="{{ route('partenaires.sponsors') }}" class="btn-gold-lg">
+            <a href="<?php echo e(route('partenaires.sponsors')); ?>" class="btn-gold-lg">
                 <i class="bi bi-star-fill me-2"></i> Devenir Sponsor
             </a>
         </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 const canvas=document.getElementById('snow-canvas'),ctx=canvas.getContext('2d');let particles=[];
 function init(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;particles=[];for(let i=0;i<100;i++)particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*3+1,speed:Math.random()*1+0.5,opacity:Math.random()*0.5+0.2});}
 function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='rgba(200,200,200,0.5)';particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();p.y+=p.speed;if(p.y>canvas.height)p.y=-10;});requestAnimationFrame(animate);}
 init();animate();window.addEventListener('resize',init);
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/partenaires.blade.php ENDPATH**/ ?>

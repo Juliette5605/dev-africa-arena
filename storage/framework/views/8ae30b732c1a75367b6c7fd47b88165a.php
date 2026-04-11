@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta name="description" content="DevAfrica Arena — Championnat technologique bimestriel à Lomé, Togo. Transformez votre talent numérique en opportunité.">
     <meta name="author" content="Adjété Alex WILSON">
-    <title>@yield('title', 'DevAfrica Arena | L\'Arène des Talents Numériques')</title>
+    <title><?php echo $__env->yieldContent('title', 'DevAfrica Arena | L\'Arène des Talents Numériques'); ?></title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -256,31 +256,33 @@
         .footer-link:hover { color: var(--gold); }
     </style>
 
-    @stack('styles')
+    <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
 <body>
 
-{{-- SCROLL PROGRESS --}}
+
 <div id="scroll-bar"></div>
 
-{{-- FLASH MESSAGES --}}
-@if(session('success'))
-<div class="flash-toast alert alert-success" id="flash-msg">
-    {{ session('success') }}
-</div>
-@endif
-@if(session('error'))
-<div class="flash-toast alert alert-danger" id="flash-msg">
-    {{ session('error') }}
-</div>
-@endif
 
-{{-- NAVBAR --}}
+<?php if(session('success')): ?>
+<div class="flash-toast alert alert-success" id="flash-msg">
+    <?php echo e(session('success')); ?>
+
+</div>
+<?php endif; ?>
+<?php if(session('error')): ?>
+<div class="flash-toast alert alert-danger" id="flash-msg">
+    <?php echo e(session('error')); ?>
+
+</div>
+<?php endif; ?>
+
+
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
         <div class="nav-glass d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
-            <a class="navbar-brand p-0" href="{{ route('home') }}">
-                <img src="{{ asset('assets/logoprincipal-removebg-preview.png') }}" alt="DevAfrica Arena" class="navbar-logo">
+            <a class="navbar-brand p-0" href="<?php echo e(route('home')); ?>">
+                <img src="<?php echo e(asset('assets/logoprincipal-removebg-preview.png')); ?>" alt="DevAfrica Arena" class="navbar-logo">
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
@@ -288,34 +290,34 @@
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-center gap-1">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Accueil</a>
+                        <a class="nav-link <?php echo e(request()->routeIs('home') ? 'active' : ''); ?>" href="<?php echo e(route('home')); ?>">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('a-propos') ? 'active' : '' }}" href="{{ route('a-propos') }}">À Propos</a>
+                        <a class="nav-link <?php echo e(request()->routeIs('a-propos') ? 'active' : ''); ?>" href="<?php echo e(route('a-propos')); ?>">À Propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('valeurs') ? 'active' : '' }}" href="{{ route('valeurs') }}">Valeurs</a>
+                        <a class="nav-link <?php echo e(request()->routeIs('valeurs') ? 'active' : ''); ?>" href="<?php echo e(route('valeurs')); ?>">Valeurs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('argument') ? 'active' : '' }}" href="{{ route('argument') }}">Stratégie</a>
+                        <a class="nav-link <?php echo e(request()->routeIs('argument') ? 'active' : ''); ?>" href="<?php echo e(route('argument')); ?>">Stratégie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('orientation') ? 'active' : '' }}" href="{{ route('orientation') }}">Orientation</a>
+                        <a class="nav-link <?php echo e(request()->routeIs('orientation') ? 'active' : ''); ?>" href="<?php echo e(route('orientation')); ?>">Orientation</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->routeIs('partenaires*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle <?php echo e(request()->routeIs('partenaires*') ? 'active' : ''); ?>" href="#" data-bs-toggle="dropdown">
                             Partenaires
                         </a>
                         <ul class="dropdown-menu border-0 shadow-sm rounded-4 p-2">
-                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.index') }}">Hub Partenaires</a></li>
-                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.financier') }}">Partenariat Financier</a></li>
-                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.techniques') }}">Partenariat Technique</a></li>
-                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.sponsors') }}">Sponsors</a></li>
+                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="<?php echo e(route('partenaires.index')); ?>">Hub Partenaires</a></li>
+                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="<?php echo e(route('partenaires.financier')); ?>">Partenariat Financier</a></li>
+                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="<?php echo e(route('partenaires.techniques')); ?>">Partenariat Technique</a></li>
+                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="<?php echo e(route('partenaires.sponsors')); ?>">Sponsors</a></li>
                         </ul>
                     </li>
                     <li class="nav-item ms-lg-3">
-                        <a class="btn btn-gold py-2 px-4 {{ request()->routeIs('contact') ? 'active' : '' }}"
-                           href="{{ route('contact') }}"
+                        <a class="btn btn-gold py-2 px-4 <?php echo e(request()->routeIs('contact') ? 'active' : ''); ?>"
+                           href="<?php echo e(route('contact')); ?>"
                            style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;font-weight:800;padding:8px 25px;border-radius:15px;border:none;text-decoration:none;font-size:0.85rem;">
                             Contact
                         </a>
@@ -326,44 +328,44 @@
     </div>
 </nav>
 
-{{-- PAGE CONTENT --}}
+
 <main style="padding-top: 90px;">
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
 </main>
 
-{{-- FOOTER --}}
+
 <footer>
     <div class="container">
         <div class="row align-items-center g-3">
             <div class="col-md-4 text-center text-md-start">
-                <img src="{{ asset('assets/logoprincipal-removebg-preview.png') }}" alt="DevAfrica Arena" height="45">
+                <img src="<?php echo e(asset('assets/logoprincipal-removebg-preview.png')); ?>" alt="DevAfrica Arena" height="45">
             </div>
             <div class="col-md-4 text-center">
-                <p class="mb-1 small fw-bold text-muted">© {{ date('Y') }} DevAfrica Arena — Lomé, Togo</p>
+                <p class="mb-1 small fw-bold text-muted">© <?php echo e(date('Y')); ?> DevAfrica Arena — Lomé, Togo</p>
                 <p class="mb-0" style="font-size:0.75rem;color:#aaa;">
                     Propulsé par <span class="text-gradient fw-bold">l'innovation africaine</span>
                 </p>
             </div>
             <div class="col-md-4 text-center text-md-end">
                 <div class="d-flex gap-3 justify-content-center justify-content-md-end flex-wrap">
-                    <a href="{{ route('home') }}" class="footer-link">Accueil</a>
-                    <a href="{{ route('criteres') }}" class="footer-link">Candidater</a>
-                    <a href="{{ route('contact') }}" class="footer-link">Contact</a>
+                    <a href="<?php echo e(route('home')); ?>" class="footer-link">Accueil</a>
+                    <a href="<?php echo e(route('criteres')); ?>" class="footer-link">Candidater</a>
+                    <a href="<?php echo e(route('contact')); ?>" class="footer-link">Contact</a>
                     <a href="https://wa.me/22871155055" target="_blank" class="footer-link"><i class="bi bi-whatsapp"></i></a>
-                    <a href="{{ route('admin.login') }}" class="footer-link" title="Admin"><i class="bi bi-lock"></i></a>
+                    <a href="<?php echo e(route('admin.login')); ?>" class="footer-link" title="Admin"><i class="bi bi-lock"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
 
-{{-- FLOATING BUTTONS --}}
+
 <button class="fab-btn" id="btn-dark" title="Mode sombre/clair" aria-label="Basculer le mode sombre">🌙</button>
 <button class="fab-btn" id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Haut de page" aria-label="Retour en haut">
     <i class="bi bi-arrow-up"></i>
 </button>
 
-{{-- SCRIPTS --}}
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -404,16 +406,16 @@ setTimeout(() => {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    @if(session('success'))
+    <?php if(session('success')): ?>
         var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
         confirmationModal.show();
-    @endif
+    <?php endif; ?>
 });
 </script>
 
 
-@stack('scripts')
-@include('partials.chatbot')
+<?php echo $__env->yieldPushContent('scripts'); ?>
+<?php echo $__env->make('partials.chatbot', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
 
 <!-- MODAL GLOBAL DE CONFIRMATION -->
@@ -421,7 +423,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow-lg text-center p-4">
       <h4 class="fw-bold mb-3">Action réussie !</h4>
-      <p class="text-muted">{{ session('success') }}</p>
+      <p class="text-muted"><?php echo e(session('success')); ?></p>
       <button type="button" class="btn btn-warning fw-bold rounded-pill px-4 mt-3" data-bs-dismiss="modal">
         OK
       </button>
@@ -431,3 +433,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+<?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/layouts/app.blade.php ENDPATH**/ ?>

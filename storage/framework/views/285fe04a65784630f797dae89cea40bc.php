@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'À Propos | TalentSync AI - L\'Intelligence des Talents')
 
-@push('styles')
+<?php $__env->startSection('title', 'À Propos | TalentSync AI - L\'Intelligence des Talents'); ?>
+
+<?php $__env->startPush('styles'); ?>
 <style>
     .page-header {
         padding: 180px 0 100px;
@@ -23,9 +23,9 @@
     }
     .section-light { background-color: #fcfcfc; border-top: 1px solid #f0f0f0; }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <header class="page-header text-center">
     <canvas id="snow-canvas"></canvas>
     <div class="container" style="position:relative;z-index:2;">
@@ -101,9 +101,9 @@
         </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 const canvas = document.getElementById('snow-canvas');
 const ctx = canvas.getContext('2d');
@@ -119,4 +119,5 @@ function animate() {
 }
 init(); animate(); window.addEventListener('resize',init);
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/a-propos.blade.php ENDPATH**/ ?>

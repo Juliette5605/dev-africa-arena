@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Stratégie Tech | DevAfrica Arena')
 
-@push('styles')
+<?php $__env->startSection('title', 'Stratégie Tech | DevAfrica Arena'); ?>
+
+<?php $__env->startPush('styles'); ?>
 <style>
     /* Intégration du gradient sans modifier la structure CSS existante */
     .text-gradient {
@@ -26,9 +26,9 @@
     .highlight-col { background:rgba(243,156,18,0.03);color:#f39c12;font-weight:700; }
     @media(max-width:991px){ .main-card{padding:30px;} .manifesto-quote{font-size:1.4rem;} }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <header class="hero">
     <div class="container" data-aos="fade-up">
         <h1 class="display-4 fw-bold" style="font-weight:800;">Le Code est l'Actif <span class="text-gradient">Stratégique</span></h1>
@@ -121,7 +121,7 @@
             </div>
         </div>
 
-        {{-- ═══ SECTION AUDIT ═══ --}}
+        
         <div class="row justify-content-center mt-5 pt-4" data-aos="fade-up">
             <div class="col-lg-8">
                 <div class="text-center p-5 rounded-4" style="background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); border: 1px solid rgba(243,156,18,0.2);">
@@ -133,13 +133,13 @@
                         Vous avez un projet en cours ? Nos experts évaluent la solidité technique, la sécurité et la valeur de votre code source.
                     </p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center">
-                        <a href="{{ route('contact') }}"
+                        <a href="<?php echo e(route('contact')); ?>"
                            class="btn fw-bold px-5 py-3"
                            style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border-radius:50px;font-size:1rem;text-decoration:none;transition:0.3s;"
                            onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
                              Demander un Audit
                         </a>
-                        <a href="{{ route('criteres') }}"
+                        <a href="<?php echo e(route('criteres')); ?>"
                            class="btn fw-bold px-5 py-3"
                            style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.2);border-radius:50px;font-size:1rem;text-decoration:none;transition:0.3s;"
                            onmouseover="this.style.borderColor='#f39c12';this.style.color='#f39c12'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff'">
@@ -152,4 +152,5 @@
 
     </div>
 </main>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lenovo\Desktop\dev-africa-arena\resources\views/pages/argument.blade.php ENDPATH**/ ?>
