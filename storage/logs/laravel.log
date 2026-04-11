@@ -4729,3 +4729,650 @@ Content-Transfer-Encoding: quoted-printable
 </body>
 </html>
   
+[2026-04-11 21:49:53] local.DEBUG: From: DevAfrica Arena <arena@devafrica.tg>
+To: hmemmanuelameganaho@gmail.com
+Subject:  Bienvenue dans l'Arena =?utf-8?Q?=E2=80=94?= DevAfrica 2026
+MIME-Version: 1.0
+Date: Sat, 11 Apr 2026 21:49:53 +0000
+Message-ID: <f66f17185d5c670f43e8e40ce4b3c67f@devafrica.tg>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:'Segoe UI',Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0;">
+  <tr><td align="center">
+    <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.08);">
+      <tr>
+        <td style="background:linear-gradient(135deg,#222 0%,#333 100%);padding:50px;text-align:center;">
+          <div style="font-size:48px;margin-bottom:15px;"></div>
+          <h1 style="margin:0;color:#f39c12;font-size:32px;font-weight:800;">Bienvenue dans l'Arena !</h1>
+          <p style="margin:10px 0 0;color:rgba(255,255,255,0.7);font-size:14px;">DevAfrica Arena 2026 — Lomé, Togo</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:50px;">
+          <p style="color:#666;font-size:15px;line-height:1.8;margin:0 0 25px;">
+            Bonjour talent, vous êtes maintenant dans la liste exclusive des personnes qui suivent <strong>DevAfrica Arena</strong> — le premier championnat technologique d'Afrique de l'Ouest.
+          </p>
+          <div style="background:#fffbf0;border-left:4px solid #f39c12;border-radius:0 12px 12px 0;padding:20px 25px;margin-bottom:30px;">
+            <p style="margin:0;color:#222;font-weight:700;font-size:14px;">Vous recevrez en avant-première :</p>
+            <ul style="margin:10px 0 0;padding-left:20px;color:#555;font-size:14px;line-height:2;">
+              <li>Les dates des prochaines éditions</li>
+              <li>Les ouvertures d'inscriptions candidats</li>
+              <li>Les résultats & classements live</li>
+              <li>Les offres d'emploi exclusives partenaires</li>
+            </ul>
+          </div>
+          <div style="text-align:center;margin-top:35px;">
+            <a href="http://localhost:8000/criteres" style="display:inline-block;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;text-decoration:none;padding:16px 40px;border-radius:50px;font-weight:800;font-size:15px;">
+              Postuler maintenant →
+            </a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="background:#222;padding:25px 50px;text-align:center;">
+          <p style="margin:0;color:rgba(255,255,255,0.4);font-size:11px;">© 2026 DevAfrica Arena · Lomé, Togo · <a href="http://localhost:8000" style="color:#f39c12;">devafricaarena.com</a></p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>
+  
+[2026-04-11 21:51:46] local.DEBUG: From: DevAfrica Arena <arena@devafrica.tg>
+To: hmemmanuelameganaho@gmail.com
+Subject:  Candidature =?utf-8?Q?re=C3=A7ue_=E2=80=94?= DevAfrica Arena 2026
+MIME-Version: 1.0
+Date: Sat, 11 Apr 2026 21:51:46 +0000
+Message-ID: <a0eaab36759658d4f9104657d66568be@devafrica.tg>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidature reçue — DevAfrica Arena</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:'Segoe UI',Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0;">
+  <tr>
+    <td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.08);">
+
+        
+        <tr>
+          <td style="background:linear-gradient(135deg,#f39c12 0%,#e67e22 100%);padding:40px 50px;text-align:center;">
+            <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:800;letter-spacing:-1px;">
+               DevAfrica Arena
+            </h1>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px;text-transform:uppercase;letter-spacing:2px;">
+              L'Arène des Talents Numériques
+            </p>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="padding:50px;">
+            <h2 style="color:#222;font-size:22px;font-weight:800;margin:0 0 10px;">
+               Candidature bien reçue, Emmanuel !
+            </h2>
+            <p style="color:#666;font-size:15px;line-height:1.7;margin:0 0 30px;">
+              Nous avons bien enregistré votre dossier de candidature pour la prochaine édition de <strong>DevAfrica Arena 2026</strong> à Lomé.
+            </p>
+
+            
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f9fa;border-radius:15px;overflow:hidden;margin-bottom:30px;">
+              <tr>
+                <td style="padding:25px 30px;">
+                  <p style="margin:0 0 5px;color:#f39c12;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">RÉCAPITULATIF</p>
+                  <h3 style="margin:0 0 20px;color:#222;font-size:16px;">Votre dossier</h3>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="padding:8px 0;color:#888;font-size:13px;width:40%;">Nom complet</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Emmanuel HOLONOU</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Niveau</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Junior</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Expertise</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Font-end</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Pays</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Togo</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            
+            <h3 style="color:#222;font-size:16px;font-weight:800;margin:0 0 15px;"> Prochaines étapes</h3>
+            <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">01</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Confirmation de dossier</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Votre candidature est en cours d&#039;examen par notre équipe.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">02</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Convocation</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Les candidats retenus recevront une convocation par email.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">03</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Sélection Day</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Jour J : Le Grand Quiz + Code Challenge à Lomé.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                          </table>
+
+            
+            <div style="text-align:center;margin:35px 0 0;">
+              <a href="http://localhost:8000" style="display:inline-block;background:linear-gradient(135deg,#f39c12,#e67e22);color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:50px;font-weight:800;font-size:15px;">
+                 Retour à l'Arena
+              </a>
+            </div>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="background:#222;padding:30px 50px;text-align:center;">
+            <p style="margin:0 0 5px;color:rgba(255,255,255,0.5);font-size:12px;">© 2026 DevAfrica Arena — Lomé, Togo</p>
+            <p style="margin:0;color:rgba(255,255,255,0.3);font-size:11px;">Adjété Alex WILSON · wilsoncodemosaic@gmail.com · +228 71 15 50 55</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+  
+[2026-04-11 21:54:26] local.DEBUG: From: DevAfrica Arena <arena@devafrica.tg>
+To: hmemmanuelameganaho@gmail.com
+Subject:  Candidature =?utf-8?Q?re=C3=A7ue_=E2=80=94?= DevAfrica Arena 2026
+MIME-Version: 1.0
+Date: Sat, 11 Apr 2026 21:54:26 +0000
+Message-ID: <12e2ce5a351f1f417f6a9d2d9a3f0d9c@devafrica.tg>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidature reçue — DevAfrica Arena</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:'Segoe UI',Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0;">
+  <tr>
+    <td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.08);">
+
+        
+        <tr>
+          <td style="background:linear-gradient(135deg,#f39c12 0%,#e67e22 100%);padding:40px 50px;text-align:center;">
+            <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:800;letter-spacing:-1px;">
+               DevAfrica Arena
+            </h1>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px;text-transform:uppercase;letter-spacing:2px;">
+              L'Arène des Talents Numériques
+            </p>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="padding:50px;">
+            <h2 style="color:#222;font-size:22px;font-weight:800;margin:0 0 10px;">
+               Candidature bien reçue, Emmanuel !
+            </h2>
+            <p style="color:#666;font-size:15px;line-height:1.7;margin:0 0 30px;">
+              Nous avons bien enregistré votre dossier de candidature pour la prochaine édition de <strong>DevAfrica Arena 2026</strong> à Lomé.
+            </p>
+
+            
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f9fa;border-radius:15px;overflow:hidden;margin-bottom:30px;">
+              <tr>
+                <td style="padding:25px 30px;">
+                  <p style="margin:0 0 5px;color:#f39c12;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">RÉCAPITULATIF</p>
+                  <h3 style="margin:0 0 20px;color:#222;font-size:16px;">Votre dossier</h3>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="padding:8px 0;color:#888;font-size:13px;width:40%;">Nom complet</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Emmanuel HOLONOU</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Niveau</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Junior</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Expertise</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Font-end</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Pays</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Togo</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            
+            <h3 style="color:#222;font-size:16px;font-weight:800;margin:0 0 15px;"> Prochaines étapes</h3>
+            <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">01</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Confirmation de dossier</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Votre candidature est en cours d&#039;examen par notre équipe.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">02</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Convocation</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Les candidats retenus recevront une convocation par email.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">03</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Sélection Day</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Jour J : Le Grand Quiz + Code Challenge à Lomé.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                          </table>
+
+            
+            <div style="text-align:center;margin:35px 0 0;">
+              <a href="http://localhost:8000" style="display:inline-block;background:linear-gradient(135deg,#f39c12,#e67e22);color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:50px;font-weight:800;font-size:15px;">
+                 Retour à l'Arena
+              </a>
+            </div>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="background:#222;padding:30px 50px;text-align:center;">
+            <p style="margin:0 0 5px;color:rgba(255,255,255,0.5);font-size:12px;">© 2026 DevAfrica Arena — Lomé, Togo</p>
+            <p style="margin:0;color:rgba(255,255,255,0.3);font-size:11px;">Adjété Alex WILSON · wilsoncodemosaic@gmail.com · +228 71 15 50 55</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+  
+[2026-04-11 21:55:12] local.DEBUG: From: DevAfrica Arena <arena@devafrica.tg>
+To: hmemmanuelameganaho@gmail.com
+Subject:  Candidature =?utf-8?Q?re=C3=A7ue_=E2=80=94?= DevAfrica Arena 2026
+MIME-Version: 1.0
+Date: Sat, 11 Apr 2026 21:55:12 +0000
+Message-ID: <115df5fb1eb639845637c1b6af5d0635@devafrica.tg>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidature reçue — DevAfrica Arena</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:'Segoe UI',Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0;">
+  <tr>
+    <td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.08);">
+
+        
+        <tr>
+          <td style="background:linear-gradient(135deg,#f39c12 0%,#e67e22 100%);padding:40px 50px;text-align:center;">
+            <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:800;letter-spacing:-1px;">
+               DevAfrica Arena
+            </h1>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px;text-transform:uppercase;letter-spacing:2px;">
+              L'Arène des Talents Numériques
+            </p>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="padding:50px;">
+            <h2 style="color:#222;font-size:22px;font-weight:800;margin:0 0 10px;">
+               Candidature bien reçue, Emmanuel !
+            </h2>
+            <p style="color:#666;font-size:15px;line-height:1.7;margin:0 0 30px;">
+              Nous avons bien enregistré votre dossier de candidature pour la prochaine édition de <strong>DevAfrica Arena 2026</strong> à Lomé.
+            </p>
+
+            
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f9fa;border-radius:15px;overflow:hidden;margin-bottom:30px;">
+              <tr>
+                <td style="padding:25px 30px;">
+                  <p style="margin:0 0 5px;color:#f39c12;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">RÉCAPITULATIF</p>
+                  <h3 style="margin:0 0 20px;color:#222;font-size:16px;">Votre dossier</h3>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="padding:8px 0;color:#888;font-size:13px;width:40%;">Nom complet</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Emmanuel HOLONOU</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Niveau</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Junior</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Expertise</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Font-end</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Pays</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Togo</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            
+            <h3 style="color:#222;font-size:16px;font-weight:800;margin:0 0 15px;"> Prochaines étapes</h3>
+            <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">01</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Confirmation de dossier</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Votre candidature est en cours d&#039;examen par notre équipe.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">02</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Convocation</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Les candidats retenus recevront une convocation par email.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">03</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Sélection Day</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Jour J : Le Grand Quiz + Code Challenge à Lomé.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                          </table>
+
+            
+            <div style="text-align:center;margin:35px 0 0;">
+              <a href="http://localhost:8000" style="display:inline-block;background:linear-gradient(135deg,#f39c12,#e67e22);color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:50px;font-weight:800;font-size:15px;">
+                 Retour à l'Arena
+              </a>
+            </div>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="background:#222;padding:30px 50px;text-align:center;">
+            <p style="margin:0 0 5px;color:rgba(255,255,255,0.5);font-size:12px;">© 2026 DevAfrica Arena — Lomé, Togo</p>
+            <p style="margin:0;color:rgba(255,255,255,0.3);font-size:11px;">Adjété Alex WILSON · wilsoncodemosaic@gmail.com · +228 71 15 50 55</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+  
+[2026-04-11 21:56:42] local.DEBUG: From: DevAfrica Arena <arena@devafrica.tg>
+To: hmemmanuelameganaho@gmail.com
+Subject:  Candidature =?utf-8?Q?re=C3=A7ue_=E2=80=94?= DevAfrica Arena 2026
+MIME-Version: 1.0
+Date: Sat, 11 Apr 2026 21:56:42 +0000
+Message-ID: <ea7d07a53fe61e7b5a76c3b5e9d46833@devafrica.tg>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidature reçue — DevAfrica Arena</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:'Segoe UI',Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:40px 0;">
+  <tr>
+    <td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.08);">
+
+        
+        <tr>
+          <td style="background:linear-gradient(135deg,#f39c12 0%,#e67e22 100%);padding:40px 50px;text-align:center;">
+            <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:800;letter-spacing:-1px;">
+               DevAfrica Arena
+            </h1>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px;text-transform:uppercase;letter-spacing:2px;">
+              L'Arène des Talents Numériques
+            </p>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="padding:50px;">
+            <h2 style="color:#222;font-size:22px;font-weight:800;margin:0 0 10px;">
+               Candidature bien reçue, Emmanuel !
+            </h2>
+            <p style="color:#666;font-size:15px;line-height:1.7;margin:0 0 30px;">
+              Nous avons bien enregistré votre dossier de candidature pour la prochaine édition de <strong>DevAfrica Arena 2026</strong> à Lomé.
+            </p>
+
+            
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f9fa;border-radius:15px;overflow:hidden;margin-bottom:30px;">
+              <tr>
+                <td style="padding:25px 30px;">
+                  <p style="margin:0 0 5px;color:#f39c12;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">RÉCAPITULATIF</p>
+                  <h3 style="margin:0 0 20px;color:#222;font-size:16px;">Votre dossier</h3>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="padding:8px 0;color:#888;font-size:13px;width:40%;">Nom complet</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Emmanuel HOLONOU</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Niveau</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Junior</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Expertise</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Font-end</td>
+                    </tr>
+                    <tr style="border-top:1px solid #eee;">
+                      <td style="padding:8px 0;color:#888;font-size:13px;">Pays</td>
+                      <td style="padding:8px 0;color:#222;font-size:13px;font-weight:700;">Togo</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            
+            <h3 style="color:#222;font-size:16px;font-weight:800;margin:0 0 15px;"> Prochaines étapes</h3>
+            <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">01</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Confirmation de dossier</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Votre candidature est en cours d&#039;examen par notre équipe.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">02</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Convocation</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Les candidats retenus recevront une convocation par email.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                            <tr>
+                <td style="padding:0 0 15px;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:40px;vertical-align:top;">
+                        <div style="width:32px;height:32px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:50%;text-align:center;line-height:32px;color:white;font-weight:800;font-size:12px;">03</div>
+                      </td>
+                      <td style="padding-left:12px;vertical-align:top;">
+                        <p style="margin:0 0 3px;color:#222;font-weight:700;font-size:14px;">Sélection Day</p>
+                        <p style="margin:0;color:#888;font-size:13px;">Jour J : Le Grand Quiz + Code Challenge à Lomé.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+                          </table>
+
+            
+            <div style="text-align:center;margin:35px 0 0;">
+              <a href="http://localhost:8000" style="display:inline-block;background:linear-gradient(135deg,#f39c12,#e67e22);color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:50px;font-weight:800;font-size:15px;">
+                 Retour à l'Arena
+              </a>
+            </div>
+          </td>
+        </tr>
+
+        
+        <tr>
+          <td style="background:#222;padding:30px 50px;text-align:center;">
+            <p style="margin:0 0 5px;color:rgba(255,255,255,0.5);font-size:12px;">© 2026 DevAfrica Arena — Lomé, Togo</p>
+            <p style="margin:0;color:rgba(255,255,255,0.3);font-size:11px;">Adjété Alex WILSON · wilsoncodemosaic@gmail.com · +228 71 15 50 55</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+  

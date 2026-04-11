@@ -54,7 +54,7 @@ class FormController extends Controller
         }
 
         return redirect()->route('criteres')
-            ->with('success', '🎉 Candidature soumise avec succès ! Un email de confirmation vous a été envoyé à ' . $candidature->email);
+            ->with('success', 'Candidature soumise avec succès ! Un email de confirmation vous a été envoyé à ' . $candidature->email);
     }
 
     /**

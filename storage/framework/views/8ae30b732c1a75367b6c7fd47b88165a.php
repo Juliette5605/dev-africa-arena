@@ -422,8 +422,8 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow-lg text-center p-4">
-      <h4 class="fw-bold mb-3">Action réussie !</h4>
-      <p class="text-muted"><?php echo e(session('success')); ?></p>
+      <h4 class="fw-bold mb-3" style="color: #080808 !important">Action réussie !</h4>
+      <p class="text-muted" style="color: #6d6b6b !important"><?php echo e(session('success')); ?></p>
       <button type="button" class="btn btn-warning fw-bold rounded-pill px-4 mt-3" data-bs-dismiss="modal">
         OK
       </button>
