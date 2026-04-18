@@ -256,7 +256,7 @@
     <div class="container">
         <div class="nav-glass d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
             <a class="navbar-brand p-0" href="{{ route('home') }}">
-                <img src="{{ asset('assets/logo.png') }}" alt="DevAfrica Arena" class="navbar-logo">
+                <img src="{{ asset('assets/logoprincipal-removebg-preview.png') }}" alt="DevAfrica Arena" class="navbar-logo">
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
@@ -274,6 +274,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('argument') ? 'active' : '' }}" href="{{ route('argument') }}">Stratégie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('orientation') ? 'active' : '' }}" href="{{ route('orientation') }}">Orientation</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ request()->routeIs('partenaires*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
@@ -309,7 +312,7 @@
     <div class="container">
         <div class="row align-items-center g-3">
             <div class="col-md-4 text-center text-md-start">
-                <img src="{{ asset('assets/logo.png') }}" alt="DevAfrica Arena" height="45">
+                <img src="{{ asset('assets/logoprincipal-removebg-preview.png') }}" alt="DevAfrica Arena" height="45">
             </div>
             <div class="col-md-4 text-center">
                 <p class="mb-1 small fw-bold text-muted">© {{ date('Y') }} DevAfrica Arena — Lomé, Togo</p>

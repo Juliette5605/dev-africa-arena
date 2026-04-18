@@ -97,7 +97,7 @@
                         <tr>
                             <th>Critère Stratégique</th>
                             <th>Approche Hackathon</th>
-                            <th>Approche TalentSync AI (Actif)</th>
+                            <th>Approche DevAfricaArena (Actif)</th>
                         </tr>
                     </thead>
                     <tbody>

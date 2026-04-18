@@ -85,7 +85,7 @@
                     Propulser l'<span class="text-gradient">Afrique</span> par le numérique
                 </h1>
                 <p class="lead text-muted mb-5">
-                   TalentSync AI est le catalyseur de talents qui façonne les architectes technologiques de demain.
+                    DevAfrica Arena est le catalyseur de talents qui façonne les architectes technologiques de demain.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="{{ route('criteres') }}" class="btn btn-gold" style="background: linear-gradient(135deg,#f39c12,#e67e22); color:#fff; font-weight:800; padding:15px 35px; border-radius:15px; border:none; transition:0.3s; text-decoration:none;">
@@ -227,7 +227,7 @@
                     @csrf
                     <div class="d-flex gap-2 flex-wrap flex-sm-nowrap">
                         <input type="email" name="email" class="nl-input" placeholder="Votre adresse email *" required value="{{ old('email') }}">
-                        <button type="submit" class="nl-btn">S'abonner </button>
+                        <button type="submit" class="nl-btn">S'abonner 🔥</button>
                     </div>
                     <p class="text-muted small mt-2 text-center"><i class="bi bi-shield-check me-1"></i>Zéro spam. Désinscription en 1 clic.</p>
                 </form>

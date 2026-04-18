@@ -1,5 +1,5 @@
 <?php $__env->startSection('title', 'Candidatures'); ?>
-<?php $__env->startSection('page-title', ' Candidatures'); ?>
+<?php $__env->startSection('page-title', ' Liste des Candidatures'); ?>
 
 <?php $__env->startSection('content'); ?>
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
@@ -32,7 +32,7 @@
                     <th>Expertise</th>
                     <th>Pays</th>
                     <th>Date</th>
-                    <th>Actions</th>
+                    <th style="min-width: 180px;">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,8 +44,7 @@
                             <br><small class="text-muted"><?php echo e($c->age); ?> ans · <?php echo e($c->diplome); ?></small>
                         </td>
                         <td>
-                            <span
-                                class="badge fw-bold rounded-pill px-3 <?php echo e($c->niveau === 'Junior' ? 'badge-junior' : ($c->niveau === 'Senior' ? 'badge-senior' : 'badge-inter')); ?>">
+                            <span class="badge fw-bold rounded-pill px-3 <?php echo e($c->niveau === 'Junior' ? 'badge-junior' : ($c->niveau === 'Senior' ? 'badge-senior' : 'badge-inter')); ?>">
                                 <?php echo e($c->niveau); ?>
 
                             </span>
@@ -54,18 +53,32 @@
                         <td class="small"><?php echo e($c->pays); ?></td>
                         <td class="small text-muted"><?php echo e($c->created_at->format('d/m/Y')); ?></td>
                         <td>
-                            <a href="<?php echo e(route('admin.candidatures.show', $c)); ?>"
-                                class="btn btn-sm btn-outline-dark rounded-pill me-1">Voir</a>
-                            <form method="POST" action="<?php echo e(route('admin.candidatures.destroy', $c)); ?>" class="d-inline"
-                                onsubmit="return confirm('Supprimer cette candidature ?')">
-                                <?php echo csrf_field(); ?> <?php echo method_field('DELETE'); ?>
-                                <button class="btn btn-sm btn-outline-danger rounded-pill">✕</button>
-                            </form>
+                            <div class="d-flex gap-2">
+                                
+                                <a href="<?php echo e(route('admin.candidatures.dashboard', $c->id)); ?>" 
+                                   class="btn btn-sm text-white rounded-pill px-3" 
+                                   style="background: #1e1b4b;" title="Voir les statistiques">
+                                   <i class="bi bi-speedometer2"></i>
+                                </a>
+
+                                
+                                <a href="<?php echo e(route('admin.candidatures.show', $c)); ?>"
+                                   class="btn btn-sm btn-outline-dark rounded-pill px-3">
+                                   Dossier
+                                </a>
+
+                                
+                                <form method="POST" action="<?php echo e(route('admin.candidatures.destroy', $c)); ?>" 
+                                      onsubmit="return confirm('Supprimer cette candidature ?')">
+                                    <?php echo csrf_field(); ?> <?php echo method_field('DELETE'); ?>
+                                    <button class="btn btn-sm btn-outline-danger rounded-pill">✕</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <tr>
-                        <td colspan="7" class="text-center text-muted py-5">Aucune candidature</td>
+                        <td colspan="7" class="text-center text-muted py-5">Aucune candidature trouvée.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>

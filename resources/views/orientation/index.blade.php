@@ -6,7 +6,7 @@
         
         <div style="text-align: center; margin-bottom: 60px;">
             <h1 style="font-size: 3rem; font-weight: 800; color: #1e1b4b; margin-bottom: 10px;">
-                Centre d'Orientation <span style="color: #b45309;">TalentSync AI</span>
+                Centre d'Orientation <span style="color: #b45309;">DevAfricaArena</span>
             </h1>
             <p style="font-size: 1.25rem; color: #4b5563;">
                 Propulsez votre carrière à 25 ans grâce à la puissance de l'intelligence artificielle.

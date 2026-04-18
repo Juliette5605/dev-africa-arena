@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ── Compte administrateur par défaut (TalentSync AI) ─────────
+        // ── Compte administrateur par défaut (DevAfricaArena) ─────────
         Admin::firstOrCreate(
             ['email' => 'alex.wilson@talentsync.ai'], // Nouvel email pro
             [
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->command->info('');
-        $this->command->info('    Base de données TalentSync AI initialisée !');
+        $this->command->info('    Base de données DevAfricaArena initialisée !');
         $this->command->info('');
         $this->command->info('   Compte admin créé :');
         $this->command->info('   ✉  alex.wilson@talentsync.ai');

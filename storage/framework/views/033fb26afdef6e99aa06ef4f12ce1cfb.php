@@ -258,7 +258,7 @@
     <div class="container">
         <div class="nav-glass d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
             <a class="navbar-brand p-0" href="<?php echo e(route('home')); ?>">
-                <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="DevAfrica Arena" class="navbar-logo">
+                <img src="<?php echo e(asset('assets/logoprincipal-removebg-preview.png')); ?>" alt="DevAfrica Arena" class="navbar-logo">
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
@@ -276,6 +276,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo e(request()->routeIs('argument') ? 'active' : ''); ?>" href="<?php echo e(route('argument')); ?>">Stratégie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo e(request()->routeIs('orientation') ? 'active' : ''); ?>" href="<?php echo e(route('orientation')); ?>">Orientation</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle <?php echo e(request()->routeIs('partenaires*') ? 'active' : ''); ?>" href="#" data-bs-toggle="dropdown">
@@ -311,7 +314,7 @@
     <div class="container">
         <div class="row align-items-center g-3">
             <div class="col-md-4 text-center text-md-start">
-                <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="DevAfrica Arena" height="45">
+                <img src="<?php echo e(asset('assets/logoprincipal-removebg-preview.png')); ?>" alt="DevAfrica Arena" height="45">
             </div>
             <div class="col-md-4 text-center">
                 <p class="mb-1 small fw-bold text-muted">© <?php echo e(date('Y')); ?> DevAfrica Arena — Lomé, Togo</p>

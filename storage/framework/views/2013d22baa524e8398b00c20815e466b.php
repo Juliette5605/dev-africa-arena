@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title', 'DevAfrica Arena | Home'); ?>
 
 <?php $__env->startPush('styles'); ?>
@@ -84,7 +85,7 @@
                     Propulser l'<span class="text-gradient">Afrique</span> par le numérique
                 </h1>
                 <p class="lead text-muted mb-5">
-                   TalentSync AI est le catalyseur de talents qui façonne les architectes technologiques de demain.
+                    DevAfrica Arena est le catalyseur de talents qui façonne les architectes technologiques de demain.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="<?php echo e(route('criteres')); ?>" class="btn btn-gold" style="background: linear-gradient(135deg,#f39c12,#e67e22); color:#fff; font-weight:800; padding:15px 35px; border-radius:15px; border:none; transition:0.3s; text-decoration:none;">
@@ -228,7 +229,7 @@
                     <?php echo csrf_field(); ?>
                     <div class="d-flex gap-2 flex-wrap flex-sm-nowrap">
                         <input type="email" name="email" class="nl-input" placeholder="Votre adresse email *" required value="<?php echo e(old('email')); ?>">
-                        <button type="submit" class="nl-btn">S'abonner </button>
+                        <button type="submit" class="nl-btn">S'abonner 🔥</button>
                     </div>
                     <p class="text-muted small mt-2 text-center"><i class="bi bi-shield-check me-1"></i>Zéro spam. Désinscription en 1 clic.</p>
                 </form>
@@ -406,5 +407,4 @@ fetch("https://sheetdb.io/api/v1/qg4gis5u4esa6")
 .catch(() => { document.getElementById("jobs-container").innerHTML = '<p class="text-muted">Impossible de charger les offres.</p>'; });
 </script>
 <?php $__env->stopPush(); ?>
-
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\devafrica-arena-laravel-FULL\arena-laravel\resources\views/pages/home.blade.php ENDPATH**/ ?>

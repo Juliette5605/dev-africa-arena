@@ -84,7 +84,7 @@
 {{-- SIDEBAR --}}
 <aside class="sidebar">
     <div class="sidebar-brand">
-        <h2>🏟️ DevAfrica</h2>
+        <h2> DevAfrica</h2>
         <p>Admin Panel</p>
     </div>
 
