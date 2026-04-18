@@ -72,4 +72,68 @@ class IAService
             return "Erreur de connexion à l'IA.";
         }
     }
+
+    /**
+     * Analyse un candidat et retourne un score + analyse
+     * Route: POST /analyse-candidat (ou fallback local)
+     */
+    public function analyserCandidat($motivation, $expertise)
+    {
+        try {
+            // Tentative d'appel au microservice IA
+            $response = Http::timeout(15)->post($this->baseUrl . '/analyse-candidat', [
+                'motivation' => $motivation,
+                'expertise' => $expertise
+            ]);
+
+            if ($response->successful()) {
+                return $response->json();
+            }
+        } catch (\Exception $e) {
+            Log::warning("IA Analyse Error: " . $e->getMessage());
+        }
+
+        // Fallback: analyse locale basée sur les règles simples
+        $score = $this->calculerScoreLocal($motivation, $expertise);
+        $analyse = $this->genererAnalyseLocal($motivation, $expertise, $score);
+
+        return [
+            'score' => $score,
+            'analyse' => $analyse
+        ];
+    }
+
+    /**
+     * Calcule un score local de 1 à 5 basé sur la longueur et contenu
+     */
+    private function calculerScoreLocal($motivation, $expertise)
+    {
+        $score = 2; // Score de base
+
+        // Augmente si motivation suffisamment longue (qualité supposée)
+        if (strlen($motivation) > 100) $score++;
+        if (strlen($motivation) > 300) $score++;
+
+        // Augmente si expertise spécifique mentionnée
+        if (!empty($expertise) && strlen($expertise) > 5) $score++;
+
+        // Cap à 5
+        return min(5, max(1, $score));
+    }
+
+    /**
+     * Génère une analyse textuelle locale
+     */
+    private function genererAnalyseLocal($motivation, $expertise, $score)
+    {
+        $analyses = [
+            1 => "Profil à développer. Recommandation : clarifier les objectifs professionnels.",
+            2 => "Profil élémentaire. Les compétences sont présentes mais peu détaillées.",
+            3 => "Profil satisfaisant. Bonnes bases avec un potentiel intéressant.",
+            4 => "Très bon profil. Candidat montre forte motivation et compétences claires.",
+            5 => "Profil excellent. Candidat très motivé avec expertise bien définie."
+        ];
+
+        return $analyses[$score] ?? "Analyse non disponible.";
+    }
 }

@@ -90,6 +90,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Gestion des flux (Candidatures, Messages, Newsletters)
         Route::get('candidatures', [DashboardController::class, 'candidatures'])->name('candidatures');
+        Route::get('candidatures/{candidature}/dashboard', [DashboardController::class, 'candidatureDashboard'])->name('candidatures.dashboard');
+        Route::get('candidatures/{candidature}', [DashboardController::class, 'candidatureShow'])->name('candidatures.show');
+        Route::get('candidatures/{candidature}/pdf', [DashboardController::class, 'candidaturePdf'])->name('candidatures.pdf');
+        Route::patch('candidatures/{candidature}/finaliste', [DashboardController::class, 'candidatureToggleFinaliste'])->name('candidatures.finaliste');
+        Route::patch('candidatures/{candidature}/noter', [DashboardController::class, 'candidatureNoter'])->name('candidatures.noter');
+        Route::delete('candidatures/{candidature}', [DashboardController::class, 'candidatureDestroy'])->name('candidatures.destroy');
+        
         Route::get('messages', [DashboardController::class, 'messages'])->name('messages');
         Route::get('messages/{message}', [DashboardController::class, 'messageShow'])->name('messages.show');
         Route::delete('messages/{message}', [DashboardController::class, 'messageDestroy'])->name('messages.destroy');
@@ -106,7 +113,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('qrcode', [DashboardController::class, 'index'])->name('qrcode');
         Route::get('media', [DashboardController::class, 'index'])->name('media.index');
         Route::get('logs', [DashboardController::class, 'index'])->name('logs');
-        Route::get('export/candidatures', [DashboardController::class, 'index'])->name('export.candidatures');
+        Route::get('export/candidatures', [DashboardController::class, 'exportCandidatures'])->name('export.candidatures');
         Route::get('backup/database', [DashboardController::class, 'index'])->name('backup.database');
 
         // Configuration & Profil

@@ -139,6 +139,38 @@ class DashboardController extends Controller
         return back()->with('success', "Candidature de {$nom} supprimée.");
     }
 
+    public function candidaturePdf(Candidature $candidature)
+    {
+        // Placeholder pour l'export PDF - retourne un message d'attente
+        return response()->json(['message' => 'Export PDF en attente de configuration'], 501);
+    }
+
+    public function candidatureToggleFinaliste(Candidature $candidature)
+    {
+        $candidature->finaliste = !$candidature->finaliste;
+        $candidature->save();
+        
+        $action = $candidature->finaliste ? 'ajouté aux finalistes' : 'retiré des finalistes';
+        $nom = $candidature->prenom . ' ' . $candidature->nom;
+        ActivityLog::log($action, 'Candidature', $nom);
+        
+        return back()->with('success', "Candidat {$action}.");
+    }
+
+    public function candidatureNoter(Request $request, Candidature $candidature)
+    {
+        $request->validate([
+            'note' => 'required|integer|min:1|max:5',
+        ]);
+
+        $candidature->update(['note' => $request->note]);
+        
+        $nom = $candidature->prenom . ' ' . $candidature->nom;
+        ActivityLog::log('noté', 'Candidature', $nom . ' - ' . $request->note . '/5');
+        
+        return back()->with('success', "Note enregistrée pour {$nom}.");
+    }
+
     public function exportCandidatures()
     {
         $candidatures = Candidature::orderBy('created_at', 'desc')->get();
