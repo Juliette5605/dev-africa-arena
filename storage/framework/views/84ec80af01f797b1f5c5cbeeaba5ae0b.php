@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title', 'Candidatures'); ?>
 <?php $__env->startSection('page-title', ' Liste des Candidatures'); ?>
 
