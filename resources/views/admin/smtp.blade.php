@@ -106,7 +106,7 @@
                         <label class="form-label fw-bold small">Nom expéditeur</label>
                         <input type="text" name="from_name" class="form-control rounded-3 border-0 bg-light py-3"
                                value="{{ old('from_name', $config['from_name']) }}"
-                               placeholder="DevAfrica Arena" required>
+                               placeholder="DevAfricaArena" required>
                     </div>
                 </div>
 

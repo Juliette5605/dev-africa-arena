@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Partenariat Technique | DevAfrica Arena')
+@section('title', 'Partenariat Technique | DevAfricaArena')
 
 @push('styles')
 <style>
@@ -34,7 +34,7 @@
             <div class="col-lg-6" data-aos="fade-right">
                 <h2 class="section-title">Pourquoi nous rejoindre ?</h2>
                 <p class="fs-5 text-muted">
-                    DevAfrica Arena est bien plus qu'une compétition, c'est un <strong>laboratoire technologique</strong> grandeur nature. En tant que partenaire technique, vous devenez un acteur du changement numérique en Afrique.
+                    DevAfricaArena est bien plus qu'une compétition, c'est un <strong>laboratoire technologique</strong> grandeur nature. En tant que partenaire technique, vous devenez un acteur du changement numérique en Afrique.
                 </p>
             </div>
             <div class="col-lg-6" data-aos="fade-left">

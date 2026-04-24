@@ -20,48 +20,56 @@ class OrientationController extends Controller
      */
     public function interrogerIA(Request $request)
     {
-        // 1. Validation de la question
-        $request->validate([
+        $validated = $request->validate([
             'question' => 'required|string|max:500',
         ]);
 
-        $userQuestion = $request->input('question');
-
-        // 2. Récupération des secrets depuis config/services.php
+        $userQuestion = trim($validated['question']);
         $url = config('services.ia.url');
         $key = config('services.ia.key');
         $model = config('services.ia.model');
 
+        if (blank($url) || blank($key) || blank($model)) {
+            return view('orientation.index', [
+                'resultat' => "L'assistant d'orientation n'est pas encore configuré. Vérifiez les variables IA dans le fichier .env.",
+                'maQuestion' => $userQuestion,
+            ]);
+        }
+
         try {
-            // 3. Appel API (On envoie la question à l'IA)
             $response = Http::withToken($key)
+                ->acceptJson()
                 ->timeout(30)
                 ->post($url, [
                     'model' => $model,
                     'messages' => [
                         [
-                            'role' => 'system', 
-                            'content' => 'Tu es un conseiller expert en orientation numérique pour DevAfricaArena. Tu aides les jeunes de 25 ans à Lomé à se réorienter vers la tech.'
+                            'role' => 'system',
+                            'content' => "Tu es un conseiller expert en orientation numérique pour DevAfricaArena. Réponds en français, de manière claire, concrète et bienveillante. Oriente l'utilisateur vers une ou deux filières maximum parmi: développement web/mobile, IA et data, design produit/UX, cybersécurité, marketing digital, fabrication numérique/IoT. Termine par 2 ou 3 prochaines étapes concrètes.",
                         ],
-                        ['role' => 'user', 'content' => $userQuestion],
+                        [
+                            'role' => 'user',
+                            'content' => $userQuestion,
+                        ],
                     ],
                 ]);
 
             if ($response->successful()) {
-                $data = $response->json();
-                $reponseIA = $data['choices'][0]['message']['content'];
+                $reponseIA = data_get(
+                    $response->json(),
+                    'choices.0.message.content',
+                    "L'assistant n'a pas pu générer de recommandation exploitable pour le moment."
+                );
             } else {
-                $reponseIA = "Désolé, l'IA est indisponible pour le moment. Vérifie ta clé API dans le fichier .env.";
+                $reponseIA = "L'assistant d'orientation est momentanément indisponible. Vérifiez la clé API et la configuration du service IA.";
             }
-
-        } catch (\Exception $e) {
-            $reponseIA = "Erreur de connexion : " . $e->getMessage();
+        } catch (\Throwable $e) {
+            $reponseIA = "Erreur de connexion au service d'orientation: " . $e->getMessage();
         }
 
-        // 4. On retourne à la vue avec la réponse de l'IA
         return view('orientation.index', [
             'resultat' => $reponseIA,
-            'maQuestion' => $userQuestion
+            'maQuestion' => $userQuestion,
         ]);
     }
 }

@@ -24,7 +24,7 @@
     <div class="card">
         <div class="brand">DevAfricaArena</div>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="/register">
             @csrf
 
             <div class="row">
@@ -60,7 +60,7 @@
             </button>
             
             <p style="text-align: center; margin-top: 15px; font-size: 0.8rem;">
-                <a href="{{ route('login') }}" style="color: #f39c12; text-decoration: none;">Déjà un compte ? Se connecter</a>
+                <a href="/login" style="color: #f39c12; text-decoration: none;">Déjà un compte ? Se connecter</a>
             </p>
         </form>
     </div>

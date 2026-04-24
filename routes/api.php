@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\ApiController;
 
 /*
 |--------------------------------------------------------------------------
-| DevAfrica Arena — API publique (lecture seule, sans auth)
+| DevAfricaArena — API publique (lecture seule, sans auth)
 |--------------------------------------------------------------------------
 | Base URL : /api/v1/
 | Format   : JSON

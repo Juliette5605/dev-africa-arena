@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Éditions | DevAfrica Arena')
+@section('title', 'Éditions | DevAfricaArena')
 
 @push('styles')
 <style>

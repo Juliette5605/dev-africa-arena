@@ -33,10 +33,26 @@
         .brand { text-align: center; margin-bottom: 25px; }
         .brand-icon { font-size: 2.5rem; color: #f39c12; }
         .brand h1 { color: #f39c12; font-size: 1.4rem; font-weight: 800; margin-top: 5px; }
+        .brand p { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 8px; line-height: 1.5; }
 
         .tabs { display: flex; gap: 20px; justify-content: center; margin-bottom: 25px; }
         .tab { cursor: pointer; font-size: 0.8rem; font-weight: 800; color: rgba(255,255,255,0.3); border-bottom: 2px solid transparent; padding-bottom: 5px; text-transform: uppercase; }
         .tab.active { color: #f39c12; border-bottom-color: #f39c12; }
+
+        .alert-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.82);
+            border-radius: 14px;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            font-size: 0.85rem;
+        }
+        .alert-box.error {
+            border-color: rgba(220,53,69,0.35);
+            background: rgba(220,53,69,0.10);
+            color: #ffb8c0;
+        }
 
         .form-group { margin-bottom: 15px; }
         .form-label { display: block; font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.5); margin-bottom: 5px; text-transform: uppercase; }
@@ -71,14 +87,25 @@
         <div class="brand">
             <i class="bi bi-cpu-fill brand-icon"></i>
             <h1>DevAfricaArena</h1>
+            <p>Inscris-toi ou connecte-toi avant d'acceder au site complet et a ton dashboard personnel.</p>
         </div>
+
+        <div class="alert-box">
+            L'acces au site candidat est reserve aux utilisateurs connectes.
+        </div>
+
+        @if($errors->any())
+            <div class="alert-box error">
+                {{ $errors->first() }}
+            </div>
+        @endif
 
         <div class="tabs">
             <span id="t-login" class="tab active" onclick="showForm('login')">Connexion</span>
             <span id="t-reg" class="tab" onclick="showForm('reg')">Inscription</span>
         </div>
 
-        <form id="f-login" action="{{ route('login') }}" method="POST">
+        <form id="f-login" action="/login" method="POST">
             @csrf
             <div class="form-group">
                 <label class="form-label">Email</label>
@@ -91,7 +118,7 @@
             <button type="submit" class="btn-action">SE CONNECTER</button>
         </form>
 
-        <form id="f-reg" action="{{ route('register') }}" method="POST" style="display:none;">
+        <form id="f-reg" action="/register" method="POST" style="display:none;">
             @csrf
             <div class="row">
                 <div class="form-group">
@@ -129,13 +156,16 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn-action" onclick="return validateAndSubmit()">
+            <button type="submit" class="btn-action">
                 CRÉER MON COMPTE
             </button>
         </form>
     </div>
 
     <script>
+        const initialMode = @json($authMode ?? 'login');
+        const csrfRefreshUrl = @json(route('csrf.refresh'));
+
         function showForm(mode) {
             const fLogin = document.getElementById('f-login'), fReg = document.getElementById('f-reg');
             const tLogin = document.getElementById('t-login'), tReg = document.getElementById('t-reg');
@@ -161,6 +191,55 @@
             }
             return true;
         }
+
+        async function refreshCsrfToken() {
+            const response = await fetch(csrfRefreshUrl, {
+                method: 'GET',
+                credentials: 'same-origin',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('csrf_refresh_failed');
+            }
+
+            const data = await response.json();
+            document.querySelectorAll('input[name="_token"]').forEach((input) => {
+                input.value = data.token;
+            });
+        }
+
+        function bindProtectedSubmit(form, validator = null) {
+            form.addEventListener('submit', async function (event) {
+                if (form.dataset.submitting === '1') {
+                    return;
+                }
+
+                event.preventDefault();
+
+                if (validator && !validator()) {
+                    return;
+                }
+
+                form.dataset.submitting = '1';
+
+                try {
+                    await refreshCsrfToken();
+                    form.submit();
+                } catch (error) {
+                    form.dataset.submitting = '0';
+                    alert("La session a expiré. Le formulaire va être rechargé avec un nouveau token.");
+                    window.location.reload();
+                }
+            });
+        }
+
+        bindProtectedSubmit(document.getElementById('f-login'));
+        bindProtectedSubmit(document.getElementById('f-reg'), validateAndSubmit);
+        showForm(initialMode);
     </script>
 </body>
 </html>

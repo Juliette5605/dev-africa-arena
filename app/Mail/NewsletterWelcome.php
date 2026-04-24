@@ -10,7 +10,7 @@ class NewsletterWelcome extends Mailable {
     use Queueable, SerializesModels;
     public function __construct(public Newsletter $subscriber) {}
     public function envelope(): Envelope {
-        return new Envelope(subject: ' Bienvenue dans l\'Arena — DevAfrica 2026');
+        return new Envelope(subject: ' Bienvenue dans l\'Arena — DevAfricaArena 2026');
     }
     public function content(): Content {
         return new Content(view: 'emails.newsletter-welcome');

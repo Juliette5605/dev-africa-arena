@@ -24,7 +24,7 @@ class ApiController extends Controller
     public function info(): JsonResponse
     {
         return $this->response([
-            'name'        => 'DevAfrica Arena',
+            'name'        => 'DevAfricaArena',
             'description' => 'Le premier championnat technologique bimestriel à Lomé, Togo.',
             'location'    => 'Lomé, Togo',
             'contact'     => 'wilsoncodemosaic@gmail.com',

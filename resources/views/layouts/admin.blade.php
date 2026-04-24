@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Admin - DevAfrica Arena')</title>
+    <title>@yield('title', 'Admin - DevAfricaArena')</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -352,7 +352,7 @@
     <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="{{ asset('assets/logoprincipal-removebg-preview.png') }}" alt="DevAfrica Arena" class="sidebar-logo">
+            <img src="{{ asset('assets/logoprincipal-removebg-preview.png') }}" alt="DevAfricaArena" class="sidebar-logo">
             <div class="sidebar-title">Admin Panel</div>
         </div>
 

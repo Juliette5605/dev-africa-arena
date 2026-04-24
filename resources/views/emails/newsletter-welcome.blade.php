@@ -9,13 +9,13 @@
         <td style="background:linear-gradient(135deg,#222 0%,#333 100%);padding:50px;text-align:center;">
           <div style="font-size:48px;margin-bottom:15px;"></div>
           <h1 style="margin:0;color:#f39c12;font-size:32px;font-weight:800;">Bienvenue dans l'Arena !</h1>
-          <p style="margin:10px 0 0;color:rgba(255,255,255,0.7);font-size:14px;">DevAfrica Arena 2026 — Lomé, Togo</p>
+          <p style="margin:10px 0 0;color:rgba(255,255,255,0.7);font-size:14px;">DevAfricaArena 2026 — Lomé, Togo</p>
         </td>
       </tr>
       <tr>
         <td style="padding:50px;">
           <p style="color:#666;font-size:15px;line-height:1.8;margin:0 0 25px;">
-            Bonjour {{ $subscriber->nom ?? 'talent' }}, vous êtes maintenant dans la liste exclusive des personnes qui suivent <strong>DevAfrica Arena</strong> — le premier championnat technologique d'Afrique de l'Ouest.
+            Bonjour {{ $subscriber->nom ?? 'talent' }}, vous êtes maintenant dans la liste exclusive des personnes qui suivent <strong>DevAfricaArena</strong> — le premier championnat technologique d'Afrique de l'Ouest.
           </p>
           <div style="background:#fffbf0;border-left:4px solid #f39c12;border-radius:0 12px 12px 0;padding:20px 25px;margin-bottom:30px;">
             <p style="margin:0;color:#222;font-weight:700;font-size:14px;">Vous recevrez en avant-première :</p>
@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <td style="background:#222;padding:25px 50px;text-align:center;">
-          <p style="margin:0;color:rgba(255,255,255,0.4);font-size:11px;">© {{ date('Y') }} DevAfrica Arena · Lomé, Togo · <a href="{{ config('app.url') }}" style="color:#f39c12;">devafricaarena.com</a></p>
+          <p style="margin:0;color:rgba(255,255,255,0.4);font-size:11px;">© {{ date('Y') }} DevAfricaArena · Lomé, Togo · <a href="{{ config('app.url') }}" style="color:#f39c12;">devafricaarena.com</a></p>
         </td>
       </tr>
     </table>

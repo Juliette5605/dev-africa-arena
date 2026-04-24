@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-    <meta name="description" content="DevAfrica Arena — Championnat technologique bimestriel à Lomé, Togo. Transformez votre talent numérique en opportunité.">
+    <meta name="description" content="DevAfricaArena — Championnat technologique bimestriel à Lomé, Togo. Transformez votre talent numérique en opportunité.">
     <meta name="author" content="Adjété Alex WILSON">
-    <title><?php echo $__env->yieldContent('title', 'DevAfrica Arena | L\'Arène des Talents Numériques'); ?></title>
+    <title><?php echo $__env->yieldContent('title', 'DevAfricaArena | L\'Arène des Talents Numériques'); ?></title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,33 +47,6 @@
         }
 
         /* ═══════════════════════════════════════════════════════════
-           DARK MODE
-        ═══════════════════════════════════════════════════════════ */
-        body.dark {
-            background: #0d0d0d;
-            color: #e8e8e8;
-        }
-        body.dark .nav-glass { background: rgba(13,13,13,0.92) !important; border-color: rgba(255,255,255,0.05) !important; }
-        body.dark .nav-link { color: rgba(255,255,255,0.6) !important; }
-        body.dark section:not(.dark-section) { background: #111 !important; }
-        body.dark .card, body.dark .feature-card, body.dark .pack-card,
-        body.dark .value-card, body.dark .quiz-box, body.dark .newsletter-box,
-        body.dark .form-card { background: #1a1a1a !important; border-color: #2a2a2a !important; }
-        body.dark .form-control, body.dark .form-select {
-            background: rgba(255,255,255,0.05) !important;
-            border-color: rgba(255,255,255,0.1) !important;
-            color: #e8e8e8 !important;
-        }
-        body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5 { color: #fff !important; }
-        body.dark .text-muted { color: rgba(255,255,255,0.45) !important; }
-        body.dark footer { background: #080808 !important; border-color: #1a1a1a !important; }
-        body.dark .answer-btn { background: #1a1a1a !important; border-color: #2a2a2a !important; color: #ddd !important; }
-        body.dark .answer-btn:hover { border-color: var(--gold) !important; background: #1e1a10 !important; }
-        body.dark .job-card { background: #1a1a1a !important; border-color: #2a2a2a !important; }
-        body.dark .table { color: #e8e8e8; }
-        body.dark .table td, body.dark .table th { border-color: #2a2a2a; }
-
-        /* ═══════════════════════════════════════════════════════════
            SCROLL PROGRESS BAR
         ═══════════════════════════════════════════════════════════ */
         #scroll-bar {
@@ -91,12 +64,9 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.05rem; transition: 0.3s; z-index: 997;
         }
-        #btn-dark { bottom: 82px; background: var(--gradient); color: #fff; box-shadow: 0 5px 20px rgba(243,156,18,0.35); }
-        #btn-dark:hover { transform: scale(1.1) rotate(15deg); }
         #btn-top { bottom: 28px; background: #fff; border: 2px solid var(--gold); color: var(--gold); opacity: 0; transition: opacity 0.3s, transform 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         #btn-top.show { opacity: 1; }
         #btn-top:hover { background: var(--gold); color: #fff; transform: translateY(-3px); }
-        body.dark #btn-top { background: #1a1a1a; }
 
         /* ═══════════════════════════════════════════════════════════
            NAVBAR
@@ -258,7 +228,7 @@
     <div class="container">
         <div class="nav-glass d-flex align-items-center justify-content-between w-100 flex-wrap gap-2">
             <a class="navbar-brand p-0" href="<?php echo e(route('home')); ?>">
-                <img src="<?php echo e(asset('assets/logoprincipal-removebg-preview.png')); ?>" alt="DevAfrica Arena" class="navbar-logo">
+                <img src="<?php echo e(asset('assets/logoprincipal-removebg-preview.png')); ?>" alt="DevAfricaArena" class="navbar-logo">
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu">
                 <span class="navbar-toggler-icon"></span>
@@ -291,13 +261,47 @@
                             <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="<?php echo e(route('partenaires.sponsors')); ?>">Sponsors</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item ms-lg-3">
-                        <a class="btn btn-gold py-2 px-4 <?php echo e(request()->routeIs('contact') ? 'active' : ''); ?>"
-                           href="<?php echo e(route('contact')); ?>"
-                           style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;font-weight:800;padding:8px 25px;border-radius:15px;border:none;text-decoration:none;font-size:0.85rem;">
-                            Contact
-                        </a>
-                    </li>
+                    <?php if(auth()->guard()->check()): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle <?php echo e(request()->routeIs('dashboard') || request()->routeIs('quiz.*') || request()->routeIs('forum.*') ? 'active' : ''); ?>" href="#" data-bs-toggle="dropdown">
+                                Arena
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm rounded-4 p-2">
+                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="<?php echo e(route('dashboard')); ?>">Mon Dashboard</a></li>
+                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="<?php echo e(route('quiz.play')); ?>">Quiz Arena</a></li>
+                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="<?php echo e(route('forum.index')); ?>">Forum Arena</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-gold py-2 px-4 <?php echo e(request()->routeIs('contact') ? 'active' : ''); ?>"
+                               href="<?php echo e(route('contact')); ?>"
+                               style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;font-weight:800;padding:8px 25px;border-radius:15px;border:none;text-decoration:none;font-size:0.85rem;">
+                                Contact
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-outline-gold py-2 px-4 <?php echo e(request()->routeIs('login') ? 'active' : ''); ?>"
+                               href="<?php echo e(route('login')); ?>"
+                               style="padding:8px 25px;border-radius:15px;font-size:0.85rem;">
+                                Connexion
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-gold py-2 px-4 <?php echo e(request()->routeIs('register') ? 'active' : ''); ?>"
+                               href="<?php echo e(route('register')); ?>"
+                               style="background:linear-gradient(135deg,#222,#444);color:#fff;font-weight:800;padding:8px 25px;border-radius:15px;border:none;text-decoration:none;font-size:0.85rem;">
+                                Inscription
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-gold py-2 px-4 <?php echo e(request()->routeIs('contact') ? 'active' : ''); ?>"
+                               href="<?php echo e(route('contact')); ?>"
+                               style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;font-weight:800;padding:8px 25px;border-radius:15px;border:none;text-decoration:none;font-size:0.85rem;">
+                                Contact
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -314,10 +318,10 @@
     <div class="container">
         <div class="row align-items-center g-3">
             <div class="col-md-4 text-center text-md-start">
-                <img src="<?php echo e(asset('assets/logoprincipal-removebg-preview.png')); ?>" alt="DevAfrica Arena" height="45">
+                <img src="<?php echo e(asset('assets/logoprincipal-removebg-preview.png')); ?>" alt="DevAfricaArena" height="45">
             </div>
             <div class="col-md-4 text-center">
-                <p class="mb-1 small fw-bold text-muted">© <?php echo e(date('Y')); ?> DevAfrica Arena — Lomé, Togo</p>
+                <p class="mb-1 small fw-bold text-muted">© <?php echo e(date('Y')); ?> DevAfricaArena — Lomé, Togo</p>
                 <p class="mb-0" style="font-size:0.75rem;color:#aaa;">
                     Propulsé par <span class="text-gradient fw-bold">l'innovation africaine</span>
                 </p>
@@ -327,6 +331,9 @@
                     <a href="<?php echo e(route('home')); ?>" class="footer-link">Accueil</a>
                     <a href="<?php echo e(route('criteres')); ?>" class="footer-link">Candidater</a>
                     <a href="<?php echo e(route('contact')); ?>" class="footer-link">Contact</a>
+                    <?php if(auth()->guard()->check()): ?>
+                    <a href="<?php echo e(route('dashboard')); ?>" class="footer-link">Dashboard</a>
+                    <?php endif; ?>
                     <a href="https://wa.me/22871155055" target="_blank" class="footer-link"><i class="bi bi-whatsapp"></i></a>
                     <a href="<?php echo e(route('admin.login')); ?>" class="footer-link" title="Admin"><i class="bi bi-lock"></i></a>
                 </div>
@@ -336,7 +343,6 @@
 </footer>
 
 
-<button class="fab-btn" id="btn-dark" title="Mode sombre/clair" aria-label="Basculer le mode sombre">🌙</button>
 <button class="fab-btn" id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Haut de page" aria-label="Retour en haut">
     <i class="bi bi-arrow-up"></i>
 </button>
@@ -357,19 +363,6 @@ window.addEventListener('scroll', () => {
     document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 30);
     // Back-to-top
     document.getElementById('btn-top').classList.toggle('show', window.scrollY > 400);
-});
-
-// DARK MODE
-const darkBtn = document.getElementById('btn-dark');
-if (localStorage.getItem('arena-dark') === '1') {
-    document.body.classList.add('dark');
-    if (darkBtn) darkBtn.textContent = '☀️';
-}
-if (darkBtn) darkBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const on = document.body.classList.contains('dark');
-    darkBtn.textContent = on ? '☀️' : '🌙';
-    localStorage.setItem('arena-dark', on ? '1' : '0');
 });
 
 // AUTO-DISMISS FLASH

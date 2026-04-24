@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Critères & Inscription | DevAfrica Arena')
+@section('title', 'Critères & Inscription | DevAfricaArena')
 
 @push('styles')
     <style>
@@ -115,6 +115,18 @@
             box-shadow: 0 10px 20px rgba(201, 147, 59, 0.3);
         }
 
+        .account-lock {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(201, 147, 59, 0.28);
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 30px;
+        }
+
+        .account-lock strong {
+            color: #fff;
+        }
+
         @media(max-width:768px) {
             .registration-box {
                 padding: 30px;
@@ -184,61 +196,85 @@
 
         <section class="container">
             <div class="registration-box" data-aos="zoom-in">
+                @php
+                    $hasExistingCandidature = \App\Models\Candidature::where('email', auth()->user()->email)->exists();
+                @endphp
                 <h2 class="fw-bold mb-5 text-center text-white">Soumettre ma candidature</h2>
 
-                {{-- FORMULAIRE CORRIGÉ --}}
-                <form action="{{ route('criteres.store') }}" method="POST">
-                    @csrf
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <label class="form-label">Nom</label>
-                            <input type="text" name="nom" class="form-control" value="{{ old('nom') }}" placeholder="Votre nom" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Prénom</label>
-                            <input type="text" name="prenom" class="form-control" value="{{ old('prenom') }}" placeholder="Votre prénom" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="votre@email.com" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Âge</label>
-                            <input type="number" name="age" class="form-control" value="{{ old('age') }}" min="16" max="60" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Niveau</label>
-                            <select name="niveau" class="form-select">
-                                <option value="Junior" {{ old('niveau') == 'Junior' ? 'selected' : '' }}>Junior</option>
-                                <option value="Intermédiaire" {{ old('niveau') == 'Intermédiaire' ? 'selected' : '' }}>Intermédiaire</option>
-                                <option value="Senior" {{ old('niveau') == 'Senior' ? 'selected' : '' }}>Senior</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Pays</label>
-                            <input type="text" name="pays" class="form-control" value="{{ old('pays') }}" placeholder="Ex: Togo" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Expertise Principale</label>
-                            <input type="text" name="expertise" class="form-control" placeholder="Ex: Flutter / Web" value="{{ old('expertise') }}" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Diplôme</label>
-                            <input type="text" name="diplome" class="form-control" value="{{ old('diplome') }}" placeholder="Dernier diplôme obtenu" required>
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label">Motivation</label>
-                            <textarea name="motivation" class="form-control" rows="3" placeholder="Pourquoi souhaitez-vous participer ?" required>{{ old('motivation') }}</textarea>
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label">Vision Tech (Projets futurs)</label>
-                            <textarea name="vision" class="form-control" rows="3" placeholder="Où vous voyez-vous dans 5 ans ?" required>{{ old('vision') }}</textarea>
-                        </div>
-                        <div class="col-12 text-center mt-5">
-                            <button type="submit" class="btn-register">Envoyer ma candidature</button>
+                <div class="account-lock">
+                    <p class="mb-1 small text-uppercase fw-bold" style="letter-spacing:1px;color:#c9933b;">Compte connecte</p>
+                    <p class="mb-0">
+                        Cette candidature sera automatiquement liee a l'adresse
+                        <strong>{{ auth()->user()->email }}</strong>.
+                    </p>
+                </div>
+
+                @if($hasExistingCandidature)
+                    <div class="alert alert-warning rounded-4 border-0 shadow-sm mb-0">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+                            <div>
+                                <strong>Une candidature existe deja pour ce compte.</strong><br>
+                                Consultez votre dashboard personnel pour suivre votre dossier.
+                            </div>
+                            <a href="{{ route('dashboard') }}" class="btn btn-dark rounded-pill px-4 py-2 fw-bold">
+                                Aller a mon dashboard
+                            </a>
                         </div>
                     </div>
-                </form> {{-- Fermeture correcte ici --}}
+                @else
+                    <form action="{{ route('criteres.store') }}" method="POST">
+                        @csrf
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Nom</label>
+                                <input type="text" name="nom" class="form-control" value="{{ old('nom', auth()->user()->last_name ?? '') }}" placeholder="Votre nom" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Prénom</label>
+                                <input type="text" name="prenom" class="form-control" value="{{ old('prenom', auth()->user()->first_name ?? '') }}" placeholder="Votre prénom" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Email du compte</label>
+                                <input type="email" class="form-control" value="{{ auth()->user()->email }}" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Âge</label>
+                                <input type="number" name="age" class="form-control" value="{{ old('age') }}" min="16" max="60" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Niveau</label>
+                                <select name="niveau" class="form-select">
+                                    <option value="Junior" {{ old('niveau') == 'Junior' ? 'selected' : '' }}>Junior</option>
+                                    <option value="Intermédiaire" {{ old('niveau') == 'Intermédiaire' ? 'selected' : '' }}>Intermédiaire</option>
+                                    <option value="Senior" {{ old('niveau') == 'Senior' ? 'selected' : '' }}>Senior</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Pays</label>
+                                <input type="text" name="pays" class="form-control" value="{{ old('pays') }}" placeholder="Ex: Togo" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Expertise Principale</label>
+                                <input type="text" name="expertise" class="form-control" placeholder="Ex: Flutter / Web" value="{{ old('expertise') }}" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Diplôme</label>
+                                <input type="text" name="diplome" class="form-control" value="{{ old('diplome') }}" placeholder="Dernier diplôme obtenu" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Motivation</label>
+                                <textarea name="motivation" class="form-control" rows="3" placeholder="Pourquoi souhaitez-vous participer ?" required>{{ old('motivation') }}</textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Vision Tech (Projets futurs)</label>
+                                <textarea name="vision" class="form-control" rows="3" placeholder="Où vous voyez-vous dans 5 ans ?" required>{{ old('vision') }}</textarea>
+                            </div>
+                            <div class="col-12 text-center mt-5">
+                                <button type="submit" class="btn-register">Envoyer ma candidature</button>
+                            </div>
+                        </div>
+                    </form>
+                @endif
             </div>
         </section>
     </div>

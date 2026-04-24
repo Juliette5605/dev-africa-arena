@@ -78,7 +78,7 @@
 <section class="py-5 section-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold">Le Processus <span class="text-gradient">TalentSync</span></h2>
+            <h2 class="fw-bold">Le Processus <span class="text-gradient">DevAfricaArena</span></h2>
             <p class="text-muted">Un parcours fluide vers l'opportunité idéale.</p>
         </div>
         <div class="row g-4">
@@ -95,7 +95,7 @@
                     <span class="badge-step">ÉTAPE 2 : CONNEXION</span>
                     <h4 class="fw-bold text-white">Matching Intelligent</h4>
                     <p class="text-light opacity-75 small"><strong>Algorithme de Synchronisation</strong><br>Mise en relation directe avec les projets et entreprises correspondant à votre profil.</p>
-                    <p class="text-light opacity-75 small"><strong>Certification</strong><br>Délivrance d'un label de qualité TalentSync reconnu par nos partenaires.</p>
+                    <p class="text-light opacity-75 small"><strong>Certification</strong><br>Délivrance d'un label de qualité DevAfricaArena reconnu par nos partenaires.</p>
                 </div>
             </div>
         </div>

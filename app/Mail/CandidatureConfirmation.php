@@ -10,7 +10,7 @@ class CandidatureConfirmation extends Mailable {
     use Queueable, SerializesModels;
     public function __construct(public Candidature $candidature) {}
     public function envelope(): Envelope {
-        return new Envelope(subject: ' Candidature reçue — DevAfrica Arena 2026');
+        return new Envelope(subject: ' Candidature reçue — DevAfricaArena 2026');
     }
     public function content(): Content {
         return new Content(view: 'emails.candidature-confirmation');

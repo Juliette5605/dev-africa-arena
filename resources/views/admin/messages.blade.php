@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Str; @endphp
 @extends('admin.layout')
 @section('title','Messages')
 @section('page-title',' Messages de contact')

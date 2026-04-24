@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'DevAfrica Arena | Home')
+@section('title', 'DevAfricaArena | Home')
 
 @push('styles')
 <style>
@@ -85,7 +85,7 @@
                     Propulser l'<span class="text-gradient">Afrique</span> par le numérique
                 </h1>
                 <p class="lead text-muted mb-5">
-                    DevAfrica Arena est le catalyseur de talents qui façonne les architectes technologiques de demain.
+                    DevAfricaArena est le catalyseur de talents qui façonne les architectes technologiques de demain.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="{{ route('criteres') }}" class="btn btn-gold" style="background: linear-gradient(135deg,#f39c12,#e67e22); color:#fff; font-weight:800; padding:15px 35px; border-radius:15px; border:none; transition:0.3s; text-decoration:none;">

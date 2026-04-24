@@ -1,67 +1,101 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AdminManagementController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\NewsletterBroadcastController;
 use App\Http\Controllers\Admin\PasswordResetController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\Admin\QrCodeController;
+use App\Http\Controllers\Admin\SearchController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\SmtpController;
+use App\Http\Controllers\Admin\DevAfricaArenaController;
 use App\Http\Controllers\OrientationController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ParticipantDashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ArenaController; // Import du nouveau contrôleur
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes - DevAfrica Arena
+| Web Routes - DevAfricaArena
 |--------------------------------------------------------------------------
 */
 
-// 1. Pages Publiques Front-end
+// 1. Accès au site candidat : connexion obligatoire avant navigation
 Route::get('/', function () {
-    return view('pages.home'); 
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
+
+    return view('pages.home');
 })->name('home');
 
-Route::get('/a-propos', [PageController::class, 'aPropos'])->name('a-propos');
-Route::get('/criteres', [PageController::class, 'criteres'])->name('criteres');
-Route::get('/valeurs', [PageController::class, 'valeurs'])->name('valeurs');
-Route::get('/argument', [PageController::class, 'argument'])->name('argument');
-Route::get('/orientation', [OrientationController::class, 'index'])->name('orientation');
-Route::get('/editions', [PageController::class, 'editions'])->name('editions');
-Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/csrf-token', function (Request $request) {
+    $request->session()->regenerateToken();
 
-// --- Newsletter & Chatbot ---
-Route::post('/newsletter-store', [NewsletterController::class, 'store'])->name('newsletter.store'); 
-
-Route::post('/chat/public', function (Request $request) {
-    $message = $request->input('message');
     return response()->json([
-        'reply' => "Merci pour votre message : '$message'. L'assistant IA est en cours de configuration."
+        'token' => csrf_token(),
     ]);
-})->name('chat.public');
+})->name('csrf.refresh');
 
-// --- Routes Partenaires (Public) ---
-Route::prefix('partenaires')->name('partenaires.')->group(function () {
-    Route::get('/', [PageController::class, 'partenaires'])->name('index');
-    Route::get('/financier', [PageController::class, 'partenairesFinancier'])->name('financier');
-    Route::get('/techniques', [PageController::class, 'partenairesTechniques'])->name('techniques');
-    Route::get('/sponsors', [PageController::class, 'partenairesSponsors'])->name('sponsors');
+Route::middleware('auth')->group(function () {
+    Route::get('/a-propos', [PageController::class, 'aPropos'])->name('a-propos');
+    Route::get('/criteres', [PageController::class, 'criteres'])->name('criteres');
+    Route::post('/criteres', [FormController::class, 'storeCandidature'])->name('criteres.store');
+    Route::get('/valeurs', [PageController::class, 'valeurs'])->name('valeurs');
+    Route::get('/argument', [PageController::class, 'argument'])->name('argument');
+    Route::get('/orientation', [OrientationController::class, 'index'])->name('orientation');
+    Route::post('/orientation', [OrientationController::class, 'interrogerIA'])->name('orientation.ask');
+    Route::get('/editions', [PageController::class, 'editions'])->name('editions');
+    Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+    Route::post('/contact', [FormController::class, 'storeContact'])->name('contact.store');
 
-    Route::post('/financier', function (Request $request) {
-        return back()->with('success', 'Merci, votre demande de partenariat financier a bien été envoyée.');
-    })->name('financier.store');
+    // --- NOUVEAU : QUIZ & FORUM ARENA (AUTOMATISÉ) ---
+    Route::get('/quiz-arena', [ArenaController::class, 'startQuiz'])->name('quiz.play');
+    Route::post('/quiz-arena/check', [ArenaController::class, 'checkAnswer'])->name('quiz.check');
+    
+    Route::get('/forum-arena', [ArenaController::class, 'forumIndex'])->name('forum.index');
+    Route::post('/forum-arena/store', [ArenaController::class, 'forumStore'])->name('forum.store');
+    Route::post('/forum-arena/{thread}/reply', [ArenaController::class, 'forumReply'])->name('forum.reply');
+    Route::get('/forum-arena/{thread}', [ArenaController::class, 'forumShow'])->name('forum.show');
 
-    Route::post('/techniques', function (Request $request) {
-        return back()->with('success', 'Merci, votre demande de partenariat technique a bien été envoyée.');
-    })->name('techniques.store');
+    // --- Newsletter & Chatbot ---
+    Route::post('/newsletter-store', [NewsletterController::class, 'store'])->name('newsletter.store');
 
-    Route::post('/sponsors', function (Request $request) {
-        return back()->with('success', 'Merci, votre demande de sponsoring a bien été envoyée.');
-    })->name('sponsors.store');
+    Route::post('/chat/public', function (Request $request) {
+        $message = $request->input('message');
+        return response()->json([
+            'reply' => "Merci pour votre message : '$message'. L'assistant IA est en cours de configuration."
+        ]);
+    })->name('chat.public');
+
+    // --- Routes Partenaires ---
+    Route::prefix('partenaires')->name('partenaires.')->group(function () {
+        Route::get('/', [PageController::class, 'partenaires'])->name('index');
+        Route::get('/financier', [PageController::class, 'partenairesFinancier'])->name('financier');
+        Route::get('/techniques', [PageController::class, 'partenairesTechniques'])->name('techniques');
+        Route::get('/sponsors', [PageController::class, 'partenairesSponsors'])->name('sponsors');
+
+        Route::post('/financier', function (Request $request) {
+            return back()->with('success', 'Merci, votre demande de partenariat financier a bien été envoyée.');
+        })->name('financier.store');
+
+        Route::post('/techniques', function (Request $request) {
+            return back()->with('success', 'Merci, votre demande de partenariat technique a bien été envoyée.');
+        })->name('techniques.store');
+
+        Route::post('/sponsors', function (Request $request) {
+            return back()->with('success', 'Merci, votre demande de sponsoring a bien été envoyée.');
+        })->name('sponsors.store');
+    });
 });
-
-// --- Authentification Standard ---
-Route::get('/login', function () { return view('auth.login'); })->name('login');
-Route::get('/register', function () { return view('auth.register'); })->name('register');
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +120,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         // Dashboard & Recherche
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('search', [DashboardController::class, 'index'])->name('search');
+        Route::get('search', [SearchController::class, 'search'])->name('search');
 
         // Gestion des flux (Candidatures, Messages, Newsletters)
         Route::get('candidatures', [DashboardController::class, 'candidatures'])->name('candidatures');
@@ -100,27 +134,50 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('messages', [DashboardController::class, 'messages'])->name('messages');
         Route::get('messages/{message}', [DashboardController::class, 'messageShow'])->name('messages.show');
         Route::delete('messages/{message}', [DashboardController::class, 'messageDestroy'])->name('messages.destroy');
-        Route::get('newsletters', [DashboardController::class, 'index'])->name('newsletters');
-        Route::get('newsletter/broadcast', [DashboardController::class, 'index'])->name('newsletter.broadcast');
+        Route::get('newsletters', [DashboardController::class, 'newsletters'])->name('newsletters');
+        Route::get('newsletter/broadcast', [NewsletterBroadcastController::class, 'show'])->name('newsletter.broadcast');
+        Route::post('newsletter/broadcast', [NewsletterBroadcastController::class, 'send'])->name('newsletter.broadcast.send');
 
         // Sections spécifiques demandées par le layout
-        Route::get('finalistes', [DashboardController::class, 'index'])->name('finalistes');
-        Route::get('partenaires', [DashboardController::class, 'index'])->name('partenaires');
-        Route::get('editions', [DashboardController::class, 'index'])->name('editions');
+        Route::get('finalistes', [DashboardController::class, 'finalistes'])->name('finalistes');
+        Route::get('partenaires', [DashboardController::class, 'partenaires'])->name('partenaires');
+        Route::delete('partenaires/{partenaire}', [DashboardController::class, 'partenaireDestroy'])->name('partenaires.destroy');
+        Route::get('editions', [DashboardController::class, 'editions'])->name('editions');
+        Route::post('editions', [DashboardController::class, 'editionStore'])->name('editions.store');
+        // Correction ici (activation via POST/PATCH selon ta logique)
+        Route::post('editions/{edition}/activate', [DashboardController::class, 'editionActivate'])->name('editions.activate');
+        Route::delete('editions/{edition}', [DashboardController::class, 'editionDestroy'])->name('editions.destroy');
         
-        // Outils & IA (TalentSync, QR, Media, Logs)
-        Route::get('talentsync', [DashboardController::class, 'index'])->name('talentsync');
-        Route::get('qrcode', [DashboardController::class, 'index'])->name('qrcode');
-        Route::get('media', [DashboardController::class, 'index'])->name('media.index');
-        Route::get('logs', [DashboardController::class, 'index'])->name('logs');
+        // Outils & IA (DevAfricaArena, QR, Media, Logs)
+        Route::get('devafricaarena', [DevAfricaArenaController::class, 'index'])->name('devafricaarena');
+        Route::post('devafricaarena/cv', [DevAfricaArenaController::class, 'generateCV'])->name('devafricaarena.cv');
+        Route::post('devafricaarena/letter', [DevAfricaArenaController::class, 'generateCoverLetter'])->name('devafricaarena.letter');
+        Route::post('devafricaarena/match', [DevAfricaArenaController::class, 'matchOpportunities'])->name('devafricaarena.match');
+        Route::post('devafricaarena/apply', [DevAfricaArenaController::class, 'autoApply'])->name('devafricaarena.apply');
+        Route::get('devafricaarena/status', [DevAfricaArenaController::class, 'applicationStatus'])->name('devafricaarena.status');
+        Route::get('qrcode', [QrCodeController::class, 'show'])->name('qrcode');
+        Route::get('media', [MediaController::class, 'index'])->name('media.index');
+        Route::post('media', [MediaController::class, 'store'])->name('media.store');
+        Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
+        Route::get('logs', [DashboardController::class, 'logs'])->name('logs');
+        Route::post('logs/clear', [DashboardController::class, 'logsClear'])->name('logs.clear');
+        Route::delete('logs/{log}', [DashboardController::class, 'logDestroy'])->name('logs.destroy');
         Route::get('export/candidatures', [DashboardController::class, 'exportCandidatures'])->name('export.candidatures');
-        Route::get('backup/database', [DashboardController::class, 'index'])->name('backup.database');
+        Route::get('backup/database', [DashboardController::class, 'backupDatabase'])->name('backup.database');
 
         // Configuration & Profil
-        Route::get('admins', [DashboardController::class, 'index'])->name('admins.index');
-        Route::get('smtp', [DashboardController::class, 'index'])->name('smtp');
-        Route::get('settings', [DashboardController::class, 'index'])->name('settings');
-        Route::get('profile', [DashboardController::class, 'index'])->name('profile');
+        Route::get('admins', [AdminManagementController::class, 'index'])->name('admins.index');
+        Route::post('admins', [AdminManagementController::class, 'store'])->name('admins.store');
+        Route::post('admins/{admin}/delegate', [AdminManagementController::class, 'toggleDelegation'])->name('admins.delegate');
+        Route::delete('admins/{admin}', [AdminManagementController::class, 'destroy'])->name('admins.destroy');
+        Route::get('smtp', [SmtpController::class, 'show'])->name('smtp');
+        Route::post('smtp', [SmtpController::class, 'update'])->name('smtp.update');
+        Route::post('smtp/test', [SmtpController::class, 'test'])->name('smtp.test');
+        Route::get('settings', [SettingsController::class, 'show'])->name('settings');
+        Route::post('settings', [SettingsController::class, 'update'])->name('settings.update');
+        Route::get('profile', [AdminProfileController::class, 'show'])->name('profile');
+        Route::post('profile/info', [AdminProfileController::class, 'updateInfo'])->name('profile.update.info');
+        Route::post('profile/password', [AdminProfileController::class, 'updatePassword'])->name('profile.update.password');
     });
 });
 
@@ -130,9 +187,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', ParticipantDashboardController::class)->name('dashboard');
+    Route::post('/dashboard/ai/cv', [ParticipantDashboardController::class, 'generateCv'])->name('dashboard.ai.cv');
+    Route::post('/dashboard/ai/letter', [ParticipantDashboardController::class, 'generateCoverLetter'])->name('dashboard.ai.letter');
+    Route::post('/dashboard/ai/match', [ParticipantDashboardController::class, 'matchOpportunities'])->name('dashboard.ai.match');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

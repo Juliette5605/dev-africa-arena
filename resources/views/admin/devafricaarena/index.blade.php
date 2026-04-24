@@ -1,16 +1,16 @@
 @extends('admin.layout')
-@section('title', 'TalentSync IA')
+@section('title', 'DevAfricaArena')
 @section('content')
 
 <div class="mb-4">
-    <h4 class="fw-bold mb-1">TalentSync — Assistant IA</h4>
+    <h4 class="fw-bold mb-1">DevAfricaArena — Assistant IA</h4>
     <p class="text-muted small mb-0">Générez des CV, lettres de motivation, matchings et candidatures automatiques grâce à l'IA.</p>
 </div>
 
 {{-- Statut API --}}
 <div class="admin-card p-3 mb-4 d-flex align-items-center gap-3" id="api-status-bar">
     <div id="api-dot" style="width:10px;height:10px;border-radius:50%;background:#aaa;flex-shrink:0;"></div>
-    <span id="api-status-text" class="small fw-bold text-muted">Vérification de la connexion TalentSync...</span>
+    <span id="api-status-text" class="small fw-bold text-muted">Vérification de la connexion DevAfricaArena...</span>
 </div>
 
 <div class="row g-4">
@@ -121,7 +121,7 @@
 
             <div id="ia-loading" style="display:none;" class="text-center py-4">
                 <div class="spinner-grow spinner-grow-sm text-warning me-2"></div>
-                <span class="text-muted small">TalentSync IA en cours de traitement...</span>
+                <span class="text-muted small">DevAfricaArena en cours de traitement...</span>
             </div>
 
             <div id="ia-result" class="p-3 rounded-3"
@@ -143,11 +143,11 @@
 @push('scripts')
 <script>
 const ROUTES = {
-    cv:     '{{ route("admin.talentsync.cv") }}',
-    letter: '{{ route("admin.talentsync.letter") }}',
-    match:  '{{ route("admin.talentsync.match") }}',
-    apply:  '{{ route("admin.talentsync.apply") }}',
-    status: '{{ route("admin.talentsync.status") }}',
+    cv:     '{{ route("admin.devafricaarena.cv") }}',
+    letter: '{{ route("admin.devafricaarena.letter") }}',
+    match:  '{{ route("admin.devafricaarena.match") }}',
+    apply:  '{{ route("admin.devafricaarena.apply") }}',
+    status: '{{ route("admin.devafricaarena.status") }}',
 };
 const CSRF = '{{ csrf_token() }}';
 
@@ -158,12 +158,13 @@ fetch(ROUTES.status, { headers: { 'X-CSRF-TOKEN': CSRF, 'Accept': 'application/j
         const dot  = document.getElementById('api-dot');
         const text = document.getElementById('api-status-text');
         if (d.success) {
-            dot.style.background  = '#16a34a';
-            text.textContent      = 'TalentSync IA connecté et opérationnel';
-            text.style.color      = '#16a34a';
+            const isRemote = d.mode === 'remote';
+            dot.style.background  = isRemote ? '#16a34a' : '#f39c12';
+            text.textContent      = d.message || (isRemote ? 'DevAfricaArena connecté et opérationnel' : 'Fallback local actif');
+            text.style.color      = isRemote ? '#16a34a' : '#f39c12';
         } else {
             dot.style.background  = '#ef4444';
-            text.textContent      = 'TalentSync IA non disponible actuellement';
+            text.textContent      = 'DevAfricaArena non disponible actuellement';
             text.style.color      = '#ef4444';
         }
     }).catch(() => {
@@ -205,6 +206,7 @@ function showLoading() {
 function showResult(text) {
     document.getElementById('ia-loading').style.display = 'none';
     document.getElementById('ia-result').style.display  = 'block';
+    document.getElementById('ia-result').style.color    = '#111827';
     document.getElementById('ia-result').textContent    = text;
     document.getElementById('copy-btn').style.display   = 'block';
 }
@@ -237,7 +239,7 @@ async function generateCV() {
     const id = getCandidatureId(); if (!id) return;
     showLoading();
     const d = await callAPI(ROUTES.cv, { candidature_id: id });
-    d.success ? showResult(typeof d.cv === 'string' ? d.cv : JSON.stringify(d.cv, null, 2)) : showError(d.error);
+    d.success ? showResult(`${typeof d.cv === 'string' ? d.cv : JSON.stringify(d.cv, null, 2)}${d.warning ? `\n\nNote: ${d.warning}` : ''}`) : showError(d.error);
 }
 
 async function generateCoverLetter() {
@@ -252,7 +254,7 @@ async function generateCoverLetter() {
         poste: poste,
         entreprise: document.getElementById('entreprise-input').value
     });
-    d.success ? showResult(typeof d.lettre === 'string' ? d.lettre : JSON.stringify(d.lettre, null, 2)) : showError(d.error);
+    d.success ? showResult(`${typeof d.lettre === 'string' ? d.lettre : JSON.stringify(d.lettre, null, 2)}${d.warning ? `\n\nNote: ${d.warning}` : ''}`) : showError(d.error);
 }
 
 async function matchOpportunities() {
@@ -268,8 +270,13 @@ async function matchOpportunities() {
                 html += `<div class="p-3 mb-2 rounded-3" style="background:#fff8eb;border:1px solid rgba(243,156,18,0.2);">
                     <p class="fw-bold mb-1 small">${m.titre || m.title || JSON.stringify(m)}</p>
                     ${m.entreprise ? `<p class="text-muted mb-0 small">${m.entreprise}</p>` : ''}
+                    ${m.ville ? `<p class="text-muted mb-0 small">${m.ville}</p>` : ''}
+                    ${m.url ? `<a href="${m.url}" target="_blank" rel="noopener" class="small fw-bold" style="color:#c26d1a;text-decoration:none;">Voir l'offre</a>` : ''}
                 </div>`;
             });
+            if (d.warning) {
+                html += `<p class="small text-muted mt-3 mb-0">Note: ${d.warning}</p>`;
+            }
         } else {
             html = '<p class="text-muted small text-center py-3">Aucune opportunité trouvée pour ce profil.</p>';
         }

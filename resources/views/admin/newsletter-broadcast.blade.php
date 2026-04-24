@@ -36,14 +36,14 @@
                     <textarea name="message" class="form-control rounded-3 border-0 bg-light py-3" rows="10"
                               placeholder="Rédigez votre message ici..." required>{{ old('message') }}</textarea>
                     @error('message')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
-                    <p class="text-muted small mt-1">Le message sera mis en forme automatiquement dans un template HTML DevAfrica Arena.</p>
+                    <p class="text-muted small mt-1">Le message sera mis en forme automatiquement dans un template HTML DevAfricaArena.</p>
                 </div>
 
                 {{-- Aperçu --}}
                 <div class="mb-4 p-3 rounded-3" style="background:#f8f9fa;border:1px solid #eee;">
                     <p class="fw-bold small mb-2"> Aperçu expéditeur</p>
                     <p class="small mb-0 text-muted">
-                        <strong>De :</strong> {{ \App\Models\Setting::get('site_name','DevAfrica Arena') }} &lt;{{ env('MAIL_FROM_ADDRESS','arena@devafrica.tg') }}&gt;<br>
+                        <strong>De :</strong> {{ \App\Models\Setting::get('site_name','DevAfricaArena') }} &lt;{{ env('MAIL_FROM_ADDRESS','arena@devafrica.tg') }}&gt;<br>
                         <strong>À :</strong> {{ $count }} abonné(s)
                     </p>
                 </div>

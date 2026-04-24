@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Candidature reçue — DevAfrica Arena</title>
+<title>Candidature reçue — DevAfricaArena</title>
 </head>
 <body style="margin:0;padding:0;background-color:#f4f4f4;font-family:'Segoe UI',Arial,sans-serif;">
 
@@ -16,7 +16,7 @@
         <tr>
           <td style="background:linear-gradient(135deg,#f39c12 0%,#e67e22 100%);padding:40px 50px;text-align:center;">
             <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:800;letter-spacing:-1px;">
-               DevAfrica Arena
+               DevAfricaArena
             </h1>
             <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px;text-transform:uppercase;letter-spacing:2px;">
               L'Arène des Talents Numériques
@@ -31,7 +31,7 @@
                Candidature bien reçue, {{ $candidature->prenom }} !
             </h2>
             <p style="color:#666;font-size:15px;line-height:1.7;margin:0 0 30px;">
-              Nous avons bien enregistré votre dossier de candidature pour la prochaine édition de <strong>DevAfrica Arena 2026</strong> à Lomé.
+              Nous avons bien enregistré votre dossier de candidature pour la prochaine édition de <strong>DevAfricaArena 2026</strong> à Lomé.
             </p>
 
             {{-- RECAP BOX --}}
@@ -96,7 +96,7 @@
         {{-- FOOTER --}}
         <tr>
           <td style="background:#222;padding:30px 50px;text-align:center;">
-            <p style="margin:0 0 5px;color:rgba(255,255,255,0.5);font-size:12px;">© {{ date('Y') }} DevAfrica Arena — Lomé, Togo</p>
+            <p style="margin:0 0 5px;color:rgba(255,255,255,0.5);font-size:12px;">© {{ date('Y') }} DevAfricaArena — Lomé, Togo</p>
             <p style="margin:0;color:rgba(255,255,255,0.3);font-size:11px;">Adjété Alex WILSON · wilsoncodemosaic@gmail.com · +228 71 15 50 55</p>
           </td>
         </tr>

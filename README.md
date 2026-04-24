@@ -1,4 +1,4 @@
-#  DevAfrica Arena — Laravel 11
+#  DevAfricaArena — Laravel 11
 
 > Premier Championnat Technologique Bimestriel d'Afrique de l'Ouest  
 > Lomé, Togo — Propulsé par l'innovation africaine
@@ -209,7 +209,7 @@ MAIL_USERNAME=votre@gmail.com
 MAIL_PASSWORD=abcd_efgh_ijkl_mnop  # Mot de passe d'application (16 chars)
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="arena@devafrica.tg"
-MAIL_FROM_NAME="DevAfrica Arena"
+MAIL_FROM_NAME="DevAfricaArena"
 ```
 > Générer un mot de passe d'application : myaccount.google.com/apppasswords
 

@@ -22,7 +22,7 @@
 <body>
 <div class="header">
     <div>
-        <h1> DevAfrica Arena</h1>
+        <h1> DevAfricaArena</h1>
         <p>Dossier de candidature — #{{ str_pad($candidature->id,4,'0',STR_PAD_LEFT) }}</p>
     </div>
     <div style="text-align:right;">
@@ -82,7 +82,7 @@
 </div>
 
 <div class="footer">
-    DevAfrica Arena · Lomé, Togo · wilsoncodemosaic@gmail.com · +228 71 15 50 55
+    DevAfricaArena · Lomé, Togo · wilsoncodemosaic@gmail.com · +228 71 15 50 55
 </div>
 </body>
 </html>

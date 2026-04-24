@@ -63,7 +63,7 @@
                     <div class="card-glass">
                         <div class="icon-box"><i class="bi bi-shield-check"></i></div>
                         <h5 class="fw-bold">Label Elite</h5>
-                        <p class="small text-muted">Obtenez un badge de compétence certifié par TalentSync, reconnu par les recruteurs du secteur numérique.</p>
+                        <p class="small text-muted">Obtenez un badge de compétence certifié par DevAfricaArena, reconnu par les recruteurs du secteur numérique.</p>
                     </div>
                 </div>
             </div>

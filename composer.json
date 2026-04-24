@@ -1,6 +1,6 @@
 {
     "name": "devafrica/arena",
-    "description": "DevAfrica Arena — Championnat Technologique Bimestriel — Lomé, Togo",
+    "description": "DevAfricaArena — Championnat Technologique Bimestriel — Lomé, Togo",
     "keywords": ["laravel", "devafrica", "arena", "togo"],
     "license": "MIT",
     "require": {

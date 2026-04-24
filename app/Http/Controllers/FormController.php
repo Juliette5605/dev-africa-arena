@@ -16,10 +16,20 @@ class FormController extends Controller
      */
     public function storeCandidature(Request $request)
     {
+        $user = $request->user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        if (Candidature::where('email', $user->email)->exists()) {
+            return redirect()->route('dashboard')
+                ->with('error', 'Une candidature est deja associee a votre compte. Retrouvez-la dans votre dashboard personnel.');
+        }
+
         $validated = $request->validate([
             'nom'        => 'required|string|max:100',
             'prenom'     => 'required|string|max:100',
-            'email'      => 'required|email|max:200',
             'age'        => 'required|integer|min:16|max:70',
             'niveau'     => 'required|in:Junior,Intermédiaire,Senior',
             'pays'       => 'required|string|max:100',
@@ -30,8 +40,6 @@ class FormController extends Controller
         ], [
             'nom.required'        => 'Le nom est obligatoire.',
             'prenom.required'     => 'Le prénom est obligatoire.',
-            'email.required'      => 'L\'email est obligatoire.',
-            'email.email'         => 'Format d\'email invalide.',
             'age.min'             => 'L\'âge minimum requis est 16 ans.',
             'niveau.required'     => 'Veuillez sélectionner votre niveau.',
             'niveau.in'           => 'Niveau invalide.',
@@ -44,6 +52,8 @@ class FormController extends Controller
             'vision.min'          => 'La vision doit faire au moins 30 caractères.',
         ]);
 
+        $validated['email'] = $user->email;
+
         $candidature = Candidature::create($validated);
 
         // Email de confirmation automatique (silencieux si non configuré)
@@ -53,8 +63,8 @@ class FormController extends Controller
             // Mail non configuré en local — pas de blocage
         }
 
-        return redirect()->route('criteres')
-            ->with('success', '🎉 Candidature soumise avec succès ! Un email de confirmation vous a été envoyé à ' . $candidature->email);
+        return redirect()->route('dashboard')
+            ->with('success', '🎉 Candidature soumise avec succes ! Votre dossier est maintenant relie a votre compte ' . $candidature->email . '.');
     }
 
     /**

@@ -33,7 +33,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | IA Orientation - TalentSync Configuration
+    | IA Orientation - DevAfricaArena Configuration
     |--------------------------------------------------------------------------
     | Ces réglages permettent de connecter l'application à l'API d'IA.
     | Les valeurs réelles sont stockées en toute sécurité dans le fichier .env

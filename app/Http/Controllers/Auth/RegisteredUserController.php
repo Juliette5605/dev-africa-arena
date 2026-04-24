@@ -20,7 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('auth.login', ['authMode' => 'reg']);
     }
 
     /**
@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        // redirige vers le front-end utilisateur après inscription
-        return redirect()->intended(route('home'));
+        // Après inscription, le candidat arrive directement sur son dashboard personnel
+        return redirect()->intended(route('dashboard'));
     }
 }

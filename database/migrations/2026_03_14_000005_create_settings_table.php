@@ -16,7 +16,7 @@ return new class extends Migration {
 
         // Valeurs par défaut
         $defaults = [
-            ['key'=>'site_name',         'value'=>'DevAfrica Arena',                          'group'=>'general'],
+            ['key'=>'site_name',         'value'=>'DevAfricaArena',                           'group'=>'general'],
             ['key'=>'site_slogan',        'value'=>'Propulser l\'Afrique par le numérique',    'group'=>'general'],
             ['key'=>'site_email',         'value'=>'wilsoncodemosaic@gmail.com',               'group'=>'general'],
             ['key'=>'site_phone',         'value'=>'+228 71 15 50 55',                         'group'=>'general'],
@@ -31,7 +31,7 @@ return new class extends Migration {
             ['key'=>'twitter',            'value'=>'',                                         'group'=>'social'],
             ['key'=>'maintenance_mode',   'value'=>'0',                                        'group'=>'system'],
             ['key'=>'maintenance_msg',    'value'=>'Site en maintenance. Revenez bientôt !',   'group'=>'system'],
-            ['key'=>'newsletter_subject', 'value'=>'Actualités DevAfrica Arena',               'group'=>'newsletter'],
+            ['key'=>'newsletter_subject', 'value'=>'Actualités DevAfricaArena',                'group'=>'newsletter'],
         ];
 
         foreach ($defaults as $s) {

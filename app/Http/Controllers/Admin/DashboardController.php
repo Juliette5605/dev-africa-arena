@@ -9,6 +9,7 @@ use App\Models\ContactMessage;
 use App\Models\Edition;
 use App\Models\Newsletter;
 use App\Models\Partenaire;
+use App\Models\Setting;
 use App\Services\IAService; // On importe ton nouveau service
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -86,6 +87,111 @@ class DashboardController extends Controller
         }
         $messages = $query->paginate(15)->withQueryString();
         return view('admin.messages', compact('messages'));
+    }
+
+    public function finalistes()
+    {
+        $max = (int) Setting::get('nb_finalistes', 6);
+        $finalistes = Candidature::where('finaliste', true)
+            ->orderByDesc('note')
+            ->latest()
+            ->get();
+
+        return view('admin.finalistes', compact('finalistes', 'max'));
+    }
+
+    public function partenaires(Request $request)
+    {
+        $query = Partenaire::latest();
+
+        if ($request->filled('type')) {
+            $query->where('type', $request->type);
+        }
+
+        if ($request->filled('q')) {
+            $search = $request->q;
+            $query->where(function ($subQuery) use ($search) {
+                $subQuery->where('responsable', 'like', "%{$search}%")
+                    ->orWhere('entreprise', 'like', "%{$search}%")
+                    ->orWhere('telephone', 'like', "%{$search}%")
+                    ->orWhere('message', 'like', "%{$search}%");
+            });
+        }
+
+        $partenaires = $query->paginate(15)->withQueryString();
+
+        return view('admin.partenaires', compact('partenaires'));
+    }
+
+    public function partenaireDestroy(Partenaire $partenaire)
+    {
+        $label = $partenaire->entreprise ?: $partenaire->responsable;
+        $partenaire->delete();
+
+        ActivityLog::log('supprimé', 'Partenaire', $label);
+
+        return back()->with('success', 'Partenaire supprimé.');
+    }
+
+    public function newsletters()
+    {
+        $newsletters = Newsletter::latest()->paginate(20);
+
+        return view('admin.newsletters', compact('newsletters'));
+    }
+
+    public function editions()
+    {
+        $editions = Edition::latest('date_selection')->get();
+
+        return view('admin.editions', compact('editions'));
+    }
+
+    public function editionStore(Request $request)
+    {
+        $validated = $request->validate([
+            'nom'            => 'required|string|max:150',
+            'date_selection' => 'required|date',
+            'date_finale'    => 'required|date|after_or_equal:date_selection',
+            'lieu'           => 'nullable|string|max:150',
+            'active'         => 'nullable|boolean',
+        ]);
+
+        if ($request->boolean('active')) {
+            Edition::query()->update(['active' => false]);
+        }
+
+        $edition = Edition::create([
+            'nom'            => $validated['nom'],
+            'date_selection' => $validated['date_selection'],
+            'date_finale'    => $validated['date_finale'],
+            'lieu'           => $validated['lieu'] ?? 'Lome, Togo',
+            'active'         => $request->boolean('active'),
+        ]);
+
+        ActivityLog::log('créé', 'Édition', $edition->nom);
+
+        return back()->with('success', 'Édition créée avec succès.');
+    }
+
+    public function editionActivate(Edition $edition)
+    {
+        Edition::query()->update(['active' => false]);
+        $edition->update(['active' => true]);
+
+        ActivityLog::log('activé', 'Édition', $edition->nom);
+
+        return back()->with('success', 'Édition activée.');
+    }
+
+    public function editionDestroy(Edition $edition)
+    {
+        $nom = $edition->nom;
+        $edition->delete();
+
+        ActivityLog::log('supprimé', 'Édition', $nom);
+
+        return back()->with('success', 'Édition supprimée.');
     }
 
     public function messageShow(ContactMessage $message)
@@ -190,6 +296,18 @@ class DashboardController extends Controller
             fclose($h);
         };
         return Response::stream($callback, 200, $headers);
+    }
+
+    public function backupDatabase()
+    {
+        $stats = [
+            'candidatures' => Candidature::count(),
+            'messages'     => ContactMessage::count(),
+            'partenaires'  => Partenaire::count(),
+            'newsletters'  => Newsletter::count(),
+        ];
+
+        return view('admin.backup-database', compact('stats'));
     }
 
     // ... (Reste des méthodes : partenaires, messages, newsletters, etc. restent identiques)

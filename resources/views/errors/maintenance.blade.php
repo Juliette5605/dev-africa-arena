@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Maintenance | DevAfrica Arena</title>
+    <title>Maintenance | DevAfricaArena</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
@@ -23,7 +23,7 @@
 <div class="box">
     <div class="icon">🚧</div>
     <div class="badge">MAINTENANCE EN COURS</div>
-    <h1>DevAfrica <span class="gold">Arena</span></h1>
+    <h1>DevAfricaArena</h1>
     <p>{{ $message }}</p>
 </div>
 <script>

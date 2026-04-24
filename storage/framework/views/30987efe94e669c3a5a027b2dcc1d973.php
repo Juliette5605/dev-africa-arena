@@ -91,7 +91,7 @@
 </style>
 
 
-<button class="chat-bubble" onclick="toggleChat()" id="chat-btn" title="Assistant IA DevAfrica Arena">
+<button class="chat-bubble" onclick="toggleChat()" id="chat-btn" title="Assistant IA DevAfricaArena">
     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
 </button>
 
@@ -100,15 +100,15 @@
     <div class="chat-header">
         <div class="chat-header-avatar">🤖</div>
         <div class="chat-header-info">
-            <h6>Assistant DevAfrica Arena</h6>
-            <p>Propulsé par TalentSync IA</p>
+            <h6>Assistant DevAfricaArena</h6>
+            <p>Propulsé par DevAfricaArena</p>
         </div>
         <button class="chat-close" onclick="toggleChat()">✕</button>
     </div>
 
     <div class="chat-messages" id="chat-messages">
         <div class="msg msg-bot">
-            Bonjour ! Je suis l'assistant IA de DevAfrica Arena. Je peux vous aider sur les candidatures, les partenariats, les dates et bien plus. Que souhaitez-vous savoir ?
+            Bonjour ! Je suis l'assistant IA de DevAfricaArena. Je peux vous aider sur les candidatures, les partenariats, les dates et bien plus. Que souhaitez-vous savoir ?
         </div>
     </div>
 

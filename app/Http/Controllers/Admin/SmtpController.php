@@ -18,7 +18,7 @@ class SmtpController extends Controller
             'username'   => env('MAIL_USERNAME', ''),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'from'       => env('MAIL_FROM_ADDRESS', ''),
-            'from_name'  => env('MAIL_FROM_NAME', 'DevAfrica Arena'),
+            'from_name'  => env('MAIL_FROM_NAME', 'DevAfricaArena'),
         ];
         return view('admin.smtp', compact('config'));
     }
@@ -67,10 +67,10 @@ class SmtpController extends Controller
 
         try {
             Mail::raw(
-                "Test DevAfrica Arena\n\nSi vous recevez ce message, votre configuration email est operationnelle.\n\nEnvoye depuis le panel admin de DevAfrica Arena.",
+                "Test DevAfricaArena\n\nSi vous recevez ce message, votre configuration email est operationnelle.\n\nEnvoye depuis le panel admin de DevAfricaArena.",
                 function ($m) use ($request) {
                     $m->to($request->test_email)
-                      ->subject('Test Email - DevAfrica Arena');
+                      ->subject('Test Email - DevAfricaArena');
                 }
             );
             ActivityLog::log('testé', 'Email SMTP', $request->test_email);

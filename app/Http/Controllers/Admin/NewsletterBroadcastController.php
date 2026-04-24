@@ -67,10 +67,10 @@ class NewsletterBroadcastController extends Controller
 </head>
 <body>
 <div class="wrap">
-  <div class="header"><h1>🏟️ DevAfrica Arena</h1><p style="color:rgba(255,255,255,0.8);margin:6px 0 0;font-size:0.9rem;">{$subject}</p></div>
+  <div class="header"><h1>🏟️ DevAfricaArena</h1><p style="color:rgba(255,255,255,0.8);margin:6px 0 0;font-size:0.9rem;">{$subject}</p></div>
   <div class="body"><p>{$msg}</p></div>
   <div class="footer">
-    © 2026 DevAfrica Arena · Lomé, Togo<br>
+    © 2026 DevAfricaArena · Lomé, Togo<br>
     <a href="#">Se désabonner</a>
   </div>
 </div>

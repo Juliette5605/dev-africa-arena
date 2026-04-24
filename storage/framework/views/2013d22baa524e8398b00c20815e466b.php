@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('title', 'DevAfrica Arena | Home'); ?>
+<?php $__env->startSection('title', 'DevAfricaArena | Home'); ?>
 
 <?php $__env->startPush('styles'); ?>
 <style>
@@ -85,7 +85,7 @@
                     Propulser l'<span class="text-gradient">Afrique</span> par le numérique
                 </h1>
                 <p class="lead text-muted mb-5">
-                    DevAfrica Arena est le catalyseur de talents qui façonne les architectes technologiques de demain.
+                    DevAfricaArena est le catalyseur de talents qui façonne les architectes technologiques de demain.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="<?php echo e(route('criteres')); ?>" class="btn btn-gold" style="background: linear-gradient(135deg,#f39c12,#e67e22); color:#fff; font-weight:800; padding:15px 35px; border-radius:15px; border:none; transition:0.3s; text-decoration:none;">
@@ -407,4 +407,5 @@ fetch("https://sheetdb.io/api/v1/qg4gis5u4esa6")
 .catch(() => { document.getElementById("jobs-container").innerHTML = '<p class="text-muted">Impossible de charger les offres.</p>'; });
 </script>
 <?php $__env->stopPush(); ?>
+
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\devafrica-arena-laravel-FULL\arena-laravel\resources\views/pages/home.blade.php ENDPATH**/ ?>

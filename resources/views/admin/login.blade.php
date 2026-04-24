@@ -240,7 +240,7 @@
             @csrf
             <div class="mb-4">
                 <label class="form-label">Email Professionnel</label>
-                <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="admin@talentsync.ai" required autofocus>
+                <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="admin@devafricaarena.ai" required autofocus>
             </div>
 
             <div class="mb-4">

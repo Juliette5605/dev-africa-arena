@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('title', 'Éditions')
-@section('page-title', ' Éditions DevAfrica Arena')
+@section('page-title', ' Éditions DevAfricaArena')
 @section('content')
     <div class="row g-4">
         {{-- Formulaire création --}}
