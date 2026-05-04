@@ -218,6 +218,14 @@
     if ($candidature?->finaliste) {
         $currentStatus = ['label' => 'Finaliste confirme', 'bg' => 'rgba(2,132,199,0.12)', 'color' => '#0284c7'];
     }
+
+    $scoreConfig = [
+        1 => ['label' => 'Faible', 'bg' => 'rgba(220,38,38,0.10)', 'color' => '#dc2626'],
+        2 => ['label' => 'Moyen', 'bg' => 'rgba(217,119,6,0.12)', 'color' => '#d97706'],
+        3 => ['label' => 'Bon', 'bg' => 'rgba(2,132,199,0.12)', 'color' => '#0284c7'],
+        4 => ['label' => 'Très bon', 'bg' => 'rgba(22,163,74,0.12)', 'color' => '#16a34a'],
+        5 => ['label' => 'Excellent', 'bg' => 'rgba(22,163,74,0.12)', 'color' => '#16a34a'],
+    ];
 @endphp
 
 <section class="participant-shell">
@@ -372,6 +380,27 @@
             </div>
 
             <div class="col-lg-5">
+                {{-- SECTION AJOUTÉE : LIEN DE VOTE --}}
+                @if(isset($voteUrl) && $voteUrl)
+                <div class="participant-card mb-3" data-aos="zoom-in" style="border: 2px solid #f39c12; background: #fffcf5;">
+                    <p class="text-muted small text-uppercase fw-bold mb-1" style="letter-spacing:1px;">🚀 Partagez votre profil</p>
+                    <h4 class="fw-bold mb-2 text-warning">Récoltez des votes !</h4>
+                    <p class="small text-muted mb-3">Utilisez ce lien unique pour que le public puisse voter pour vous.</p>
+                    
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control bg-white" value="{{ $voteUrl }}" id="voteInput" readonly style="border-radius: 12px 0 0 12px; border-color: #f39c12;">
+                        <button class="btn btn-gold" type="button" onclick="copyVoteLink()" style="border-radius: 0 12px 12px 0;">
+                            <i class="bi bi-clipboard"></i>
+                        </button>
+                    </div>
+                    <div class="d-grid">
+                        <a href="https://wa.me/?text={{ urlencode('Soutenez-moi pour le concours DevAfricaArena en votant pour mon profil ici : ' . $voteUrl) }}" target="_blank" class="btn btn-success rounded-pill btn-sm">
+                            <i class="bi bi-whatsapp"></i> Partager sur WhatsApp
+                        </a>
+                    </div>
+                </div>
+                @endif
+
                 <div class="participant-card mb-3" data-aos="fade-up" data-aos-delay="100">
                     <p class="text-muted small text-uppercase fw-bold mb-1" style="letter-spacing:1px;">Mon dossier</p>
                     <h4 class="fw-bold mb-3">Recapitulatif participant</h4>
@@ -419,6 +448,29 @@
                         @endif
                     </div>
 
+                    @if($candidature && ($candidature->score_ia || $candidature->analyse_ia))
+                        @php
+                            $aiScore = $scoreConfig[$candidature->score_ia] ?? ['label' => 'Évalué', 'bg' => 'rgba(243,156,18,0.12)', 'color' => '#f39c12'];
+                        @endphp
+                        <div class="mb-3 p-3 rounded-4" style="background:rgba(2,132,199,0.04);border:1px solid rgba(2,132,199,0.12);">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                <div>
+                                    <p class="text-muted small text-uppercase fw-bold mb-1" style="letter-spacing:1px;">Analyse IA du dossier</p>
+                                    <h5 class="fw-bold mb-0">Score automatisé</h5>
+                                </div>
+                                @if($candidature->score_ia)
+                                    <span class="mini-badge" style="background:{{ $aiScore['bg'] }};color:{{ $aiScore['color'] }};">
+                                        {{ $candidature->score_ia }}/5 · {{ $aiScore['label'] }}
+                                    </span>
+                                @endif
+                            </div>
+
+                            @if($candidature->analyse_ia)
+                                <p class="mb-0 mt-3 text-muted">{{ $candidature->analyse_ia }}</p>
+                            @endif
+                        </div>
+                    @endif
+
                     @if($candidature)
                         <p class="text-muted mb-3">
                             Ces outils utilisent votre dernier dossier pour generer un CV, preparer une lettre de motivation
@@ -450,12 +502,19 @@
                             Cliquez sur une action pour lancer l'assistant IA a partir de votre candidature.
                         </div>
                     @else
-                        <div class="empty-state">
-                            <div style="font-size:2rem;">🤖</div>
-                            <h5 class="fw-bold mt-3">Assistant IA indisponible sans dossier</h5>
-                            <p class="text-muted mb-0">
-                                Soumettez d'abord votre candidature pour activer la generation de CV, la lettre et le matching.
+                        <div class="empty-state" style="border-style:solid;background:rgba(243,156,18,0.05);">
+                            <div class="mb-2" style="font-size:2.2rem;">🤖</div>
+                            <div class="mini-badge mb-3" style="background:rgba(243,156,18,0.12);color:#f39c12;">
+                                IA synchronisée avec le backend
+                            </div>
+                            <h5 class="fw-bold mt-2">Assistant IA prêt à l'emploi</h5>
+                            <p class="text-muted mb-3">
+                                Le module IA du dashboard participant est bien actif. Soumettez votre candidature pour débloquer
+                                automatiquement le CV, la lettre de motivation et le matching d'opportunités.
                             </p>
+                            <a href="{{ route('criteres') }}" class="btn-gold">
+                                <i class="bi bi-send-check"></i> Créer ma candidature
+                            </a>
                         </div>
                     @endif
                 </div>
@@ -509,9 +568,20 @@
 </section>
 @endsection
 
-@if($candidature)
 @push('scripts')
 <script>
+{{-- SCRIPT DE COPIE DU LIEN --}}
+function copyVoteLink() {
+    var copyText = document.getElementById("voteInput");
+    if (!copyText) return;
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // Pour mobile
+    navigator.clipboard.writeText(copyText.value).then(() => {
+        alert("Lien de vote copié avec succès !");
+    });
+}
+
+@if($candidature)
 const participantAIRoutes = {
     cv: @json(route('dashboard.ai.cv')),
     letter: @json(route('dashboard.ai.letter')),
@@ -622,6 +692,6 @@ async function matchParticipantOpportunities() {
 
     setAiResult(`${content}${data.warning ? `\n\nNote: ${data.warning}` : ''}`);
 }
+@endif
 </script>
 @endpush
-@endif

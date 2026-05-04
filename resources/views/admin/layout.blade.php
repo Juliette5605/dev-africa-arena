@@ -57,12 +57,6 @@
         .badge-inter  { background:rgba(2,132,199,0.1);color:#0284c7; }
         .alert-admin  { border-radius:12px;border:none;padding:14px 18px;font-size:0.88rem; }
 
-        /* MAINTENANCE BANNER */
-        @php $maintenanceOn = \App\Models\Setting::get('maintenance_mode') === '1'; @endphp
-        @if($maintenanceOn ?? false)
-        .maintenance-banner { background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;text-align:center;padding:10px;font-weight:700;font-size:0.85rem;position:sticky;top:0;z-index:300; }
-        @endif
-
         @media(max-width:991px){.sidebar{transform:translateX(-100%);}.main-content{margin-left:0;}}
     </style>
     @stack('styles')
@@ -90,7 +84,6 @@
         <p>Admin Panel</p>
     </div>
 
-    {{-- Recherche globale --}}
     <div class="sidebar-search">
         <form action="{{ route('admin.search') }}" method="GET">
             <input type="text" name="q" placeholder="🔍 Recherche globale..." value="{{ request('q') }}">
@@ -143,6 +136,15 @@
                 <i class="bi bi-send-fill"></i> Envoyer newsletter
             </a>
             @endif
+
+            {{-- ── VOTES (nouveau) ─────────────────────────────────── --}}
+            <a href="{{ route('admin.votes.index') }}" class="sidebar-link {{ request()->routeIs('admin.votes*') ? 'active' : '' }}"
+               style="{{ request()->routeIs('admin.votes*') ? '' : 'color:rgba(243,156,18,0.8);' }}">
+                <i class="bi bi-trophy-fill"></i> Votes & Classement
+                <span class="sidebar-badge" style="background:rgba(243,156,18,0.2);color:#f39c12;">
+                    {{ \App\Models\Vote::where('status','confirmed')->count() }}
+                </span>
+            </a>
         </div>
 
         <div class="sidebar-section">
@@ -161,9 +163,9 @@
             <a href="{{ route('admin.logs') }}" class="sidebar-link {{ request()->routeIs('admin.logs') ? 'active' : '' }}">
                 <i class="bi bi-clock-history"></i> Logs d'activité
             </a>
-        <a href="{{ route('admin.devafricaarena') }}" class="sidebar-link {{ request()->routeIs('admin.devafricaarena*') ? 'active' : '' }}">
-            DevAfricaArena
-        </a>
+            <a href="{{ route('admin.devafricaarena') }}" class="sidebar-link {{ request()->routeIs('admin.devafricaarena*') ? 'active' : '' }}">
+                <i class="bi bi-cpu-fill"></i> DevAfricaArena
+            </a>
             <a href="{{ route('admin.qrcode') }}" class="sidebar-link {{ request()->routeIs('admin.qrcode') ? 'active' : '' }}">
                 <i class="bi bi-qr-code"></i> QR Code
             </a>
@@ -194,7 +196,7 @@
         <div class="px-2 mb-3">
             @if(auth('admin')->user()?->isSuperAdmin())
                 <span class="badge w-100 py-2 rounded-3 fw-bold" style="background:rgba(243,156,18,0.15);color:#f39c12;font-size:0.68rem;">
-                    👑 Super Administrateur
+                     Super Administrateur
                 </span>
             @else
                 <span class="badge w-100 py-2 rounded-3 fw-bold" style="background:rgba(107,114,128,0.15);color:#9ca3af;font-size:0.68rem;">

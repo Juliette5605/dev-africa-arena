@@ -7,47 +7,54 @@
     .quiz-page {
         min-height: calc(100vh - 90px);
         padding: 34px 0 52px;
-        background:
-            radial-gradient(circle at top right, rgba(243, 156, 18, 0.12), transparent 30%),
-            linear-gradient(180deg, #fffaf3 0%, #ffffff 55%, #fff7eb 100%);
+        background: radial-gradient(circle at top right, rgba(243, 156, 18, 0.12), transparent 30%),
+                    linear-gradient(180deg, #fffaf3 0%, #ffffff 55%, #fff7eb 100%);
     }
-    .quiz-card,
-    .quiz-empty {
-        background: rgba(255, 255, 255, 0.94);
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        border-radius: 28px;
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.06);
+    .quiz-card { padding: 28px; background: rgba(255, 255, 255, 0.94); border-radius: 28px; box-shadow: 0 18px 50px rgba(0,0,0,0.06); }
+    
+    .timer-container {
+        width: 100%;
+        height: 8px;
+        background: #eee;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        overflow: hidden;
     }
-    .quiz-card {
-        padding: 28px;
+    .timer-bar {
+        height: 100%;
+        background: #f39c12;
+        width: 100%;
+        transition: width 1s linear, background-color 0.3s;
     }
-    .quiz-empty {
-        padding: 42px 28px;
-        text-align: center;
+    .timer-text { font-weight: 800; color: #f39c12; font-size: 1.2rem; }
+    
+    .q-card { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
+
     .quiz-option {
-        border: 1px solid rgba(243, 156, 18, 0.18);
+        border: 2px solid transparent;
         border-radius: 18px;
         padding: 16px 18px;
         background: #fffdf8;
-        color: #333;
         font-weight: 700;
-        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        transition: all 0.2s ease;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
-    .quiz-option:hover {
-        transform: translateY(-2px);
-        border-color: rgba(243, 156, 18, 0.5);
-        background: #fff8eb;
-    }
-    .quiz-option.is-correct {
-        background: rgba(22, 163, 74, 0.12);
-        border-color: rgba(22, 163, 74, 0.35);
-        color: #166534;
-    }
-    .quiz-option.is-wrong {
-        background: rgba(220, 38, 38, 0.08);
-        border-color: rgba(220, 38, 38, 0.25);
-        color: #b91c1c;
+    .quiz-option:hover:not(:disabled) { transform: translateY(-2px); background: #fff8eb; border-color: #f39c12; }
+    .quiz-option.is-correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534; }
+    .quiz-option.is-wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c; }
+    
+    .explanation-box {
+        display: none;
+        background: #f0fdf4;
+        border-left: 4px solid #22c55e;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 8px;
     }
 </style>
 @endpush
@@ -56,66 +63,75 @@
 <section class="quiz-page">
     <div class="container">
         @if($questions->isEmpty())
-            <div class="quiz-empty">
+            <div class="quiz-empty text-center p-5 card shadow-sm border-0">
                 <div style="font-size:2.8rem;">🧠</div>
-                <h1 class="fw-bold mt-3 mb-2">Quiz Arena indisponible pour le moment</h1>
-                <p class="text-muted mb-4">
-                    Aucune question n'a encore ete trouvee pour ce niveau ou ce domaine. Vous pouvez revenir plus tard
-                    ou essayer avec une autre combinaison.
-                </p>
-                <a href="{{ route('home') }}" class="btn-gold">Retour a l'accueil</a>
+                <h1 class="fw-bold mt-3 mb-2">Quiz Arena indisponible</h1>
+                <p class="text-muted mb-4">Aucune question trouvée. L'IA prépare de nouveaux défis !</p>
+                <a href="{{ route('home') }}" class="btn btn-warning fw-bold">Retour à l'accueil</a>
             </div>
         @else
             <div class="quiz-card">
-                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+                {{-- Affichage du fallback si l'IA a échoué --}}
+                @if(isset($ai_fallback) && $ai_fallback)
+                <div class="alert alert-info border-0 shadow-sm mb-4 rounded-4">
+                    🤖 <strong>Note :</strong> Le mode IA est surchargé. Nous avons chargé des questions de notre base de données pour vous !
+                </div>
+                @endif
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
                     <div>
-                        <span class="section-badge mb-2">Quiz Arena</span>
-                        <h1 class="fw-bold mb-1">Challenge de connaissances</h1>
-                        <p class="text-muted mb-0">
-                            Domaine: <strong>{{ ucfirst($domaine) }}</strong> · Niveau: <strong>{{ ucfirst($niveau) }}</strong>
-                        </p>
+                        <span class="badge bg-warning text-dark mb-2">MODE {{ $modeIa ? 'IA EXPERT' : 'STANDARD' }}</span>
+                        <h1 class="fw-bold mb-1 h3">Challenge : {{ ucfirst($domaine) }}</h1>
                     </div>
-                    <span class="mini-badge" style="background:rgba(243,156,18,0.12);color:#f39c12;padding:8px 14px;border-radius:999px;font-weight:800;">
-                        {{ $questions->count() }} questions
-                    </span>
+                    <div class="text-end" id="timer-wrapper">
+                        <div class="timer-text" id="timer-display">30s</div>
+                        <small class="text-muted">Temps restant</small>
+                    </div>
+                </div>
+
+                <div class="timer-container" id="progress-wrapper">
+                    <div id="timer-bar" class="timer-bar"></div>
                 </div>
 
                 <div id="quiz-steps">
                     @foreach($questions as $index => $question)
                         <div class="q-card" data-step="{{ $index }}" style="{{ $index > 0 ? 'display:none;' : '' }}">
                             <div class="mb-4">
-                                <span class="section-badge mb-2">Question {{ $index + 1 }} / {{ $questions->count() }}</span>
-                                <h2 class="fw-bold mb-0">{{ $question->enonce }}</h2>
+                                <span class="text-muted fw-bold">QUESTION {{ $index + 1 }} SUR {{ $questions->count() }}</span>
+                                {{-- Utilisation du ?? pour gérer les noms de colonnes BDD vs IA --}}
+                                <h2 class="fw-bold mt-2 h4">{{ $question->enonce ?? $question->texte }}</h2>
                             </div>
 
-                            <div class="d-grid gap-3">
+                            <div class="d-grid gap-3 options-container">
                                 @foreach($question->options as $option)
-                                    <button
-                                        type="button"
-                                        class="quiz-option option-btn text-start"
-                                        data-correct="{{ $option->est_correcte ? 1 : 0 }}"
-                                    >
+                                    <button type="button" class="quiz-option option-btn text-start" 
+                                            data-correct="{{ (bool)$option->est_correcte ? 1 : 0 }}">
                                         {{ $option->texte }}
                                     </button>
                                 @endforeach
                             </div>
+
+                            @if(!empty($question->explication))
+                            <div class="explanation-box mt-3" id="expl-{{ $index }}">
+                                <strong>💡 Le saviez-vous ?</strong><br>
+                                {{ $question->explication }}
+                            </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>
 
+                <!-- Résultats finaux -->
                 <div id="final-results" class="text-center py-4" style="display:none;">
-                    <h2 class="fw-bold mb-2">Challenge termine</h2>
-                    <p class="text-muted mb-3">Votre score final est maintenant calcule.</p>
-                    <p class="fs-4 fw-bold">
-                        Score: <span id="score-val">0</span> / {{ $questions->count() }}
-                    </p>
-                    <div class="d-flex justify-content-center gap-2 flex-wrap mt-4">
-                        <a href="{{ route('quiz.play', ['domaine' => $domaine, 'niveau' => $niveau]) }}" class="btn-gold">
-                            Rejouer ce quiz
-                        </a>
-                        <a href="{{ route('home') }}" class="btn-outline-gold">
-                            Retour
-                        </a>
+                    <div style="font-size:4rem;">🏆</div>
+                    <h2 class="fw-bold mb-2">Challenge terminé !</h2>
+                    <div class="display-4 fw-bold text-warning mb-3">
+                        <span id="score-val">0</span> / {{ $questions->count() }}
+                    </div>
+                    <p id="feedback-text" class="fs-5 mb-4"></p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url()->full() }}" class="btn btn-warning px-4 py-2 fw-bold shadow-sm">Rejouer</a>
+                        <a href="{{ route('home') }}" class="btn btn-outline-dark px-4 py-2">Quitter</a>
                     </div>
                 </div>
             </div>
@@ -123,47 +139,113 @@
     </div>
 </section>
 
-@if($questions->isNotEmpty())
 @push('scripts')
 <script>
-let currentStep = 0;
-let score = 0;
-let locked = false;
+    const totalQuestions = {{ $questions->count() }};
+    let currentStep = 0;
+    let score = 0;
+    let timeLeft = 30;
+    let timerInterval;
+    let locked = false;
 
-document.querySelectorAll('.option-btn').forEach((btn) => {
-    btn.addEventListener('click', function () {
+    function startTimer() {
+        timeLeft = 30;
+        updateTimerDisplay();
+        
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                handleTimeOut();
+            }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const bar = document.getElementById('timer-bar');
+        const display = document.getElementById('timer-display');
+        if (!bar || !display) return;
+
+        const percentage = (timeLeft / 30) * 100;
+        bar.style.width = percentage + '%';
+        display.textContent = timeLeft + 's';
+        
+        bar.style.backgroundColor = (timeLeft <= 10) ? '#e74c3c' : '#f39c12';
+    }
+
+    function handleTimeOut() {
         if (locked) return;
         locked = true;
 
-        if (this.dataset.correct === '1') {
-            score++;
-            this.classList.add('is-correct');
+        const currentCard = document.querySelector(`[data-step="${currentStep}"]`);
+        const correctBtn = currentCard.querySelector('[data-correct="1"]');
+        if (correctBtn) correctBtn.classList.add('is-correct');
+
+        const expl = document.getElementById(`expl-${currentStep}`);
+        if (expl) expl.style.display = 'block';
+
+        setTimeout(nextQuestion, 3000);
+    }
+
+    function nextQuestion() {
+        const currentCard = document.querySelector(`[data-step="${currentStep}"]`);
+        if(currentCard) currentCard.style.display = 'none';
+        
+        currentStep++;
+
+        const nextCard = document.querySelector(`[data-step="${currentStep}"]`);
+        if (nextCard) {
+            nextCard.style.display = 'block';
+            locked = false;
+            startTimer();
         } else {
-            this.classList.add('is-wrong');
+            showFinalResults();
         }
+    }
 
-        setTimeout(() => {
-            const currentCard = document.querySelector(`[data-step="${currentStep}"]`);
-            if (currentCard) {
-                currentCard.style.display = 'none';
+    function showFinalResults() {
+        clearInterval(timerInterval);
+        document.getElementById('quiz-steps').style.display = 'none';
+        document.getElementById('progress-wrapper').style.display = 'none';
+        document.getElementById('timer-wrapper').style.display = 'none';
+        document.getElementById('final-results').style.display = 'block';
+        document.getElementById('score-val').textContent = score;
+        
+        const feedback = document.getElementById('feedback-text');
+        if (score === totalQuestions) feedback.textContent = "Incroyable Juliette ! Tu es une véritable experte.";
+        else if (score >= totalQuestions / 2) feedback.textContent = "Pas mal ! Tu as de bonnes bases pour le hackathon.";
+        else feedback.textContent = "Continue d'apprendre, le succès est au bout de l'effort !";
+    }
+
+    document.querySelectorAll('.option-btn').forEach((btn) => {
+        btn.addEventListener('click', function () {
+            if (locked) return;
+            locked = true;
+            clearInterval(timerInterval);
+
+            const isCorrect = this.dataset.correct === '1';
+            const container = this.closest('.q-card');
+
+            if (isCorrect) {
+                score++;
+                this.classList.add('is-correct');
+            } else {
+                this.classList.add('is-wrong');
+                const correctBtn = container.querySelector('[data-correct="1"]');
+                if(correctBtn) correctBtn.classList.add('is-correct');
             }
 
-            currentStep++;
+            const expl = document.getElementById(`expl-${currentStep}`);
+            if (expl) expl.style.display = 'block';
 
-            const nextCard = document.querySelector(`[data-step="${currentStep}"]`);
-            if (nextCard) {
-                nextCard.style.display = 'block';
-                locked = false;
-                return;
-            }
-
-            document.getElementById('quiz-steps').style.display = 'none';
-            document.getElementById('final-results').style.display = 'block';
-            document.getElementById('score-val').textContent = score;
-        }, 650);
+            setTimeout(nextQuestion, 2500);
+        });
     });
-});
+
+    if (totalQuestions > 0) startTimer();
 </script>
 @endpush
-@endif
 @endsection

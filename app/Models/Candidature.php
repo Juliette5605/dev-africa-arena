@@ -12,8 +12,8 @@ class Candidature extends Model {
         'nom', 'prenom', 'email', 'age', 'niveau', 'pays', 'expertise',
         'diplome', 'motivation', 'vision', 'read_at',
         'note', 'commentaire_admin', 'finaliste', 'statut',
-        'score_ia',   //  AJOUTÉ : Pour autoriser l'enregistrement du score
-        'analyse_ia'  //  AJOUTÉ : Pour autoriser l'enregistrement de l'analyse
+        'score_ia',
+        'analyse_ia'
     ];
 
     protected $casts = [
@@ -21,13 +21,25 @@ class Candidature extends Model {
         'read_at'   => 'datetime',
         'note'      => 'integer',
         'finaliste' => 'boolean',
-        'score_ia'  => 'integer', //  AJOUTÉ : Pour traiter le score comme un nombre
+        'score_ia'  => 'integer',
     ];
 
+    // ── RELATIONS VOTE ────────────────────────────────────────────
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
+
+    public function voteLink()
+    {
+        return $this->hasOne(VoteLink::class);
+    }
+
+    // ── SCOPES & HELPERS ─────────────────────────────────────────
     public function isRead(): bool  { return !is_null($this->read_at); }
-    
-    public function markAsRead(): void { 
-        if (!$this->isRead()) $this->update(['read_at' => now()]); 
+
+    public function markAsRead(): void {
+        if (!$this->isRead()) $this->update(['read_at' => now()]);
     }
 
     public function scopeUnread($q)     { return $q->whereNull('read_at'); }
@@ -35,17 +47,17 @@ class Candidature extends Model {
 
     public function getStatutColorAttribute(): string {
         return match($this->statut) {
-            'retenu'    => '#16a34a',
-            'refuse'    => '#dc2626',
-            default     => '#f39c12',
+            'retenu'  => '#16a34a',
+            'refuse'  => '#dc2626',
+            default   => '#f39c12',
         };
     }
 
     public function getStatutLabelAttribute(): string {
         return match($this->statut) {
-            'retenu'    => ' Retenu',
-            'refuse'    => ' Refusé',
-            default     => ' En attente',
+            'retenu'  => ' Retenu',
+            'refuse'  => ' Refusé',
+            default   => ' En attente',
         };
     }
 }

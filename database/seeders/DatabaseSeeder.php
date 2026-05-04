@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ── Admin ─────────────────────────
-        Admin::firstOrCreate(
+        // ── Admin Backend (/admin) ────────────────────────────────
+        Admin::updateOrCreate(
             ['email' => 'alex.wilson@devafricaarena.ai'],
             [
                 'name'     => 'Adjété Alex WILSON',
@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // ── Edition ───────────────────────
+        // ── Édition ───────────────────────────────────────────────
         Edition::firstOrCreate(
             ['nom' => 'DevAfricaArena Edition #1 — Saison 2026'],
             [
@@ -33,62 +33,59 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // ── Quiz ─────────────────────────
+        // ── Quiz ──────────────────────────────────────────────────
         $this->seedHighLevelQuizzes();
 
-        $this->command->info('🔥 DB prête avec Quiz intelligents');
+        $this->command->info('🔥 DB prête — Admin : alex.wilson@devafricaarena.ai / DevAfricaArena2026@Admin');
     }
 
-    private function seedHighLevelQuizzes()
+    private function seedHighLevelQuizzes(): void
     {
         $data = [
             [
-                'domaine' => 'ia',
-                'niveau' => 'avance',
-                'type' => 'open_question',
-                'points' => 20,
-                'enonce' => "Pourquoi le Gradient Clipping est indispensable dans les RNN ?",
+                'domaine'     => 'ia',
+                'niveau'      => 'avance',
+                'type'        => 'open_question',
+                'points'      => 20,
+                'enonce'      => "Pourquoi le Gradient Clipping est indispensable dans les RNN ?",
                 'explication' => "Empêche l'explosion du gradient.",
                 'options' => [
-                    ['t' => "Accélérer Adam", 'c' => false],
+                    ['t' => "Accélérer Adam",               'c' => false],
                     ['t' => "Éviter explosion du gradient", 'c' => true],
-                    ['t' => "Réduire taille modèle", 'c' => false],
+                    ['t' => "Réduire taille modèle",        'c' => false],
                 ]
             ],
             [
-                'domaine' => 'web',
-                'niveau' => 'intermediaire',
-                'type' => 'qcm',
-                'points' => 10,
-                'enonce' => "Différence entre interface et classe abstraite en PHP ?",
+                'domaine'     => 'web',
+                'niveau'      => 'intermediaire',
+                'type'        => 'qcm',
+                'points'      => 10,
+                'enonce'      => "Différence entre interface et classe abstraite en PHP ?",
                 'explication' => "Interface = contrat, classe abstraite = logique possible.",
                 'options' => [
                     ['t' => "Interface permet multi-implémentation", 'c' => true],
-                    ['t' => "Classe abstraite sans constructeur", 'c' => false],
+                    ['t' => "Classe abstraite sans constructeur",     'c' => false],
                 ]
             ]
         ];
 
         foreach ($data as $item) {
-
-            // 🔥 éviter doublons
-            $exists = Question::where('enonce', $item['enonce'])->first();
-            if ($exists) continue;
+            if (Question::where('enonce', $item['enonce'])->exists()) continue;
 
             $q = Question::create([
-                'domaine' => $item['domaine'],
-                'niveau' => $item['niveau'],
-                'type' => $item['type'],
-                'points' => $item['points'],
-                'enonce' => $item['enonce'],
+                'domaine'     => $item['domaine'],
+                'niveau'      => $item['niveau'],
+                'type'        => $item['type'],
+                'points'      => $item['points'],
+                'enonce'      => $item['enonce'],
                 'explication' => $item['explication'],
             ]);
 
             foreach ($item['options'] as $opt) {
                 QuestionOption::create([
-                    'question_id' => $q->id,
-                    'texte' => $opt['t'],
-                    'est_correcte' => $opt['c']
+                    'question_id'  => $q->id,
+                    'texte'        => $opt['t'],
+                    'est_correcte' => $opt['c'],
                 ]);
             }
         }

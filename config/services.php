@@ -6,12 +6,6 @@ return [
     |--------------------------------------------------------------------------
     | Third Party Services
     |--------------------------------------------------------------------------
-    |
-    | This file is for storing the credentials for third party services such
-    | as Mailgun, Postmark, AWS and more. This file provides the de facto
-    | location for this type of information, allowing packages to have
-    | a conventional file to locate the various service credentials.
-    |
     */
 
     'mailgun' => [
@@ -33,16 +27,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | IA Orientation - DevAfricaArena Configuration
+    | Anthropic (Claude IA) Configuration
     |--------------------------------------------------------------------------
-    | Ces réglages permettent de connecter l'application à l'API d'IA.
-    | Les valeurs réelles sont stockées en toute sécurité dans le fichier .env
     */
+    'anthropic' => [
+        'key' => env('ANTHROPIC_API_KEY'),
+    ],
 
-    'ia' => [
-        'url'   => env('IA_SERVICE_URL', 'https://api.openai.com/v1/chat/completions'),
-        'key'   => env('IA_API_KEY'),
-        'model' => env('IA_MODEL', 'gpt-4-turbo'),
+    /*
+    |--------------------------------------------------------------------------
+    | Google Gemini IA Configuration (Utilisé pour DevAfricaArena)
+    |--------------------------------------------------------------------------
+    */
+    'gemini' => [
+        'key' => env('GEMINI_API_KEY'),
     ],
 
 ];

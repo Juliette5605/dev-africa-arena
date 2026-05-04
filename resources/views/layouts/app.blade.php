@@ -107,6 +107,254 @@
         .btn-nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(243,156,18,0.25); color: #fff !important; }
         .btn-nav-cta::after { display: none !important; }
 
+        /* ── BOUTON YIN-YANG NAVBAR ────────────────────────────── */
+        /* ── BOUTON YIN-YANG COMPACT ───────────────────────────── */
+        .btn-yinyang-inner {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+            font-family: inherit;
+            padding: 0;
+        }
+        .btn-yinyang-inner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(243,156,18,0.28);
+        }
+        .yin-half {
+            background: #1a1a1a;
+            color: #f39c12;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 9px 14px;
+        }
+        .yang-half {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 9px 14px;
+        }
+        .yin-yang-sep {
+            width: 2px;
+            height: 36px;
+            background: rgba(255,255,255,0.15);
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           MODAL YIN-YANG
+        ═══════════════════════════════════════════════════════════ */
+        #authModal {
+            display: none;
+            position: fixed; inset: 0; z-index: 9998;
+            align-items: center; justify-content: center;
+        }
+        #authModal.open { display: flex; }
+
+        .auth-backdrop {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.25s ease;
+        }
+
+        .auth-card {
+            position: relative; z-index: 1;
+            width: 100%; max-width: 460px;
+            margin: 20px;
+            background: #111;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.7);
+            animation: slideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Bandeau yin-yang en haut */
+        .auth-header {
+            display: flex;
+            height: 6px;
+        }
+        .auth-header .h-dark { flex: 1; background: #1a1a1a; }
+        .auth-header .h-gold { flex: 1; background: var(--gradient); }
+
+        .auth-body { padding: 36px 36px 28px; }
+
+        /* Logo + titre */
+        .auth-brand {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .auth-brand-icon {
+            width: 52px; height: 52px;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            border-radius: 16px;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: #f39c12;
+            margin-bottom: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        .auth-brand h2 {
+            color: #fff; font-size: 1.3rem; font-weight: 800; margin: 0 0 4px;
+        }
+        .auth-brand p {
+            color: rgba(255,255,255,0.45); font-size: 0.78rem; margin: 0;
+        }
+
+        /* Onglets */
+        .auth-tabs {
+            display: flex;
+            background: rgba(255,255,255,0.05);
+            border-radius: 14px;
+            padding: 4px;
+            margin-bottom: 26px;
+            gap: 4px;
+        }
+        .auth-tab {
+            flex: 1; text-align: center;
+            padding: 10px 0;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            color: rgba(255,255,255,0.35);
+            transition: 0.25s;
+            border: none; background: transparent;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .auth-tab.active-login {
+            background: #1a1a1a;
+            color: #f39c12;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .auth-tab.active-register {
+            background: var(--gradient);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(243,156,18,0.3);
+        }
+
+        /* Erreurs */
+        .auth-error {
+            background: rgba(220,53,69,0.12);
+            border: 1px solid rgba(220,53,69,0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #ffb8c0;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        /* Champs */
+        .auth-group { margin-bottom: 14px; }
+        .auth-label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+        .auth-input {
+            width: 100%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.88rem;
+            transition: 0.2s;
+            outline: none;
+        }
+        .auth-input:focus { border-color: #f39c12; background: rgba(243,156,18,0.05); }
+        .auth-input::placeholder { color: rgba(255,255,255,0.2); }
+
+        .auth-row { display: flex; gap: 10px; }
+        .auth-row .auth-group { flex: 1; }
+
+        /* Bouton submit */
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            border: none; border-radius: 13px;
+            font-family: inherit;
+            font-size: 0.88rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: 0.3s;
+        }
+        .auth-btn-login {
+            background: #1a1a1a;
+            color: #f39c12;
+            border: 1px solid rgba(243,156,18,0.3);
+        }
+        .auth-btn-login:hover { background: #222; box-shadow: 0 8px 20px rgba(0,0,0,0.4); transform: translateY(-2px); }
+        .auth-btn-register {
+            background: var(--gradient);
+            color: #fff;
+        }
+        .auth-btn-register:hover { box-shadow: 0 8px 20px rgba(243,156,18,0.35); transform: translateY(-2px); }
+
+        /* Switch bas */
+        .auth-switch {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.3);
+        }
+        .auth-switch button {
+            background: none; border: none;
+            color: #f39c12; font-weight: 700;
+            cursor: pointer; font-family: inherit;
+            font-size: inherit; padding: 0;
+            text-decoration: underline;
+        }
+
+        /* Captcha */
+        .captcha-box {
+            background: rgba(243,156,18,0.06);
+            border: 1px dashed rgba(243,156,18,0.25);
+            padding: 10px 14px;
+            border-radius: 10px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .captcha-box span { font-size: 0.82rem; font-weight: 700; color: #f39c12; flex: 1; }
+        .captcha-box input { width: 60px; text-align: center; flex-shrink: 0; }
+
+        /* Fermer */
+        .auth-close {
+            position: absolute; top: 16px; right: 16px;
+            width: 32px; height: 32px; border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: none; color: rgba(255,255,255,0.5);
+            font-size: 1rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s; z-index: 2;
+        }
+        .auth-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp {
+            from { transform: translateY(40px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
         /* ═══════════════════════════════════════════════════════════
            GLOBAL UTILITIES
         ═══════════════════════════════════════════════════════════ */
@@ -259,42 +507,47 @@
                             <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.sponsors') }}">Sponsors</a></li>
                         </ul>
                     </li>
+
                     @auth
+                        {{-- Utilisateur connecté --}}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{ request()->routeIs('dashboard') || request()->routeIs('quiz.*') || request()->routeIs('forum.*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle {{ request()->routeIs('dashboard') || request()->routeIs('quiz.*') || request()->routeIs('forum.*') || request()->routeIs('vote.*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
                                 Arena
                             </a>
                             <ul class="dropdown-menu border-0 shadow-sm rounded-4 p-2">
-                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('dashboard') }}">Mon Dashboard</a></li>
-                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('quiz.play') }}">Quiz Arena</a></li>
-                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('forum.index') }}">Forum Arena</a></li>
+                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('dashboard') }}">
+                                    <i class="bi bi-grid me-2 text-muted"></i>Mon Dashboard
+                                </a></li>
+                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('quiz.play') }}">
+                                    <i class="bi bi-lightning me-2 text-muted"></i>Quiz Arena
+                                </a></li>
+                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('forum.index') }}">
+                                    <i class="bi bi-chat-dots me-2 text-muted"></i>Forum Arena
+                                </a></li>
+                                <li><hr class="dropdown-divider mx-2 my-1"></li>
+                                <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('vote.leaderboard') }}"
+                                       style="color: #f39c12;">
+                                    <i class="bi bi-trophy me-2"></i>Votes & Classement
+                                </a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-gold py-2 px-4 {{ request()->routeIs('contact') ? 'active' : '' }}"
-                               href="{{ route('contact') }}"
+                            <a class="btn btn-gold py-2 px-4" href="{{ route('contact') }}"
                                style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;font-weight:800;padding:8px 25px;border-radius:15px;border:none;text-decoration:none;font-size:0.85rem;">
                                 Contact
                             </a>
                         </li>
                     @else
+                        {{-- ── BOUTON YIN-YANG : UN SEUL BOUTON pour Connexion + Inscription ── --}}
                         <li class="nav-item ms-lg-2">
-                            <a class="btn btn-outline-gold py-2 px-4 {{ request()->routeIs('login') ? 'active' : '' }}"
-                               href="{{ route('login') }}"
-                               style="padding:8px 25px;border-radius:15px;font-size:0.85rem;">
-                                Connexion
-                            </a>
+                            <button class="btn-yinyang-inner" onclick="openAuth('login')" title="Connexion / Inscription">
+                                <span class="yin-half" onclick="openAuth('login')">Connex.</span>
+                                <span class="yin-yang-sep"></span>
+                                <span class="yang-half" onclick="openAuth('register')">Inscript.</span>
+                            </button>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-gold py-2 px-4 {{ request()->routeIs('register') ? 'active' : '' }}"
-                               href="{{ route('register') }}"
-                               style="background:linear-gradient(135deg,#222,#444);color:#fff;font-weight:800;padding:8px 25px;border-radius:15px;border:none;text-decoration:none;font-size:0.85rem;">
-                                Inscription
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-gold py-2 px-4 {{ request()->routeIs('contact') ? 'active' : '' }}"
-                               href="{{ route('contact') }}"
+                            <a class="btn btn-gold py-2 px-4" href="{{ route('contact') }}"
                                style="background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;font-weight:800;padding:8px 25px;border-radius:15px;border:none;text-decoration:none;font-size:0.85rem;">
                                 Contact
                             </a>
@@ -305,6 +558,117 @@
         </div>
     </div>
 </nav>
+
+{{-- ═══════════════════════════════════════════════════════════
+     MODAL YIN-YANG CONNEXION / INSCRIPTION
+═══════════════════════════════════════════════════════════ --}}
+@guest
+<div id="authModal" role="dialog" aria-modal="true" aria-label="Espace candidat">
+    <div class="auth-backdrop" onclick="closeAuth()"></div>
+    <div class="auth-card">
+
+        {{-- Bandeau yin-yang --}}
+        <div class="auth-header">
+            <div class="h-dark"></div>
+            <div class="h-gold"></div>
+        </div>
+
+        <button class="auth-close" onclick="closeAuth()" aria-label="Fermer">
+            <i class="bi bi-x"></i>
+        </button>
+
+        <div class="auth-body">
+
+            {{-- Brand --}}
+            <div class="auth-brand">
+                <div class="auth-brand-icon"><i class="bi bi-cpu-fill"></i></div>
+                <h2>DevAfricaArena</h2>
+                <p>Ton espace candidat personnel</p>
+            </div>
+
+            {{-- Erreurs Laravel --}}
+            @if($errors->any())
+            <div class="auth-error">
+                <i class="bi bi-exclamation-triangle me-1"></i> {{ $errors->first() }}
+            </div>
+            @endif
+
+            {{-- Onglets --}}
+            <div class="auth-tabs">
+                <button class="auth-tab" id="tab-login" onclick="switchTab('login')">
+                    <i class="bi bi-box-arrow-in-right"></i> Connexion
+                </button>
+                <button class="auth-tab" id="tab-register" onclick="switchTab('register')">
+                    <i class="bi bi-person-plus"></i> Inscription
+                </button>
+            </div>
+
+            {{-- FORMULAIRE CONNEXION --}}
+            <form id="form-login" action="/login" method="POST" style="display:none;">
+                @csrf
+                <div class="auth-group">
+                    <label class="auth-label">Email</label>
+                    <input type="email" name="email" class="auth-input" placeholder="nom@exemple.com" required>
+                </div>
+                <div class="auth-group">
+                    <label class="auth-label">Mot de passe</label>
+                    <input type="password" name="password" class="auth-input" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="auth-btn auth-btn-login">
+                    <i class="bi bi-box-arrow-in-right me-1"></i> Se connecter
+                </button>
+                <div class="auth-switch">
+                    Pas encore de compte ?
+                    <button type="button" onclick="switchTab('register')">Créer mon compte</button>
+                </div>
+            </form>
+
+            {{-- FORMULAIRE INSCRIPTION --}}
+            <form id="form-register" action="/register" method="POST" style="display:none;">
+                @csrf
+                <div class="auth-row">
+                    <div class="auth-group">
+                        <label class="auth-label">Prénom</label>
+                        <input type="text" name="first_name" class="auth-input" placeholder="Jean" required>
+                    </div>
+                    <div class="auth-group">
+                        <label class="auth-label">Nom</label>
+                        <input type="text" name="last_name" class="auth-input" placeholder="Koffi" required>
+                    </div>
+                </div>
+                <div class="auth-group">
+                    <label class="auth-label">Date de naissance</label>
+                    <input type="date" name="birthday" class="auth-input" required>
+                </div>
+                <div class="auth-group">
+                    <label class="auth-label">Email professionnel</label>
+                    <input type="email" name="email" class="auth-input" placeholder="nom@entreprise.com" required>
+                </div>
+                <div class="auth-group">
+                    <label class="auth-label">Mot de passe</label>
+                    <input type="password" id="reg-pass" name="password" class="auth-input" placeholder="8+ caractères" required>
+                </div>
+                <input type="hidden" name="password_confirmation" id="reg-pass-confirm">
+                <div class="auth-group">
+                    <label class="auth-label">Vérification humaine</label>
+                    <div class="captcha-box">
+                        <span>Combien font 5 + 3 ?</span>
+                        <input type="text" id="captcha-answer" class="auth-input" placeholder="?" required>
+                    </div>
+                </div>
+                <button type="submit" class="auth-btn auth-btn-register">
+                    <i class="bi bi-person-check me-1"></i> Créer mon compte
+                </button>
+                <div class="auth-switch">
+                    Déjà un compte ?
+                    <button type="button" onclick="switchTab('login')">Me connecter</button>
+                </div>
+            </form>
+
+        </div>{{-- /auth-body --}}
+    </div>{{-- /auth-card --}}
+</div>{{-- /authModal --}}
+@endguest
 
 {{-- PAGE CONTENT --}}
 <main style="padding-top: 90px;">
@@ -354,12 +718,9 @@ AOS.init({ duration: 750, once: true, offset: 60 });
 
 // NAVBAR SCROLL
 window.addEventListener('scroll', () => {
-    // Scroll bar
     const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
     document.getElementById('scroll-bar').style.width = pct + '%';
-    // Navbar shrink
     document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 30);
-    // Back-to-top
     document.getElementById('btn-top').classList.toggle('show', window.scrollY > 400);
 });
 
@@ -368,6 +729,84 @@ setTimeout(() => {
     const f = document.getElementById('flash-msg');
     if (f) { f.style.transition = '0.5s'; f.style.opacity = '0'; setTimeout(() => f.remove(), 500); }
 }, 5000);
+
+// ── MODAL YIN-YANG ─────────────────────────────────────────────────────
+const modal = document.getElementById('authModal');
+
+function openAuth(tab) {
+    if (!modal) return;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    switchTab(tab || 'login');
+}
+
+function closeAuth() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Fermer avec Echap
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAuth(); });
+
+function switchTab(tab) {
+    const fLogin    = document.getElementById('form-login');
+    const fRegister = document.getElementById('form-register');
+    const tLogin    = document.getElementById('tab-login');
+    const tRegister = document.getElementById('tab-register');
+    if (!fLogin || !fRegister) return;
+
+    if (tab === 'register') {
+        fLogin.style.display    = 'none';
+        fRegister.style.display = 'block';
+        tLogin.classList.remove('active-login');
+        tRegister.classList.add('active-register');
+    } else {
+        fLogin.style.display    = 'block';
+        fRegister.style.display = 'none';
+        tLogin.classList.add('active-login');
+        tRegister.classList.remove('active-register');
+    }
+}
+
+// Gestion formulaire inscription
+const fReg = document.getElementById('form-register');
+if (fReg) {
+    fReg.addEventListener('submit', function(e) {
+        // Sync confirmation mot de passe
+        document.getElementById('reg-pass-confirm').value = document.getElementById('reg-pass').value;
+        // Vérif captcha
+        if (document.getElementById('captcha-answer').value !== '8') {
+            e.preventDefault();
+            alert('Erreur de vérification : répondez correctement à la question.');
+            return false;
+        }
+    });
+}
+
+// CSRF refresh avant soumission
+const csrfRefreshUrl = '{{ route("csrf.refresh") }}';
+async function refreshCsrf() {
+    const r = await fetch(csrfRefreshUrl, { credentials: 'same-origin', headers: { 'Accept': 'application/json' } });
+    const d = await r.json();
+    document.querySelectorAll('input[name="_token"]').forEach(i => i.value = d.token);
+}
+['form-login','form-register'].forEach(id => {
+    const f = document.getElementById(id);
+    if (!f) return;
+    f.addEventListener('submit', async function(e) {
+        if (f.dataset.sub === '1') return;
+        e.preventDefault();
+        f.dataset.sub = '1';
+        try { await refreshCsrf(); f.submit(); }
+        catch { f.dataset.sub = '0'; window.location.reload(); }
+    }, true);
+});
+
+// Ouvrir automatiquement si erreurs Laravel (retour après form invalide)
+@if($errors->any())
+document.addEventListener('DOMContentLoaded', () => openAuth('{{ session("authMode", "login") }}'));
+@endif
 </script>
 
 @stack('scripts')
