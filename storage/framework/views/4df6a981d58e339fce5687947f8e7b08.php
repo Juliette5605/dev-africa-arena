@@ -381,29 +381,6 @@ function resetQuiz() {
 
 loadQuestion();
 
-// ─── JOBS API ──────────────────────────────────────────────────
-fetch("https://sheetdb.io/api/v1/qg4gis5u4esa6")
-.then(response => response.json())
-.then(data => {
-    let container = document.getElementById("jobs-container");
-    let html = "";
-    data.forEach(job => {
-        if(job.Titre){
-            html += `
-            <div class="job-card" data-aos="zoom-in">
-                <img src="${job.Image}" alt="${job.Titre}" onerror="this.style.display='none'">
-                <h3>${job.Titre}</h3>
-                <div class="job-info"><i class="bi bi-building"></i> ${job.Entreprise}</div>
-                <div class="job-info"><i class="bi bi-geo-alt"></i> ${job.Ville}</div>
-                <div class="job-info"><i class="bi bi-clock"></i> ${job.Type}</div>
-                <a href="${job.Lien}" target="_blank" rel="noopener">Postuler</a>
-            </div>`;
-        }
-    });
-    container.innerHTML = html || '<p class="text-muted">Aucune offre disponible.</p>';
-    AOS.refresh();
-})
-.catch(() => { document.getElementById("jobs-container").innerHTML = '<p class="text-muted">Impossible de charger les offres.</p>'; });
 </script>
 <?php $__env->stopPush(); ?>
 

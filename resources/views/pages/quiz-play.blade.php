@@ -22,11 +22,11 @@
     }
     .timer-bar {
         height: 100%;
-        background: #f39c12;
+        background: var(--brand-gold, #f39c12);
         width: 100%;
         transition: width 1s linear, background-color 0.3s;
     }
-    .timer-text { font-weight: 800; color: #f39c12; font-size: 1.2rem; }
+    .timer-text { font-weight: 800; color: var(--brand-gold, #f39c12); font-size: 1.2rem; }
     
     .q-card { animation: fadeIn 0.4s ease-out; }
     @keyframes fadeIn {
@@ -44,9 +44,21 @@
         width: 100%;
         box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
-    .quiz-option:hover:not(:disabled) { transform: translateY(-2px); background: #fff8eb; border-color: #f39c12; }
-    .quiz-option.is-correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534; }
-    .quiz-option.is-wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c; }
+    .quiz-option:hover:not(:disabled) { 
+        transform: translateY(-2px); 
+        background: #fff8eb; 
+        border-color: var(--brand-gold, #f39c12); 
+    }
+    .quiz-option.is-correct { 
+        background: #dcfce7 !important; 
+        border-color: #22c55e !important; 
+        color: #166534; 
+    }
+    .quiz-option.is-wrong { 
+        background: #fee2e2 !important; 
+        border-color: #ef4444 !important; 
+        color: #b91c1c; 
+    }
     
     .explanation-box {
         display: none;
@@ -55,6 +67,58 @@
         padding: 15px;
         margin-top: 15px;
         border-radius: 8px;
+    }
+
+    /* Couleurs du site pour les badges et boutons */
+    .badge-mode {
+        background: var(--brand-gold, #f39c12);
+        color: #1a1a2e;
+        font-weight: 800;
+        padding: 6px 14px;
+        border-radius: 30px;
+        margin-bottom: 12px;
+        display: inline-block;
+        font-size: 0.75rem;
+    }
+
+    .btn-warning-custom {
+        background: linear-gradient(135deg, var(--brand-gold, #f39c12) 0%, var(--brand-orange, #e67e22) 100%);
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-warning-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(243, 156, 18, 0.3);
+        color: white;
+    }
+
+    .btn-outline-custom {
+        background: transparent;
+        border: 2px solid var(--brand-gold, #f39c12);
+        color: var(--brand-gold, #f39c12);
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-outline-custom:hover {
+        background: var(--brand-gold, #f39c12);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .score-display {
+        color: var(--brand-gold, #f39c12);
     }
 </style>
 @endpush
@@ -67,20 +131,19 @@
                 <div style="font-size:2.8rem;">🧠</div>
                 <h1 class="fw-bold mt-3 mb-2">Quiz Arena indisponible</h1>
                 <p class="text-muted mb-4">Aucune question trouvée. L'IA prépare de nouveaux défis !</p>
-                <a href="{{ route('home') }}" class="btn btn-warning fw-bold">Retour à l'accueil</a>
+                <a href="{{ route('home') }}" class="btn-warning-custom">Retour à l'accueil</a>
             </div>
         @else
             <div class="quiz-card">
-                {{-- Affichage du fallback si l'IA a échoué --}}
                 @if(isset($ai_fallback) && $ai_fallback)
                 <div class="alert alert-info border-0 shadow-sm mb-4 rounded-4">
-                    🤖 <strong>Note :</strong> Le mode IA est surchargé. Nous avons chargé des questions de notre base de données pour vous !
+                    <strong>Note :</strong> Le mode IA est surchargé. Nous avons chargé des questions de notre base de données pour vous !
                 </div>
                 @endif
 
                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
                     <div>
-                        <span class="badge bg-warning text-dark mb-2">MODE {{ $modeIa ? 'IA EXPERT' : 'STANDARD' }}</span>
+                        <span class="badge-mode">MODE {{ $modeIa ? 'IA EXPERT' : 'STANDARD' }}</span>
                         <h1 class="fw-bold mb-1 h3">Challenge : {{ ucfirst($domaine) }}</h1>
                     </div>
                     <div class="text-end" id="timer-wrapper">
@@ -98,7 +161,6 @@
                         <div class="q-card" data-step="{{ $index }}" style="{{ $index > 0 ? 'display:none;' : '' }}">
                             <div class="mb-4">
                                 <span class="text-muted fw-bold">QUESTION {{ $index + 1 }} SUR {{ $questions->count() }}</span>
-                                {{-- Utilisation du ?? pour gérer les noms de colonnes BDD vs IA --}}
                                 <h2 class="fw-bold mt-2 h4">{{ $question->enonce ?? $question->texte }}</h2>
                             </div>
 
@@ -113,7 +175,7 @@
 
                             @if(!empty($question->explication))
                             <div class="explanation-box mt-3" id="expl-{{ $index }}">
-                                <strong>💡 Le saviez-vous ?</strong><br>
+                                <strong>Le saviez-vous ?</strong><br>
                                 {{ $question->explication }}
                             </div>
                             @endif
@@ -121,17 +183,16 @@
                     @endforeach
                 </div>
 
-                <!-- Résultats finaux -->
                 <div id="final-results" class="text-center py-4" style="display:none;">
                     <div style="font-size:4rem;">🏆</div>
                     <h2 class="fw-bold mb-2">Challenge terminé !</h2>
-                    <div class="display-4 fw-bold text-warning mb-3">
+                    <div class="display-4 fw-bold score-display mb-3">
                         <span id="score-val">0</span> / {{ $questions->count() }}
                     </div>
                     <p id="feedback-text" class="fs-5 mb-4"></p>
                     <div class="d-flex justify-content-center gap-3">
-                        <a href="{{ url()->full() }}" class="btn btn-warning px-4 py-2 fw-bold shadow-sm">Rejouer</a>
-                        <a href="{{ route('home') }}" class="btn btn-outline-dark px-4 py-2">Quitter</a>
+                        <a href="{{ url()->full() }}" class="btn-warning-custom">Rejouer</a>
+                        <a href="{{ route('home') }}" class="btn-outline-custom">Quitter</a>
                     </div>
                 </div>
             </div>
@@ -173,7 +234,7 @@
         bar.style.width = percentage + '%';
         display.textContent = timeLeft + 's';
         
-        bar.style.backgroundColor = (timeLeft <= 10) ? '#e74c3c' : '#f39c12';
+        bar.style.backgroundColor = (timeLeft <= 10) ? '#e74c3c' : getComputedStyle(document.documentElement).getPropertyValue('--brand-gold').trim() || '#f39c12';
     }
 
     function handleTimeOut() {
@@ -215,7 +276,7 @@
         document.getElementById('score-val').textContent = score;
         
         const feedback = document.getElementById('feedback-text');
-        if (score === totalQuestions) feedback.textContent = "Incroyable Juliette ! Tu es une véritable experte.";
+        if (score === totalQuestions) feedback.textContent = "Incroyable ! Tu es une véritable experte.";
         else if (score >= totalQuestions / 2) feedback.textContent = "Pas mal ! Tu as de bonnes bases pour le hackathon.";
         else feedback.textContent = "Continue d'apprendre, le succès est au bout de l'effort !";
     }
