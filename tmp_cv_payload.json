@@ -1,0 +1,14 @@
+{
+  "profil": {
+    "nom": "Test",
+    "prenom": "User",
+    "email": "test@example.com",
+    "telephone": "",
+    "localisation": "Lome, Togo",
+    "competences": ["Laravel", "Flutter"],
+    "langages": [],
+    "experiences": [],
+    "formations": [{"diplome":"Licence Informatique","etablissement":"UL","annee":"2024"}],
+    "objectif_professionnel": "Construire des produits numeriques utiles en Afrique."
+  }
+}

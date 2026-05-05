@@ -1,0 +1,10 @@
+{
+  "profil": {
+    "nom": "Test",
+    "prenom": "User",
+    "email": "test@example.com",
+    "competences": ["Laravel", "Flutter"],
+    "niveau": "Junior",
+    "localisation": "Lome, Togo"
+  }
+}
