@@ -497,16 +497,23 @@
                         <a class="nav-link {{ request()->routeIs('orientation') ? 'active' : '' }}" href="{{ route('orientation') }}">Orientation</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->routeIs('partenaires*') ? 'active' : '' }}" href="#" data-bs-toggle="dropdown">
-                            Partenaires
-                        </a>
-                        <ul class="dropdown-menu border-0 shadow-sm rounded-4 p-2">
-                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.index') }}">Hub Partenaires</a></li>
-                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.financier') }}">Partenariat Financier</a></li>
-                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.techniques') }}">Partenariat Technique</a></li>
-                            <li><a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('partenaires.sponsors') }}">Sponsors</a></li>
-                        </ul>
-                    </li>
+                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                         Partenaires
+                     </a>
+
+                <ul class="dropdown-menu border-0 shadow-sm rounded-4 p-2">
+                 <li>
+                     <a class="dropdown-item rounded-3 fw-semibold py-2" href="{{ route('feed.index') }}">
+                        <i class="bi bi-broadcast me-2 text-muted"></i>Feed
+                     </a>
+                </li>
+
+         <li><a class="dropdown-item" href="{{ route('partenaires.index') }}">Hub Partenaires</a></li>
+        <li><a class="dropdown-item" href="{{ route('partenaires.financier') }}">Partenariat Financier</a></li>
+        <li><a class="dropdown-item" href="{{ route('partenaires.techniques') }}">Partenariat Technique</a></li>
+        <li><a class="dropdown-item" href="{{ route('partenaires.sponsors') }}">Sponsors</a></li>
+    </ul>
+</li>
 
                     @auth
                         {{-- Utilisateur connecté --}}
