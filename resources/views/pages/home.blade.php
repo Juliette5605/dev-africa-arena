@@ -48,21 +48,217 @@
 .cd-sep { font-size: 2.5rem; font-weight: 800; color: rgba(243,156,18,0.25); padding: 0 6px; align-self: flex-start; margin-top: 12px; }
 
 /* ─── JOBS ──────────────────────────────────────────────── */
-.jobs-section { padding: 80px 0; background: #ffffff; position: relative; z-index: 2; }
-#jobs-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 30px; }
-.job-card { background: #fdfdfd; padding: 15px; border-radius: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.04); transition: 0.3s ease; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 100%; }
-.job-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.08); background: #ffffff; }
-.job-card img { width: 100%; height: 130px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; }
-.job-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
-.job-info { font-size: 0.85rem; color: #666; margin-bottom: 4px; display: flex; align-items: center; }
-.job-info i { color: #f39c12; width: 20px; }
-.job-card a { display: block; margin-top: auto; background: #222; color: white; padding: 10px; border-radius: 10px; text-decoration: none; text-align: center; font-weight: 600; font-size: 0.9rem; transition: 0.3s; margin-top: 15px; }
-.job-card a:hover { background: #f39c12; color: white; }
+.jobs-section {
+    padding: 90px 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
 
-/* ─── PARTNERS ──────────────────────────────────────────── */
-.partners-bar { background: #ffffff; padding: 60px 0 100px 0; border-top: 1px solid #f0f0f0; position: relative; z-index: 2; }
-.partner-label { font-size: 0.7rem; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: block; }
-.partner-logo-single { max-height: 70px; width: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.08)); }
+/* Compteur d'offres */
+.jobs-count-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #111;
+    color: #f39c12;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+}
+
+/* Zone de scroll : hauteur fixe, déborde en interne */
+.jobs-scroll-wrapper {
+    position: relative;
+    border-radius: 24px;
+    border: 1.5px solid rgba(243,156,18,0.15);
+    background: #fafafa;
+    overflow: hidden;
+}
+
+/* Fade dégradé en bas — indique qu'il y a du contenu en dessous */
+.jobs-scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 70px;
+    background: linear-gradient(to top, #fafafa, transparent);
+    pointer-events: none;
+    z-index: 4;
+    border-radius: 0 0 22px 22px;
+}
+
+/* Le conteneur qui scroll réellement */
+.jobs-scroll-inner {
+    max-height: 540px;
+    overflow-y: auto;
+    padding: 22px 22px 40px 22px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar fine dorée */
+.jobs-scroll-inner::-webkit-scrollbar        { width: 4px; }
+.jobs-scroll-inner::-webkit-scrollbar-track  { background: transparent; }
+.jobs-scroll-inner::-webkit-scrollbar-thumb  { background: linear-gradient(180deg, #f39c12, #e67e22); border-radius: 4px; }
+
+/* Pastille "scroll" discrète */
+.jobs-scroll-hint {
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #bbb;
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.jobs-scroll-hint i { color: #f39c12; animation: bounce-down 1.4s ease infinite; }
+@keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(4px); }
+}
+
+/* Carte job */
+.job-card {
+    background: #fff;
+    border-radius: 18px;
+    border: 1.5px solid rgba(0,0,0,0.06);
+    padding: 20px 22px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+/* Trait doré gauche au hover */
+.job-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #f39c12, #e67e22);
+    border-radius: 18px 0 0 18px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.job-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(243,156,18,0.13); border-color: rgba(243,156,18,0.35); }
+.job-card:hover::before { opacity: 1; }
+
+.job-card-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: #fff3e0;
+    color: #e67e22;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.job-card h5 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.35;
+    margin-bottom: 6px;
+}
+
+.job-card .job-company {
+    font-size: 0.8rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 0;
+}
+.job-card .job-company i { color: #f39c12; font-size: 0.75rem; }
+
+.job-card-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #f3f3f3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Point live vert */
+.job-live-dot {
+    width: 7px; height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse-live 1.8s ease infinite;
+}
+@keyframes pulse-live {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.45); }
+    50%       { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+}
+
+/* Bouton "Voir" sur la carte */
+.btn-job-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: #fff !important;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 7px 16px;
+    border-radius: 50px;
+    text-decoration: none !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+}
+.btn-job-view:hover { transform: scale(1.06); box-shadow: 0 6px 18px rgba(243,156,18,0.38); color:#fff !important; }
+
+/* Animation d'entrée sur les nouvelles cartes */
+@keyframes cardSlideIn {
+    from { opacity: 0; transform: translateY(18px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.job-card-enter { animation: cardSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both; }
+
+/* Bouton Voir plus */
+.btn-see-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: #fff;
+    border: none;
+    padding: 13px 34px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+.btn-see-more:hover   { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(243,156,18,0.38); color:#fff; }
+.btn-see-more:active  { transform: translateY(0); }
+.btn-see-more:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.btn-see-more .remaining-badge {
+    background: rgba(255,255,255,0.22);
+    padding: 2px 9px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+}
 
 /* ─── NEWSLETTER ────────────────────────────────────────── */
 .newsletter-section { padding: 80px 0; background: #f8f9fa; }
@@ -70,12 +266,17 @@
 .nl-input:focus { border-color: #f39c12; outline: none; box-shadow: 0 0 0 4px rgba(243,156,18,0.08); }
 .nl-btn { background: linear-gradient(135deg,#f39c12,#e67e22); color: #fff; border: none; padding: 14px 28px; border-radius: 14px; font-weight: 800; cursor: pointer; font-family: inherit; white-space: nowrap; transition: 0.3s; }
 .nl-btn:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(243,156,18,0.25); }
+
+/* ─── PARTNERS ──────────────────────────────────────────── */
+.partners-bar { background: #ffffff; padding: 60px 0 100px 0; border-top: 1px solid #f0f0f0; position: relative; z-index: 2; }
+.partner-label { font-size: 0.7rem; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: block; }
+.partner-logo-single { max-height: 70px; width: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.08)); }
 </style>
 @endpush
 
 @section('content')
 
-{{-- ═══ HERO (identique site original) ═══ --}}
+{{-- ═══ HERO ═══ --}}
 <header class="hero">
     <canvas id="snow-canvas"></canvas>
     <div class="container" style="position: relative; z-index: 2;">
@@ -108,7 +309,7 @@
 </header>
 
 
-{{-- ═══ ORIENTATION HUB + QUIZ (identique site original) ═══ --}}
+{{-- ═══ ORIENTATION HUB + QUIZ ═══ --}}
 <section class="orientation-hub" id="orientation">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -117,7 +318,6 @@
             <p class="text-muted">Réponds vite ! Le système analyse tes réflexes numériques.</p>
         </div>
 
-        {{-- 6 cartes métiers — s'allument selon les réponses --}}
         <div class="row g-4 mb-5" id="fields-grid">
             <div class="col-6 col-md-4 col-lg-2 field-wrapper transition-all" id="field-dev">
                 <div class="field-card-mini text-center p-3 rounded-4 border bg-white transition-all">
@@ -190,21 +390,79 @@
     </div>
 </section>
 
+
 {{-- ═══ OFFRES D'EMPLOI ═══ --}}
 <section class="jobs-section">
     <div class="container">
-        <div class="d-flex justify-content-between align-items-end mb-4" data-aos="fade-up">
-            <div>
-                <span class="badge bg-warning text-dark mb-2 px-3 rounded-pill">OPPORTUNITÉS</span>
-                <h2 class="fw-bold mb-0">Offres d'emploi</h2>
+
+        {{-- En-tête --}}
+        <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+            <div data-aos="fade-right">
+                <span class="badge bg-warning text-dark px-3 rounded-pill mb-2">OPPORTUNITÉS</span>
+                <h2 class="fw-800 mb-1" style="font-size: 2.2rem; font-weight: 800;">Postes à pourvoir</h2>
+                <p class="text-muted mb-0">Découvrez les offres qui correspondent à votre profil</p>
             </div>
-            <p class="text-muted small mb-0 d-none d-md-block">Mis à jour automatiques</p>
+            <div data-aos="fade-left">
+                <span class="jobs-count-pill">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span id="jobs-shown-count">{{ min(6, count($opportunities)) }}</span> / {{ count($opportunities) }} offres
+                </span>
+            </div>
         </div>
-        <div id="jobs-container"></div>
+
+        {{-- Wrapper scroll --}}
+        <div class="jobs-scroll-wrapper" data-aos="fade-up">
+
+            {{-- Pastille "scroll" en bas à droite --}}
+            <div class="jobs-scroll-hint">
+                <i class="bi bi-chevron-double-down"></i> scroll
+            </div>
+
+            <div class="jobs-scroll-inner" id="jobs-scroll-inner">
+                <div class="row g-3" id="jobs-grid">
+                    @foreach(array_slice($opportunities, 0, 6) as $i => $opportunity)
+                    <div class="col-md-6 col-lg-4" style="animation: cardSlideIn 0.4s {{ $i * 0.07 }}s both;">
+                        <div class="job-card">
+                            <span class="job-card-tag">Tech</span>
+                            <h5>{{ $opportunity['name'] ?? $opportunity['title'] ?? 'Offre Tech' }}</h5>
+                            <p class="job-company">
+                                <i class="bi bi-building"></i>
+                                {{ $opportunity['company']['name'] ?? $opportunity['company_name'] ?? 'Entreprise' }}
+                            </p>
+                            <div class="job-card-footer">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="job-live-dot"></span>
+                                    <span style="font-size:0.7rem; color:#bbb; font-weight:700;">En ligne</span>
+                                </div>
+                                <a href="{{ $opportunity['refs']['landing_page'] ?? $opportunity['url'] ?? '#' }}"
+                                   target="_blank"
+                                   class="btn-job-view">
+                                    Voir <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        {{-- Bouton voir plus --}}
+        @if(count($opportunities) > 6)
+        <div class="text-center mt-4" data-aos="fade-up">
+            <button id="see-more-btn" class="btn-see-more">
+                <i class="bi bi-plus-circle-fill"></i>
+                Voir plus d'offres
+                <span class="remaining-badge" id="remaining-badge">+{{ count($opportunities) - 6 }}</span>
+            </button>
+        </div>
+        @endif
+
     </div>
 </section>
 
-{{-- ═══ NEWSLETTER (ajout Laravel) ═══ --}}
+
+{{-- ═══ NEWSLETTER ═══ --}}
 <section class="newsletter-section">
     <div class="container">
         <div class="row justify-content-center">
@@ -227,7 +485,7 @@
                     @csrf
                     <div class="d-flex gap-2 flex-wrap flex-sm-nowrap">
                         <input type="email" name="email" class="nl-input" placeholder="Votre adresse email *" required value="{{ old('email') }}">
-                        <button type="submit" class="nl-btn">S'abonner 🔥</button>
+                        <button type="submit" class="nl-btn">S'abonner</button>
                     </div>
                     <p class="text-muted small mt-2 text-center"><i class="bi bi-shield-check me-1"></i>Zéro spam. Désinscription en 1 clic.</p>
                 </form>
@@ -236,6 +494,7 @@
         </div>
     </div>
 </section>
+
 
 {{-- ═══ PARTENAIRE OFFICIEL ═══ --}}
 <section class="partners-bar text-center">
@@ -251,17 +510,20 @@
 
 @push('scripts')
 <script>
-// ─── SNOW CANVAS (identique original) ──────────────────────────
+// ─── SNOW CANVAS ───────────────────────────────────────────────
 const canvas = document.getElementById('snow-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
 function initSnow() {
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     particles = [];
-    for(let i=0; i<60; i++) {
+    for (let i = 0; i < 60; i++) {
         particles.push({
-            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-            size: Math.random() * 2 + 1, speed: Math.random() * 0.5 + 0.2,
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1,
+            speed: Math.random() * 0.5 + 0.2,
             opacity: Math.random() * 0.3 + 0.1
         });
     }
@@ -269,52 +531,36 @@ function initSnow() {
 function animateSnow() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => {
-        ctx.fillStyle = `rgba(180, 180, 180, ${p.opacity})`;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-        p.y += p.speed; if(p.y > canvas.height) p.y = -10;
+        ctx.fillStyle = `rgba(180,180,180,${p.opacity})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        p.y += p.speed;
+        if (p.y > canvas.height) p.y = -10;
     });
     requestAnimationFrame(animateSnow);
 }
-initSnow(); animateSnow();
+initSnow();
+animateSnow();
 window.addEventListener('resize', initSnow);
 
-// ─── COUNTDOWN ─────────────────────────────────────────────────
-(function(){
-    const el = document.getElementById('cd-target');
-    if(!el) return;
-    const target = new Date(el.value + 'T20:00:00');
-    function tick(){
-        const diff = target - new Date();
-        if(diff <= 0){ ['d','h','m','s'].forEach(id => document.getElementById('cd-'+id).textContent = '00'); return; }
-        const d=Math.floor(diff/86400000), h=Math.floor(diff%86400000/3600000),
-              m=Math.floor(diff%3600000/60000), s=Math.floor(diff%60000/1000);
-        document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
-        document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-        document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-        document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
-    }
-    tick(); setInterval(tick, 1000);
-})();
 
-// ─── QUIZ (identique original) ─────────────────────────────────
+// ─── QUIZ ──────────────────────────────────────────────────────
 const quizData = [
-    { q: "Face à une page blanche, tu as envie de...", a: [{t:"Taper des lignes de commandes", v:"dev"}, {t:"Tracer des courbes et des couleurs", v:"design"}, {t:"Analyser des colonnes de chiffres", v:"ia"}]},
-    { q: "Quel super-pouvoir numérique préfères-tu ?", a: [{t:"Rendre un site ultra rapide", v:"dev"}, {t:"Prédire l'avenir avec les données", v:"ia"}, {t:"Convaincre des milliers de gens", v:"com"}]},
-    { q: "Ton objet fétiche sur ton bureau ?", a: [{t:"Un clavier mécanique", v:"dev"}, {t:"Une tablette graphique", v:"design"}, {t:"Un routeur ou un fer à souder", v:"fab"}]},
-    { q: "Le danger qui te fait le plus peur ?", a: [{t:"Une panne logicielle totale", v:"dev"}, {t:"Une fuite de données massive", v:"cyber"}, {t:"Une IA incontrôlable", v:"ia"}]},
-    { q: "En équipe, tu es celui qui...", a: [{t:"Structure le projet", v:"dev"}, {t:"Vend le concept aux clients", v:"com"}, {t:"Protège les accès", v:"cyber"}]},
-    { q: "Quelle technologie t'excite le plus ?", a: [{t:"Le Cloud et les API", v:"dev"}, {t:"La Robotique connectée", v:"fab"}, {t:"La Réalité Augmentée", v:"design"}]},
-    { q: "Dernière chance : Ton instinct te dit ?", a: [{t:"Créer", v:"dev"}, {t:"Sécuriser", v:"cyber"}, {t:"Connecter", v:"fab"}]}
+    { q: "Face à une page blanche, tu as envie de...", a: [{ t: "Taper des lignes de commandes", v: "dev" }, { t: "Tracer des courbes et des couleurs", v: "design" }, { t: "Analyser des colonnes de chiffres", v: "ia" }] },
+    { q: "Quel super-pouvoir numérique préfères-tu ?", a: [{ t: "Rendre un site ultra rapide", v: "dev" }, { t: "Prédire l'avenir avec les données", v: "ia" }, { t: "Convaincre des milliers de gens", v: "com" }] },
+    { q: "Ton objet fétiche sur ton bureau ?", a: [{ t: "Un clavier mécanique", v: "dev" }, { t: "Une tablette graphique", v: "design" }, { t: "Un routeur ou un fer à souder", v: "fab" }] },
+    { q: "Le danger qui te fait le plus peur ?", a: [{ t: "Une panne logicielle totale", v: "dev" }, { t: "Une fuite de données massive", v: "cyber" }, { t: "Une IA incontrôlable", v: "ia" }] },
+    { q: "En équipe, tu es celui qui...", a: [{ t: "Structure le projet", v: "dev" }, { t: "Vend le concept aux clients", v: "com" }, { t: "Protège les accès", v: "cyber" }] },
+    { q: "Quelle technologie t'excite le plus ?", a: [{ t: "Le Cloud et les API", v: "dev" }, { t: "La Robotique connectée", v: "fab" }, { t: "La Réalité Augmentée", v: "design" }] },
+    { q: "Dernière chance : Ton instinct te dit ?", a: [{ t: "Créer", v: "dev" }, { t: "Sécuriser", v: "cyber" }, { t: "Connecter", v: "fab" }] }
 ];
 
 let currentQ = 0;
 let scores = { dev: 0, ia: 0, design: 0, com: 0, cyber: 0, fab: 0 };
-let timerWidth = 0;
 let timerInterval;
-const TIME_LIMIT = 80;
 
 function startTimer() {
-    // Minuteur désactivé — pas d'auto-pass, le candidat répond à son rythme
     clearInterval(timerInterval);
 }
 
@@ -346,7 +592,7 @@ function highlightField(val) {
     document.querySelectorAll('.field-wrapper').forEach(w => {
         w.classList.add('dimmed');
         w.classList.remove('highlight');
-        if(w.id === `field-${val}`) {
+        if (w.id === `field-${val}`) {
             w.classList.remove('dimmed');
             w.classList.add('highlight');
         }
@@ -359,8 +605,8 @@ function showResult() {
     document.getElementById("quiz-result").style.display = "block";
     let winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
     const map = {
-        dev:"Architecte Web & Mobile", ia:"Ingénieur IA", design:"Creative Designer",
-        com:"Growth Marketer", cyber:"Gardien Cybersécurité", fab:"Ingénieur IoT"
+        dev: "Architecte Web & Mobile", ia: "Ingénieur IA", design: "Creative Designer",
+        com: "Growth Marketer", cyber: "Gardien Cybersécurité", fab: "Ingénieur IoT"
     };
     document.getElementById("res-profile").innerText = map[winner];
     document.getElementById("res-desc").innerText = "Le scan est terminé. Ton ADN numérique correspond à 98% au profil de " + map[winner] + ". Prêt à rejoindre l'Arena ?";
@@ -380,5 +626,93 @@ function resetQuiz() {
 
 loadQuestion();
 
+
+// ─── JOBS : VOIR PLUS ──────────────────────────────────────────
+(function () {
+    const allJobs    = @json($opportunities);
+    const totalJobs  = allJobs.length;
+    let   shown      = Math.min(6, totalJobs);
+    const BATCH      = 3;
+
+    const seeMoreBtn     = document.getElementById('see-more-btn');
+    const remainingBadge = document.getElementById('remaining-badge');
+    const shownCount     = document.getElementById('jobs-shown-count');
+    const grid           = document.getElementById('jobs-grid');
+    const scrollInner    = document.getElementById('jobs-scroll-inner');
+
+    if (!seeMoreBtn) return;
+
+    // Masquer le bouton si tout est déjà affiché
+    if (shown >= totalJobs) {
+        seeMoreBtn.style.display = 'none';
+    }
+
+    seeMoreBtn.addEventListener('click', function () {
+
+        // État chargement
+        seeMoreBtn.disabled = true;
+        seeMoreBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status"></span> Chargement...`;
+
+        setTimeout(function () {
+
+            const batch = allJobs.slice(shown, shown + BATCH);
+
+            batch.forEach(function (job, idx) {
+
+                const title   = job.name   || job.title          || 'Offre Tech';
+                const company = (job.company && job.company.name) || job.company_name || 'Entreprise';
+                const url     = (job.refs   && job.refs.landing_page) || job.url || '#';
+
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4';
+
+                col.innerHTML = `
+                    <div class="job-card job-card-enter" style="animation-delay:${idx * 0.08}s;">
+                        <span class="job-card-tag">Tech</span>
+                        <h5>${title}</h5>
+                        <p class="job-company">
+                            <i class="bi bi-building"></i> ${company}
+                        </p>
+                        <div class="job-card-footer">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="job-live-dot"></span>
+                                <span style="font-size:0.7rem;color:#bbb;font-weight:700;">En ligne</span>
+                            </div>
+                            <a href="${url}" target="_blank" class="btn-job-view">
+                                Voir <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(col);
+            });
+
+            shown += batch.length;
+
+            // Mettre à jour le compteur
+            if (shownCount) shownCount.textContent = shown;
+
+            // Scroll fluide vers les nouvelles cartes
+            setTimeout(function () {
+                scrollInner.scrollTo({ top: scrollInner.scrollHeight, behavior: 'smooth' });
+            }, 80);
+
+            const remaining = totalJobs - shown;
+
+            if (shown >= totalJobs) {
+                seeMoreBtn.style.display = 'none';
+            } else {
+                seeMoreBtn.disabled = false;
+                seeMoreBtn.innerHTML = `
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Voir plus d'offres
+                    <span class="remaining-badge">+${remaining}</span>
+                `;
+            }
+
+        }, 320);
+    });
+})();
 </script>
 @endpush

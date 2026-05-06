@@ -24,6 +24,8 @@ use App\Http\Controllers\VoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OpportunityController;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +45,44 @@ Route::post('/webhook/vote-confirm', [VoteController::class, 'confirmWebhook'])
     ->withoutMiddleware(['web'])
     ->name('vote.webhook');
 
-// ── PAGE D'ACCUEIL (publique) ─────────────────────────────────────────────
+// ── PAGE D'ACCUEIL (publique) 
 Route::get('/', function () {
-    return view('pages.home');
+
+    $opportunities = [];
+
+    // ─── THE MUSE ─────────────────────
+    $muse = Http::get(
+        'https://www.themuse.com/api/public/jobs?page=1'
+    );
+
+    if ($muse->successful()) {
+
+        $museJobs =
+            $muse->json()['results'] ?? [];
+
+        $opportunities =
+            array_merge($opportunities, $museJobs);
+    }
+
+    // ─── ARBEITNOW ───────────────────
+    $arbeitnow = Http::get(
+        'https://www.arbeitnow.com/api/job-board-api'
+    );
+
+    if ($arbeitnow->successful()) {
+
+        $arbeitJobs =
+            $arbeitnow->json()['data'] ?? [];
+
+        $opportunities =
+            array_merge($opportunities, $arbeitJobs);
+    }
+
+    return view(
+        'pages.home',
+        compact('opportunities')
+    );
+
 })->name('home');
 
 Route::get('/csrf-token', function (Request $request) {
@@ -225,6 +262,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    
+
+Route::get('/opportunities', [OpportunityController::class, 'index']);
 });
 
 require __DIR__ . '/auth.php';
